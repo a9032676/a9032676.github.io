@@ -1,14 +1,15 @@
 +++
-title = "My Blog"
+title = "90's Blog"
 description = "My blog site."
 sort_by = "date"
 template = "blog.html"
 page_template = "post.html"
 insert_anchor_links = "none"
-generate_feed = false
+generate_feed = true
 
 [extra]
-lang = 'en'
+lang = 'zh'
 show_post_num = 10
+
 +++
 

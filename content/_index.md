@@ -2,7 +2,15 @@
 template = 'home.html'
 
 [extra]
-lang = 'en'
+lang = 'zh'
+
 +++
 
-Words about you
+这里是九零, 欢迎您来到我的杂货铺.
+
+这里日常会撰写一些关于 **数学** 或 **PLT** 的文章与笔记.
+
+偶尔也会分享个人的生活点滴.
+
+祝您渡过愉快的一天!
+
