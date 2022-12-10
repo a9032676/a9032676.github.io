@@ -236,20 +236,11 @@ $$
 
 ### 定义 2.3.1 (同余关系, 同余类, $\Z_n$)
 
-设 $n \in \Z^+$, 并对任意 $a, b \in \Z$, 定义在 $\Z$ 上的一个等价关系：
-$$
-a \equiv b \pmod{n} \coloneqq n \mid (b-a)
-$$
+设有 $n \in \Z^+$, 则：
 
-称为 **整数 $a$ 模 $n$ 的同余关系 (congruence modulo $n$)**. 特别地, 由 $\Z$ 的同余关系可得到 **同余类 (congruence classes)**, 记为 $[a]_n$, 或无歧义地简记为 $[a]$ (等价类的一种), 并定义为：
-$$
-[a]_n \coloneqq \set{ b \in \Z : a \equiv b \pmod{n} } = \set{ b \in \Z : \exists k \in \Z, b-a = kn }
-$$
-并通常同余类的全体所构成的集合为 $\Z_n$ 或 $\Z/n\Z$, 即：
-$$
-\Z_n \coloneqq \set{[0]_n, [1]_n, \dots, [n-1]_n}
-$$
-当中恰好有 $n$ 个元素.
+- 对于任意 $a, b \in \Z$, 称定义在 $\Z$ 上的等价关系 $a \equiv b \pmod{n} \coloneqq n \mid (b-a)$ 为 **整数 $a$ 模 $n$ 的同余关系 (congruence modulo $n$)**;
+- 若给定 $a \in \Z$, 则称 $[a]_n \coloneqq \set{ b \in \Z : a \equiv b \pmod{n} } = \set{ b \in \Z : \exists k \in \Z, b-a = kn }$ 为由 $\Z$ 中元素 $a$ 模 $n$ 的同余关系所构成的 **同余类 (congruence class)**, 并且为等价类的一种;
+- 同余类的全体所构成的集合为 $\Z_n$ 或 $\Z/n\Z$, 即有 $\Z_n \coloneqq \set{[0]_n, [1]_n, \dots, [n-1]_n}$, 其中 $|\Z_n| = n$.
 
 ### 定理 2.3.2 ($\Z_n$ 构成整数模 $n$ 加法群)
 
