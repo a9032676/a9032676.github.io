@@ -1,18 +1,20 @@
 +++
 title = "群论 1 - 群论基础, 群同态, 群结构"
-date = 2022-12-05
+date = 2022-11-11
 draft = false
 
 [taxonomies]
 categories = ["抽象代数"]
-tags = ["数学", "抽象代数", "群论"]
+tags = ["数学", "代数学", "抽象代数", "群论"]
 
 [extra]
-lang = "en"
+lang = "zh"
 toc = true
 mathjax = true
 
 +++
+
+{% good() %}本文内容已完全施工完毕, 读者可放心阅读！{% end %}
 
 {% mathjax_escape() %}
 
