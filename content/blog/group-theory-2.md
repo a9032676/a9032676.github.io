@@ -48,7 +48,7 @@ $$
   $$
   g^r = g^{n-|g|q} = g^n \cdot (g^{|g|})^{-q} = e \cdot e^{-q} = e
   $$
-  得 $g^r = e$, 由于我们需要确保 $0 \leq r$, 同时 $g^r$ 的 $r$ 又不可能小于 $g^{|g|}$ 的 $|g|$ (因为 $|g|$ 为最小的正整数), 换句话说只要 $g^r = e$ 不为群的阶即可, 那么必定只能取 $r = 0$ (注意到 $\Z^+$ 不含 $0$)使得 $r = 0 = n - |g|q$.
+  得 $g^r = e$, 由于我们需要确保 $0 \leq r$, 同时 $g^r$ 的 $r$ 又不可能小于 $g^{|g|}$ 的 $|g|$ (因为 $|g|$ 为最小的正整数), 换句话说只要 $g^r = e$ 不为群的阶即可, 那么必定只能取 $r = 0$ (注意到 $\Z^+$ 不含 $0$) 使得 $r = 0 = n - |g|q$.
 
 - 证明 $q$ 的存在性：
 
@@ -238,7 +238,7 @@ $$
 
 设有 $n \in \Z^+$, 则：
 
-- 对于任意 $a, b \in \Z$, 称定义在 $\Z$ 上的等价关系 $a \equiv b \pmod{n} \coloneqq n \mid (b-a)$ 为 **整数 $a$ 模 $n$ 的同余关系 (congruence modulo $n$)**;
+- 对于任意 $a, b \in \Z$, 称定义在 $\Z$ 上的等价关系 $a \equiv b \pmod{n} \iff n \mid (b-a)$ 为 **整数 $a$ 模 $n$ 的同余关系 (congruence modulo $n$)**;
 - 若给定 $a \in \Z$, 则称 $[a]_n \coloneqq \set{ b \in \Z : a \equiv b \pmod{n} } = \set{ b \in \Z : \exists k \in \Z, b-a = kn }$ 为由 $\Z$ 中元素 $a$ 模 $n$ 的同余关系所构成的 **同余类 (congruence class)**, 并且为等价类的一种;
 - 同余类的全体所构成的集合为 $\Z_n$ 或 $\Z/n\Z$, 即有 $\Z_n \coloneqq \set{[0]_n, [1]_n, \dots, [n-1]_n}$, 其中 $|\Z_n| = n$.
 
@@ -300,7 +300,7 @@ $$
 
 ### 注释 2
 
-对于任意 $n \in \Z^+$, $n$ 阶有限整数加群 $\Z_{n} = \lang 1 \rang = \set{0, 1, 2, \dots, n-1}$ 构成 $\Z$ 的循环子群, 例如 $\Z_7$ 中的元素便是由 $1$ 生成的, 为了方便叙述而将任意的 $[a] \in \Z_n$ 直接记为 $a$, 即有：
+对于任意 $n \in \Z^+$, $n$ 阶有限整数加群 $\Z_{n} = \lang 1 \rang = \set{0, 1, 2, \dots, n-1}$ 构成 $\Z$ 的循环子群, 例如 $\Z_7$ 中的元素便是由 $1$ 生成的, 为了方便叙述而将任意的 $[a] \in \Z_n$ 直接简记为 $a$, 即有：
 $$
 \begin{align}
 1 & = 1 \\
@@ -472,9 +472,9 @@ $(\Leftarrow)$ 显然有 $\lang m \rang = \set{ km : k \in \Z } \sub H$.
 
    因此就使得 $G \cong \Z$.
 
-2. 由于 $G = \lang a \rang$ 是 $n$ 阶有限循环群, 那么 $|a| = n$, 其中 $n$ 为最小正整数, 现在设有映射 $\begin{align} \Z_n & \overset{\varphi}{\to} G \\ [k] & \mapsto a^k \end{align}$, 显然是一一对应的, 并且保持了群同态, 即对于任意 $[r], [s] \in \Z_n$, 有：
+2. 由于 $G = \lang a \rang$ 是 $n$ 阶有限循环群, 那么 $|a| = n$, 其中 $n$ 为最小正整数, 现在设有映射 $\begin{align} \Z_n & \overset{\varphi}{\to} G \\ [k] & \mapsto a^k \end{align}$, 显然是一一对应的, 并且保持了群同态：
    $$
-   \varphi([r] + [s]) = \varphi([r + s]) = a^{r+s} = a^r \cdot a^s = \varphi([r]) \cdot \varphi([s])
+   \varphi([r] + [s]) = \varphi([r + s]) = a^{r+s} = a^r \cdot a^s = \varphi([r]) \cdot \varphi([s]) \qquad \forall [r], [s] \in \Z_n
    $$
    因此就使得 $G \cong \Z_n$.
 
@@ -539,9 +539,32 @@ $(\Leftarrow)$ 显然有 $\lang m \rang = \set{ km : k \in \Z } \sub H$.
 
 ##### 证明
 
-$(\Rightarrow)$ 若 $G$ 是无限循环群, 根据 [定理 2.4.6](#定理_2.4.6_(任意循环群同构于_$\Z$_或_$\Z_n$)), 则有 $G \cong \Z$, 那么现在对于任意真子群 $H < \Z$, 其中 $H \neq \Z$ 且 $H \neq \lang 0 \rang$, 而根据 [定理 2.4.5](#定理_2.4.5_($\Z$_的子群构成循环群)) 易见 $H$ 必然也是循环群, 并且对于任意最小正整数 $m$, 有 $H = \lang m \rang = \set{ km : k \in \Z }$, 显然我们便能建立映射 $\begin{align} \Z & \overset{\varphi}{\to} H \\ k & \mapsto km \end{align}$, 则 $\varphi$ 是个群同构.
+$(\Rightarrow)$ 若 $G$ 是无限循环群, 根据 [定理 2.4.6](#定理_2.4.6_(任意循环群同构于_$\Z$_或_$\Z_n$)), 则有 $G \cong \Z$, 那么现在对于任意真子群 $H < \Z$, 其中 $H \neq \Z$ 且 $H \neq \lang 0 \rang$, 而根据 [定理 2.4.5](#定理_2.4.5_($\Z$_的子群构成循环群)) 易见 $H$ 必然也是循环群, 并且对于任意最小正整数 $m$, 有 $H = \lang m \rang = \set{ km : k \in \Z }$, 显然我们便能建立双射 $\begin{align} \Z & \overset{\varphi}{\to} H \\ k & \mapsto km \end{align}$, 并且保持了群同态：
+$$
+\varphi(x + y) = (x+y)m = xm + ym = \varphi(x) + \varphi(y) \qquad \forall x,y \in H
+$$
+因此 $\varphi$ 是个群同构, 因此 $G \cong \Z \cong H$.
 
 $(\Leftarrow)$ 若要证 $G$ 是无限循环群, 根据定义需证存在 $a \in G$ 使得 $G = \lang a \rang$, 而由于有群同构 $\varphi : H \to G$, 那么每一个 $H$ 必定无限, 意味着 $H$ 中每一个元素的阶都是无限的, 即对于任意 $h \in H$, 有 $|h| = \infin$, 那么则可设 $H = \lang h \rang$ 使得 $H$ 为由任意其的群元所生成的无限循环子群, 而根据 [定理 2.4.7](#定理_2.4.7_(循环群的同态像构成循环群)) 则得知 $\operatorname{Im} \varphi = \lang \varphi(h) \rang$ 并且群同构蕴含满同态, 因此 $\operatorname{Im} \varphi = G$ 就使得 $G$ 构成循环群.
+
+### 定理 2.4.11 (任意同阶循环群是同构的)
+
+设有任二 $n$ 阶循环群 $G = \lang a \rang$ 以及 $H = \lang b \rang$, 则 $G \cong H$.
+
+##### 证明
+
+根据 [定义 2.4.1 (循环群)](#定义_2.4.1_(循环群)) 有阶 $|a| = |b| = n$, 那么现在 $G, H$ 的集合则可表示为：
+$$
+\begin{align}
+G & = \lang a \rang = \set{ a^0 = e, a^1, a^2, \dots, a^{n-1} } \\
+H & = \lang b \rang = \set{ b^0 = e, b^1, b^2, \dots, b^{n-1} }
+\end{align}
+$$
+因此就可以建立双射 $\begin{align} G & \overset{\varphi}{\to} H \\ a^k & \mapsto b^k \end{align}$, 其中 $k \in \Z$, 并且其能够保持群同态性：
+$$
+\varphi(a^i a^j) = \varphi(a^{i+j}) = b^{i+j} = b^i b^j = \varphi(a^i) \varphi(a^j) \qquad \forall i,j \in \Z
+$$
+因此 $\varphi$ 是个群同构, 所以 $G \cong H$ 成立.
 
 {% end %}
 
