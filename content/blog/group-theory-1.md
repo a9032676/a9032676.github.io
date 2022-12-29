@@ -184,7 +184,10 @@ $$
 
 对于任意幺半群 $G$, 以及其上的等价关系 $\sim$, 那么商集 $G/\sim$ 及定义其上的二元运算：
 $$
-\begin{align} \cdot : (G/\sim) \times (G/\sim) & \to G/\sim \\ [a] \cdot [b] & \mapsto [ab] \end {align}
+\begin{align}
+(G/\sim) \times (G/\sim) & \overset{\cdot}{\to} G/\sim \\
+[a] \cdot [b] & \mapsto [ab]
+\end {align}
 $$
 则 $G/\sim$ 构成幺半群当其二元运算 $\cdot$ 具备了 **良定义性 (well-defined)**, 即对于任意的 $a_i, b_i \in G$：
 $$
@@ -367,13 +370,24 @@ $$
 - $\lang X \rang$ 亦被称为群 $G$ 中包含了集合 $X$ 的 **最小子群 (smallest subgroup)**;
 - 称 $X$ 或 $a \in G$ 为子群 $\lang X \rang$ 或 $\lang a \rang$ 的 **生成元 (generators)**;
 - 若设有限集 $X = \set{ a_1, \dots, a_n }$, 并且 $G = \lang X \rang = \lang a_1, \dots, a_n \rang$ 则称 $G$ 为 **有限生成 (finitely generated)**;
-- 若有 $a \in G$, 则子群 $\lang a \rang$ 被称为由 $a$ 所生成的 **循环子群 (cyclic subgroup)**.
+- 由一个生成元 $a \in G$ 所生成的子群 $\lang a \rang$ 被称为由 $a$ 所生成的 **循环子群 (cyclic subgroup)**.
 
 ### 命题 1.2.13 (生成的等价定义)
 
-对于任意的群 $G$ 以及非空子集 $X \sub G$, 那么子群 $\lang X \rang < G$ 将由 $X$ 中有限个元素的乘积 $a_1^{k_1} a_2^{k_2} \dots a_n^{k_n} \quad (a_i \in X, k_i \in \Z)$ 所生成.
-
-特别地, 若生成元只有一个任意的元素 $a \in G$, 则有 $\lang a \rang = \set{ a^n : n \in \Z }$.
+对于任意的群 $G$ 以及非空子集 $X \sub G$, 那么子群 $\lang X \rang < G$ 将由 $X$ 中所有元素的有限个乘积所生成, 即：
+$$
+\begin{align}
+\lang X \rang & = \set{ k_1 a_1 + k_2 a_2 \dots + k_n a_n : a_i \in X, k_i \in \Z } & \quad [加法群] \\
+\lang X \rang & = \set{ a_1^{k_1} a_2^{k_2} \dots a_n^{k_n} : a_i \in X, k_i \in \Z } & \quad [乘法群] \\
+\end{align}
+$$
+特别地, 若生成元只有一个任意的元素 $a \in G$, 则有 $\lang a \rang = \set{ a^n : n \in \Z }$, 即：
+$$
+\begin{align}
+\lang a \rang = \set{ na : n \in \Z } & = \set{0 = na, a, 2a, 3a, \dots , (n-1)a} & \quad [加法群] \\
+\lang a \rang = \set{ a^n : n \in \Z } & = \set{1 = a^n, a, a^2, a^3, \dots, a^{n-1}} & \quad [乘法群]
+\end{align}
+$$
 
 ##### 证明
 
@@ -389,16 +403,6 @@ $$
 - 证明 $H$ 是包含了 $X$ 的最小子集 (最小性), 即对于任意包含了 $X$ 的 $K < G$, 都有 $H \sub K$：
 
   假设对于任意 $x_1^{k_1} x_2^{k_2} \dots x_n^{k_n} \in H$, 并且由于 $X \sub K$, 则 $x_1^{k_1}, x_2^{k_2}, \dots, x_n^{k_n} \in K$, 并且由子群 $K$ 的封闭性得知元素的乘积依旧在 $K$ 中, 因此 $H \sub K$ 成立.
-
-### 注释
-
-于加法群以及乘法群下, 该等价定义的具体呈现方式如下：
-$$
-\begin{align}
-\lang a \rang = \set{ na : n \in \Z } & = \set{0 = na, a, 2a, 3a, \dots , (n-1)a} & \quad [加法群] \\
-\lang a \rang = \set{ a^n : n \in \Z } & = \set{1 = a^n, a, a^2, a^3, \dots, a^{n-1}} & \quad [乘法群]
-\end{align}
-$$
 
 ### 例子 1.2.14 (整数加群, 平凡子群)
 
@@ -416,14 +420,14 @@ $$
 设 $I$ 为指标集, 并且 $(M_i)_{i \in I}$ 为一族以 $I$ 为指标的幺半群, 则 $(\prod_{i \in I} M_i, \cdot)$ 构成幺半群, 被称为一族幺半群 $(M_i)_{i \in I}$ 的 **幺半群直积 (direct product of monoid)**, 并定义其的二元运算为：
 $$
 \begin{align}
-\cdot : \left( \prod_{i \in I} M_i \right) \times \left( \prod_{i \in I} M_i \right) & \to \left( \prod_{i \in I} M_i \right) \\
+\left( \prod_{i \in I} M_i \right) \times \left( \prod_{i \in I} M_i \right) & \overset{\cdot}{\to} \left( \prod_{i \in I} M_i \right) \\
 (x_i)_{i \in I} \cdot (y_i)_{i \in I} & \mapsto (x_i y_i)_{i \in I}
 \end{align}
 $$
 其中幺元为 $(e)_{i \in I}$. 若 $(x_i)_{i \in I}$ 中每个 $x_i$ 皆可逆, 即有 $(x_i)^{-1}_{i \in I} = (x_i^{-1})_{i \in I}$, 使得 $\prod_{i \in I} M_i$ 此时被称为一族群 $(M_i)_{i \in I}$ 的 **群直积 (direct product of group)**. 并且对于任意指标 $j \in I$, 直积所携带的 **投影同态 / 自然投射 (projective homomorphism / natural projections)** 定义为：
 $$
 \begin{align}
-p_j : \prod_{i \in I} M_i & \to M_j \\
+\prod_{i \in I} M_i & \overset{p_j}{\to} M_j \\
 (x_i)_{i \in I} & \mapsto x_j
 \end{align}
 $$
@@ -454,4 +458,3 @@ $$
 后续实际上还会有半直积的结构, 但将牵涉到包含自同构群, 群作用以及正规子群等的内容, 因此将移至后续部分中提及.
 
 {% end %}
-
