@@ -14,7 +14,7 @@ mathjax = true
 
 +++
 
-{% caution() %}本文存在部分内容尚未完全施工完毕, 作者将尽快更新！{% end %}
+{% good() %}本文内容已完全施工完毕, 读者可放心阅读！{% end %}
 
 {% mathjax_escape() %}
 
@@ -366,9 +366,9 @@ $$
 
 ### 定理 3.2.6 (正规子群与同态核的性质)
 
-对于任意群 $G, H$, 若 $f : G \to H$ 为群同态, 则：
+对于任意群 $G, H$：
 
-1. 可利用同态核判断正规子群：$\operatorname{Ker} f \lhd G$.
+1. 若 $f : G \to H$ 为群同态, 则同态核为正规子群, 即 $\operatorname{Ker} f \lhd G$.
 2. 反之若有 $N \lhd G$, 则可诱导出满同态 $\begin{align} G & \overset{\pi}{\to} G/N \\ a & \mapsto aN \end{align}$, 其中 $\operatorname{Ker} \pi = N$.
 
 其中的映射 $\pi : G \to G/N$ 被称为 **典范满同态 / 投射 (canonical epimorphism / projection)**.
@@ -540,19 +540,52 @@ $$
 
 - $(G/K)/(H/K) \cong G/H$：根据 [定理 3.2.8](#定理_3.2.8_(第一群同构定理)), 同态 $f$ 可诱导出同构 $(G/K)/\operatorname{Ker} f = (G/K)/(H/K) \cong \operatorname{Im} f$, 因此只需证明 $f$ 为满同态, 而由于 $|K| \leq |H|$, 则有 $|G/K| \geq |G/H|$, 使得 $f$ 为满同态, 因此便使得 $(G/K)/(H/K) \cong G/H$, 即下图可交换：
   $$
-  % https://darknmt.github.io/res/xypic-editor/#eyJub2RlcyI6W3sicG9zaXRpb24iOlswLDBdLCJ2YWx1ZSI6IkcvSyJ9LHsicG9zaXRpb24iOlsxLDBdLCJ2YWx1ZSI6IkcvSCJ9LHsicG9zaXRpb24iOlswLDFdLCJ2YWx1ZSI6IihHL0spLyhIL0spIn1dLCJlZGdlcyI6W3siZnJvbSI6MCwidG8iOjEsInZhbHVlIjoiZiIsImJlbmQiOjB9LHsiZnJvbSI6MCwidG8iOjIsImxpbmUiOiJzb2xpZCIsInZhbHVlIjoiXFxwaSIsImxhYmVsUG9zaXRpb24iOiJyaWdodCIsImhlYWQiOiJ0d29oZWFkcyIsInRhaWwiOiJub25lIn0seyJmcm9tIjoyLCJ0byI6MSwidGFpbCI6Imhvb2siLCJoZWFkIjoidHdvaGVhZHMiLCJ2YWx1ZSI6IlxcY29uZyIsImxhYmVsUG9zaXRpb24iOiJyaWdodCJ9XX0=
+  % https://darknmt.github.io/res/xypic-editor/#eyJub2RlcyI6W3sicG9zaXRpb24iOlswLDBdLCJ2YWx1ZSI6IkcvSyJ9LHsicG9zaXRpb24iOlsxLDBdLCJ2YWx1ZSI6IkcvSCJ9LHsicG9zaXRpb24iOlswLDFdLCJ2YWx1ZSI6IihHL0spLyhIL0spIn1dLCJlZGdlcyI6W3siZnJvbSI6MCwidG8iOjEsInZhbHVlIjoiZiIsImJlbmQiOjAsInRhaWwiOiJub25lIiwiaGVhZCI6InR3b2hlYWRzIn0seyJmcm9tIjowLCJ0byI6MiwibGluZSI6InNvbGlkIiwidmFsdWUiOiJcXHBpIiwibGFiZWxQb3NpdGlvbiI6InJpZ2h0IiwiaGVhZCI6InR3b2hlYWRzIiwidGFpbCI6Im5vbmUifSx7ImZyb20iOjIsInRvIjoxLCJ0YWlsIjoiaG9vayIsImhlYWQiOiJ0d29oZWFkcyIsInZhbHVlIjoiXFxjb25nIiwibGFiZWxQb3NpdGlvbiI6InJpZ2h0In1dfQ==
   \xymatrix{
-  G/K \ar@{->}[r]^{f} \ar@{->>}[d]_{\pi} & G/H \\
+  G/K \ar@{->>}[r]^{f} \ar@{->>}[d]_{\pi} & G/H \\
   (G/K)/(H/K) \ar@{^{(}->>}[ru]_{\cong} & 
   }
   $$
 
-### 定理 3.2.12
+##### 注释
 
-TODO
+上述证明当中的 $|K| \leq |H| \implies |G/K| \geq |G/H|$, 由于有条件 $[G : K]|K| = |G| = [G : H]|H|$, 下述不等式成立：
+$$
+[G : K]|K| \leq [G : K]|H| \implies |G| \leq [G : K]|H| \implies [G : H]|H| \leq [G : K]|H| \implies [G : H] \leq [G : K]
+$$
+事实上该处告诉我们当任意 $G$ 的子群的阶小于另一子群时, 那么由 $G$ "商掉" 一个比 $H$ 更小的子群 $K$ 时, 则类似于一般的除法遵从 "分母越小, 整体越大" 的原则, 因此 $|G/K| \geq |G/H|$ 成立.
 
-### 推论 3.2.13
+### 定理 3.2.12 (满同态诱导出包含核的子群与像中任意子群的双射)
 
-TODO
+对于任意群 $G, H$, 若有满同态 $f : G \to H$, 分别定义：
+$$
+\begin{align}
+S_f(G) & \coloneqq \set{ K < G : \operatorname{Ker} f < K } \\
+S(H) & \coloneqq \set{ J < H : \text{$J$ 为 $H$ 中的任意子群} }
+\end{align}
+$$
+则以下命题成立：
+
+1. 存在双射 $\begin{align} S_f(G) & \overset{\varphi}{\to} S(H) \\ K & \mapsto f(K) \end{align}$;
+2. 对于任意 $K \in S_f(G)$, 且 $K \lhd G$, 则有 $f(K) \lhd H$ 以及 $f^{-1}(J) \lhd G$.
+
+##### 证明
+
+1. 由于 $f$ 为满同态, 则有条件 $H = \operatorname{Im} f$, 现在证明：
+   - $\varphi$ 为单射：由于 $\operatorname{Ker} f < K$ 当且仅当 $f^{-1}(f(K)) = K$, 因此 $\varphi$ 是单射的.
+   - $\varphi$ 为满射：对于任意 $J \in S(H)$, 由于 $f^{-1}(J) < G$ 蕴含了 $\operatorname{Ker} f < f^{-1}(J)$ 且 $f(f^{-1}(J)) = J$, 因此 $\varphi$ 是满射的.
+2. 若 $K \lhd G$ 为正规子群, 由于 $\operatorname{Ker} f \lhd K \lhd G$, 则蕴含了 $f(K) \lhd H$ 且 $J \lhd H$ 蕴含了 $f^{-1}(J) \lhd G$.
+
+### 推论 3.2.13 (任意商群的子群皆为商群的形式)
+
+对于任意群 $G$, 且 $N \lhd G$, 则：
+
+1. 任意 $G/N$ 的子群均可表示为 $K/N$ 的形式, 其中 $N \sub K < G$.
+2. $K/N \lhd G/N \iff K \lhd G$.
+
+##### 证明
+
+1. 若有典范满同态 $\pi : G \to G/N$, 根据 [定理 3.2.12](#定理_3.2.12_(满同态诱导出包含核的子群与像中任意子群的双射)) 的 $(1)$ 则可诱导出双射 $\begin{align} S_{\pi}(G) & \overset{\varphi}{\to} S(G/N) \\ K & \mapsto \pi(K) = K/N \end{align}$.
+2. 根据 [定理 3.2.12](#定理_3.2.12_(满同态诱导出包含核的子群与像中任意子群的双射)) 的 $(2)$, 对于任意 $K \in S_{\pi}(G)$, 且 $K \lhd G$, 则推得 $\pi(K) = K/N \lhd G/N$ 成立.
 
 {% end %}
