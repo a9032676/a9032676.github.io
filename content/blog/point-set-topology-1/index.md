@@ -129,7 +129,7 @@ $$
 $$
 其中若 $p = \infin$ 时称 $\Vert \vec{x} \Vert_{\infin}$ 为 **最大范数 (supremum norm)**, 正如下图所示：
 
-![img](E:\WorkSpace\a9032676.github.io\content\blog\point-set-topology-1\index.assets\vector-p-norms.png)
+![img](vector-p-norms.png)
 
 可见当 $p = 2$ 时候就形成了 $\R^2$ 中的单位元, 而 $p$ 趋于无穷时则越来越近似于正方形.
 
@@ -182,7 +182,7 @@ $$
 
 下图便以图像的方式呈现了对于任给的点 $x$, 存在一些开球 $B_i$ 包含了 $x$, 并且有着这些开球所对应的邻域 $U_i$：
 
-![img](E:\WorkSpace\a9032676.github.io\content\blog\point-set-topology-1\index.assets\neighbourhood-open-balls.png)
+![img](neighbourhood-open-balls.png)
 
 ### 例子 1.2.5 ($\R$ 中的开区间构成开集)
 
