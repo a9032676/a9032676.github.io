@@ -36,7 +36,7 @@ mathjax = true
 
 ### 例子 1.1.2 (实数空间 $\R$)
 
-设有实数集 $\R$, 且定义 $\begin{align} \R \times \R & \overset{d}{\to} \R \\ (x, y) & \mapsto |x-y| \end{align}$, 则能够验证其是度量空间 $(\R, d)$ 的一个度量, 而这个度量空间被称为 **实数空间 (real space)** 或 **直线 (stright line)**, 并称 $d$ 为 $\R$ 的 **通常度量 (usual metric)**.
+设有实数集 $\R$, 且定义 $\Map{d}{\R \times \R}{\R}{(x,y)}{|x-y|}$, 则能够验证其是度量空间 $(\R, d)$ 的一个度量, 而这个度量空间被称为 **实数空间 (real space)** 或 **直线 (stright line)**, 并称 $d$ 为 $\R$ 的 **通常度量 (usual metric)**.
 
 ### 定义 1.1.3 (开球 / 闭球 / 球面)
 
@@ -139,7 +139,7 @@ $$
 
 对于任意两个度量空间 $(X, d_X)$ 以及 $(Y, d_Y)$, 若函数 $f : X \to Y$ 称为是在点 $x \in X$ 上 **连续的 (continuous)**, 当满足条件：
 $$
-\forall \epsilon > 0, \exists \delta > 0, ((d_X(x, x') < \delta) \implies d_Y(f(x), f(x')) < \epsilon) \qquad (\epsilon, \delta \in \R)
+\Forall{\epsilon \in \R \\ \epsilon > 0} \b{ \Exists{\delta \in \R \\ \delta > 0} d_X(x, x') < \delta \implies d_Y(f(x), f(x')) < \epsilon }
 $$
 其中对于任意 $x' \in X$. 若 $f$ 被称为是 **连续函数 (continuous function)** 当其在任意 $x \in X$ 点上都是连续的.
 
@@ -169,7 +169,7 @@ $$
 
 ### 例子 1.2.3 (有理函数是连续的)
 
-- 把实数轴 $\R$ 想象为 $1$ 维的欧氏空间 $\R$, 且对于任意 $P \in \R[X]$ 的实多项式, 则所定义的函数 $\begin{align} \R & \overset{f_P}{\to} \R \\ & x \mapsto P(x) \end{align}$ 是连续的, 因此多项式为连续函数. 
+- 把实数轴 $\R$ 想象为 $1$ 维的欧氏空间 $\R$, 且对于任意 $P \in \R[X]$ 的实多项式, 则所定义的函数 $\Map{f_P}{\R}{\R}{x}{P(x)}$ 是连续的, 因此多项式为连续函数. 
 - 平方根函数 $\sqrt{(-)} : \R_{\geq 0} \to \R_{\geq 0}$ 亦是连续的.
 
 ### 定义 1.2.4 (度量空间的邻域与开集)
@@ -242,14 +242,6 @@ f(B^{\circ}_{x_0}(\delta)) \sub B^{\circ}_{f(x_0)}(\epsilon)
 $$
 则称映射 $f$ **在点 $x_0$ 处是连续的 (continuous at point $x_0$)**, 并且若任意点 $x \in X$ 都连续, 则称 $f$ 为 **连续映射 (continuous maps)**.
 
-### 注释
-
-实际上连续函数的这个定义是数学分析中 $(\epsilon,\delta)$ 语言的推广, 即设 $d, d'$ 分别为 $X, Y$ 上的度量, 则 $f$ 在点 $x_0$ 处连续被描述为：
-$$
-\forall \epsilon > 0, \exists \delta > 0, d(x, x_0) < \delta \implies d'(f(x), f(x_0)) < \epsilon
-$$
-其中 $d(x, x_0) < \delta \iff x \in B^{\circ}_{x_0}(\delta)$ 而 $d'(f(x), f(x_0)) < \epsilon \iff f(x) \in B^{\circ}_{f(x_0)}(\epsilon)$.
-
 ### 定理 1.2.10 (连续映射的等价定义)
 
 设 $X, Y$ 为度量空间, 映射 $f : X \to Y$ 以及 $x_0 \in X$, 则：
@@ -292,7 +284,7 @@ $$
 
 设有度量空间 $(X, d)$, 若序列 $x_{(-)} : \N \to X$ 被称为 **收敛于点 (converge to point)** $x_{\infin} \in X$, 记为 $x_i \overset{i \to \infin}{\to} x_{\infin}$, 当满足以下条件：
 $$
-\forall \epsilon > 0, \exists n \in \N, \forall i > n, d(x_i, x_\infin) \leq \epsilon \qquad (\epsilon \in \R, i \in \N)
+\Forall{\epsilon \in \R \\ \epsilon > 0} \Exists{n \in \N} \Forall{i \in \N \\ i > n} d(x_i, x_\infin) \leq \epsilon
 $$
 其中点 $x_{\infin}$ 被称为 $x_{(-)}$ 的 **序列极限 (limit of the sequence)**, 记为 $\lim_{i \to \infin} x_i = x_\infin$.
 
@@ -300,7 +292,7 @@ $$
 
 设有度量空间 $(X, d)$, 若 $X$ 中的序列 $x_{(-)} : \N \to X$ 被称为 **柯西序列 (Cauchy sequence)** 当其满足以下条件：
 $$
-\forall \epsilon > 0, \exists N \in \N, \forall i, j > N, d(x_i, x_j) \leq \epsilon \qquad (\epsilon \in \R, \quad i,j \in \N)
+\Forall{\epsilon \in \R \\ \epsilon > 0} \Exists{N \in \N} \Forall{i, j \in \N \\ i, j > N} d(x_i, x_j) \leq \epsilon
 $$
 
 ### 定义 1.3.4 (完备度量空间, 巴拿赫空间)
@@ -330,4 +322,3 @@ $$
 - 这里不详细描写证明过程, 因为更方便的证明方式将于后续的章节铺垫完基础工具后再作介绍.
 
 {% end %}
-
