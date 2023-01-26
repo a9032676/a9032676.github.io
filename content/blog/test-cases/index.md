@@ -404,8 +404,6 @@ f(x) = \int_{-\infty}^\infin \hat f(\xi) e^{2 \pi i \xi x}\ d\xi
 | `\begin{rcases} a & \text{if $b$} \\`<br />`c & \text{if $d$} \end{rcases} \Rightarrow \dots` | $$\begin{rcases} a & \text{if $b$} \\ c & \text{if $d$} \end{rcases} \Rightarrow \dots$$ |
 | `\sum_{\begin{subarray}{l} i \in \Lambda \\`<br />`0<j<n \end{subarray}}` | $$\sum_{\begin{subarray}{l} i \in \Lambda \\ 0<j<n \end{subarray}}$$ |
 
-
-
 ### 2.3 Xypic 拓展的交换图
 
 $$
@@ -455,6 +453,18 @@ $$
 % 这里是注释
 \text{这一段存在注释的 MathJax}
 ```
+
+### 2.7 自定义宏
+
+|                    MathJax                    |                   渲染后公式                    |
+| :-------------------------------------------: | :---------------------------------------------: |
+|     `\Forall{S \sub X \\ T \sub S}`      |     $$\Forall{S \sub X \\ T \sub S}$$      |
+|     `\Exists{S \sub X \\ T \sub S}`      |     $$\Exists{S \sub X \\ T \sub S}$$      |
+|  `\underbigcap{i \in I \\ j < i \leq k} S_i`  |  $$\underbigcap{i \in I \\ j < i \leq k} S_i$$  |
+|  `\underbigcup{i \in I \\ j < i \leq k} S_i`  |  $$\underbigcup{i \in I \\ j < i \leq k} S_i$$  |
+| `\underbigsqcup{i \in I \\ j < i \leq k} S_i` | $$\underbigsqcup{i \in I \\ j < i \leq k} S_i$$ |
+|             `\map{X}{Y}{x}{f(x)}`             |             $$\map{X}{Y}{x}{f(x)}$$             |
+|        `\Map{\varphi}{X}{Y}{x}{f(x)}`         |        $$\Map{\varphi}{X}{Y}{x}{f(x)}$$         |
 
 {% end %}
 
