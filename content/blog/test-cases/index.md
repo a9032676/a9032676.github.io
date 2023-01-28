@@ -456,15 +456,18 @@ $$
 
 ### 2.7 自定义宏
 
-|                    MathJax                    |                   渲染后公式                    |
-| :-------------------------------------------: | :---------------------------------------------: |
-|     `\Forall{S \sub X \\ T \sub S}`      |     $$\Forall{S \sub X \\ T \sub S}$$      |
-|     `\Exists{S \sub X \\ T \sub S}`      |     $$\Exists{S \sub X \\ T \sub S}$$      |
-|  `\underbigcap{i \in I \\ j < i \leq k} S_i`  |  $$\underbigcap{i \in I \\ j < i \leq k} S_i$$  |
-|  `\underbigcup{i \in I \\ j < i \leq k} S_i`  |  $$\underbigcup{i \in I \\ j < i \leq k} S_i$$  |
-| `\underbigsqcup{i \in I \\ j < i \leq k} S_i` | $$\underbigsqcup{i \in I \\ j < i \leq k} S_i$$ |
-|             `\map{X}{Y}{x}{f(x)}`             |             $$\map{X}{Y}{x}{f(x)}$$             |
-|        `\Map{\varphi}{X}{Y}{x}{f(x)}`         |        $$\Map{\varphi}{X}{Y}{x}{f(x)}$$         |
+#### 2.7.1 常用符号
+
+|                           MathJax                            |                 渲染后公式                 |
+| :----------------------------------------------------------: | :----------------------------------------: |
+| `\underforall{S \sub X \\ T \sub S}`<br />`\Forall{S \sub X \\ T \sub S}` |     $$\Forall{S \sub X \\ T \sub S}$$      |
+| `\underexists{S \sub X \\ T \sub S}`<br />`\Exists{S \sub X \\ T \sub S}`<br />`\Exist{S \sub X \\ T \sub S}` |     $$\Exists{S \sub X \\ T \sub S}$$      |
+| `\underbigcap{i \in I \\ j < i \leq k} S_i`<br />`\Bigcap{i \in I \\ j < i \leq k} S_i` |  $$\Bigcap{i \in I \\ j < i \leq k} S_i$$  |
+| `\underbigcup{i \in I \\ j < i \leq k} S_i`<br />`\Bigcup{i \in I \\ j < i \leq k} S_i` |  $$\Bigcup{i \in I \\ j < i \leq k} S_i$$  |
+| `\underbigsqcup{i \in I \\ j < i \leq k} S_i`<br />`\Bigsqcup{i \in I \\ j < i \leq k} S_i` | $$\Bigsqcup{i \in I \\ j < i \leq k} S_i$$ |
+|                    `\map{X}{Y}{x}{f(x)}`                     |          $$\map{X}{Y}{x}{f(x)}$$           |
+|                `\Map{\varphi}{X}{Y}{x}{f(x)}`                |      $$\Map{\varphi}{X}{Y}{x}{f(x)}$$      |
+|              `\opname{Ker} f`<br />`\op{Ker} f`              |               $$\op{Ker} f$$               |
 
 {% end %}
 
