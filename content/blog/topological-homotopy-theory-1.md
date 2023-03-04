@@ -189,11 +189,14 @@ $$
 
   由于 $X \simeq_h Y$ 以及 $Y \simeq_h Z$ 意味着对于连续函数 $f : X \to Y$ 和 $g : Y \to Z$, 它们分别存在 $f' : Y \to X$ 以及 $g' : Z \to Y$ 使得有同伦：
   $$
+  \begin{array}{cc}
   \eta_1 : f' \circ f \Rightarrow \id_X \qquad \eta_2 : f \circ f' \Rightarrow \id_Y \\
   \eta_3 : g' \circ g \Rightarrow \id_Y \qquad \eta_4 : g \circ g' \Rightarrow \id_Z
+  \end{array}
   $$
   现在需证明对于 $h : X \overset{f}{\to} Y \overset{g}{\to} Z$, 则存在 $h' : Z \overset{g'}{\to} Y \overset{f'}{\to} X$ 使得 $h' \circ h = (f' \circ g') \circ (g \circ f) \Rightarrow \id_X$：
   $$
+  % https://darknmt.github.io/res/xypic-editor/#eyJub2RlcyI6W3sicG9zaXRpb24iOlszLDFdLCJ2YWx1ZSI6IlgifSx7InBvc2l0aW9uIjpbMCwyXSwidmFsdWUiOiJYIn0seyJwb3NpdGlvbiI6WzEsMF0sInZhbHVlIjoiWSJ9LHsicG9zaXRpb24iOlswLDBdLCJ2YWx1ZSI6IlgifSx7InBvc2l0aW9uIjpbMCwxXSwidmFsdWUiOiJYIFxcdGltZXMgWzAsIDFdIn0seyJwb3NpdGlvbiI6WzIsMV0sInZhbHVlIjoiWSJ9LHsicG9zaXRpb24iOlsxLDJdLCJ2YWx1ZSI6IlkifSx7InBvc2l0aW9uIjpbMSwxXSwidmFsdWUiOiJZIFxcdGltZXMgWzAsIDFdIn1dLCJlZGdlcyI6W3siZnJvbSI6MywidG8iOjIsInZhbHVlIjoiZiJ9LHsiZnJvbSI6MywidG8iOjQsImxhYmVsUG9zaXRpb24iOiJyaWdodCIsInZhbHVlIjoiKFxcdGV4dHtpZH0sIFxcdGV4dHtjb25zdH1fMCkifSx7ImZyb20iOjEsInRvIjo0LCJ2YWx1ZSI6IihcXHRleHR7aWR9LCBcXHRleHR7Y29uc3R9XzEpIn0seyJmcm9tIjo1LCJ0byI6MCwidmFsdWUiOiJmJyIsImxhYmVsUG9zaXRpb24iOiJpbnNpZGUifSx7ImZyb20iOjEsInRvIjo2LCJ2YWx1ZSI6ImYiLCJsYWJlbFBvc2l0aW9uIjoicmlnaHQifSx7ImZyb20iOjYsInRvIjo1LCJ2YWx1ZSI6IlxcdGV4dHtpZH1fWSIsImxhYmVsUG9zaXRpb24iOiJyaWdodCJ9LHsiZnJvbSI6NywidG8iOjUsInZhbHVlIjoiXFxldGFfMyJ9LHsiZnJvbSI6MiwidG8iOjUsInZhbHVlIjoiZycgXFxjaXJjIGcifSx7ImZyb20iOjQsInRvIjo3LCJ2YWx1ZSI6IihmLCBcXHRleHR7aWR9X3tbMCwgMV19KSJ9LHsiZnJvbSI6MiwidG8iOjcsInZhbHVlIjoiKFxcdGV4dHtpZH0sIFxcdGV4dHtjb25zdH1fMCkiLCJsYWJlbFBvc2l0aW9uIjoicmlnaHQifSx7ImZyb20iOjYsInRvIjo3LCJ2YWx1ZSI6IihcXHRleHR7aWR9LCBcXHRleHR7Y29uc3R9XzEpIn1dfQ==
   \xymatrix{
   X \ar@{->}[r]^{f} \ar@{->}[d]_{{(\text{id}, \text{const}_0)}} & Y \ar@{->}[rd]^{g' \circ g} \ar@{->}[d]_{{(\text{id}, \text{const}_0)}} &  &  \\
   X \times [0, 1] \ar@{->}[r]^{{(f, \text{id}_{[0, 1]})}} & Y \times [0, 1] \ar@{->}[r]^{\eta_3} & Y \ar@{->}[r]|-{f'} & X \\
