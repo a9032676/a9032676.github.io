@@ -89,9 +89,25 @@
 					underbigcup: ["\\bigcup_{\\substack{#1}}", 1], Bigcup: ["\\underbigcup{#1}", 1],
 					underbigsqcup: ["\\bigsqcup_{\\substack{#1}}", 1], Bigsqcup: ["\\underbigsqcup{#1}", 1],
 					map: ["\\begin{align} #1 & \\to #2 \\\\ #3 & \\mapsto #4 \\end{align}", 4],
-					Map: ["\\begin{align} #2 & \\overset{#1}{\\to} #3 \\\\ #4 & \\mapsto #5 \\end{align}", 5],
+					Map: ["\\begin{align} #2 & \\overset{#1}{\\to} #3 \\\\ #4 & \\overset{\\hphantom{#1}}{\\mapsto} #5 \\end{align}", 5],
 					b: ["\\left(#1\\right)", 1], bb: ["\\left[#1\\right]", 1], Bb: ["\\left\\{#1\\right\\}", 1],
-                    opname: ["\\operatorname{#1}", 1], op: ["\\opname{#1}", 1]
+                    opname: ["\\operatorname{#1}", 1], op: ["\\opname{#1}", 1],
+					// Some common categories notations
+					Sets: "\\mathrm{Set}", Grp: "\\mathrm{Grp}", Ab: "\\mathrm{Ab}", Ring: "\\mathrm{Ring}", CRing: "\\mathrm{CRing}", Top: "\\mathrm{Top}",
+					Abel: "\\mathrm{Abel}", Vect: "\\mathrm{Vect}", Mod: "\\mathrm{Mod}", Frame: "\\mathrm{Frame}", Locale: "\\mathrm{Locale}",
+					Ob: ["\\op{Ob}\\b{#1}", 1], Mor: ["\\op{Mor}\\b{#1}", 1],
+					Hom: ["\\mathrm{Hom}_{#1}(#2, #3)", 3], hom: ["\\mathrm{Hom}(#1, #2)", 2],
+                    End: ["\\mathrm{End}"], Aut: ["\\mathrm{Aut}"],
+					compose: "\\circ", comp: "\\compose",
+					id: "\\mathrm{id}", const: "\\mathrm{const}",
+					// Some algebra common notations
+					ker: "\\op{Ker}", Ker: ["\\mathrm{Ker}\\b{#1}", 1],
+                    im: "\\op{Im}", Im: ["\\mathrm{Im}\\b{#1}", 1],
+                    // Some topological common notations
+                    disc: "\\op{Disc}", Disc: ["\\mathrm{Disc}\\b{#1}", 1],
+                    codisc: "\\op{CoDisc}", CoDisc: ["\\mathrm{CoDisc}\\b{#1}", 1],
+					cl: "\\op{Cl}", Cl: ["\\mathrm{Cl}\\b{#1}", 1],
+					int: "\\op{Int}", Int: ["\\mathrm{Int}\\b{#1}", 1]
 				}
             },
             startup: {
