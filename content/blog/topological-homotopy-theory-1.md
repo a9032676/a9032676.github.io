@@ -112,10 +112,11 @@ $$
 
 ### 定义 1.4 (同伦类)
 
-设 $X, Y \in \Top$ 以及所有从 $X$ 到 $Y$ 连续函数的集合 $\Top(X, Y)$, 则它的 **同伦类 (homotopy class)** 为其商掉同伦 $\sim_h$ 后的商集, 记为 $[X, Y]$, 且定义为：
+设 $X, Y \in \Top$ 以及任意连续函数 $f \in \Top(X, Y)$, 则 $f$ 的 **同伦类 (homotopy class)** 定义为携带了同伦 $\simeq_h$ 作等价关系的等价类, 即：
 $$
-[X, Y] \coloneqq \Top(X, Y)/ \sim_h = \Set{ X \overset{g}{\to} Y \in \Top(X, Y) : \Exists{f \in \Top(X, Y)} f \sim_h g }
+[f] \coloneqq \Set{ X \overset{g}{\to} Y \in \Top(X, Y) : f \sim_h g }
 $$
+而全体连接 $X$ 与 $Y$ 的连续函数的同伦类则构成了商集 $[X, Y] \coloneqq \Top(X, Y)/\sim_h$.
 
 ### 命题 1.5 (同伦类兼容结合律)
 
@@ -142,14 +143,14 @@ $$
 
 ### 定义 1.6 (同伦范畴)
 
-若将所有连续函数的同伦类视为态射, 则由它们所组成的范畴被称为 **同伦范畴 (homotopy category)**, 记为 $\text{Ho}(\Top)$, 具体定义为：
+若将全体连续函数的同伦的集合类视为态射, 则由它们所组成的范畴被称为 **同伦范畴 (homotopy category)**, 记为 $\text{Ho}(\Top)$, 具体定义为：
 
 - $\Ob{\text{Ho}(\Top)} \coloneqq \Ob{\Top}$;
 - $\Hom{\text{Ho}(\Top)}{X}{Y} \coloneqq [X, Y]$;
 - $1_{\text{Ho}(\Top)} \coloneqq \kappa(1_\Top)$;
 - $\text{Ho}(\Top)$ 中的复合态射为 $\Top$ 中的复合态射, 由 [命题 1.5](#命题_1.5_(同伦类兼容结合律)) 保证了结合律.
 
-其中于 $\Top$ 中的连续函数则可由函子 $\kappa : \Top \to \text{Ho}(\Top)$ 映射为它所对应的同伦类.
+其中于 $\Top$ 中的连续函数则可由函子 $\Top \overset{\kappa}{\to} \text{Ho}(\Top)$ 映射为它所对应的同伦类, 即 $\Map{\kappa}{\Top(X, Y)}{[X, Y]}{f}{[f]}$.
 
 ### 定义 1.7 (同伦等价)
 
