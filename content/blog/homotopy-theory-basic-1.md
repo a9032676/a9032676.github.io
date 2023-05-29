@@ -23,16 +23,16 @@ mathjax = true
 
 ### 注释
 
-对于任意 $n \geq 1$ 的欧氏空间 $\R^n$ 或与 $\R^n$ 同胚的单位开球 $B_0^\circ(1)$, 我们都知道它们均不可能同胚于 $* = \R^0$, 因为这两者从基础集上就已经不为双射了, 但直觉上我们知道开球 $B_0^\circ(1)$ 可以连续地收缩至其原点 $0$ 上, 所以直观上 $n$ 维开球亦被称为是其原点的 **连续形变 (continuous deformations)**. 那么现在假设我们定义有以下闭单位区间 $[0, 1]$ 与 $B_0^\circ(1)$ 到 $B_0^\circ(1)$ 的连续函数：
+对于任意 $n \geq 1$ 的欧氏空间 $\R^n$ 或与 $\R^n$ 同胚的单位开球 $B_0^\circ(1)$, 我们都知道它们均不可能同胚于 $* = \R^0$, 因为这两者从基础集上就已经不为双射了, 但直觉上我们知道开球 $B_0^\circ(1)$ 可以连续地收缩至其原点 $0$ 上, 所以直观上 $n$ 维开球亦被称为是其原点的 **连续形变 (continuous deformations)**. 那么现在假设我们定义有以下闭单位区间 $I \coloneqq [0, 1]$ 与 $B_0^\circ(1)$ 到 $B_0^\circ(1)$ 的连续函数：
 $$
-\Map{\eta}{[0, 1] \times B_0^\circ(1)}{B_0^\circ(1)}{(t, x)}{t \cdot x}
+\Map{\eta}{I \times B_0^\circ(1)}{B_0^\circ(1)}{(t, x)}{t \cdot x}
 $$
 显然当取值 $t = 1$ 时单位开球 $B_0^\circ(1)$ 保持不变, 而 $t = 0$ 时会将该开球收缩至原点上, 那么透过交换图我们可总结出以下规律：
 $$
 % https://darknmt.github.io/res/xypic-editor/#eyJub2RlcyI6W3sicG9zaXRpb24iOlswLDBdLCJ2YWx1ZSI6Ilxcc2V0ezB9IFxcdGltZXMgQl5cXGNpcmNfMCgxKSJ9LHsicG9zaXRpb24iOlswLDFdLCJ2YWx1ZSI6IlswLCAxXSBcXHRpbWVzIEJfMF5cXGNpcmMoMSkifSx7InBvc2l0aW9uIjpbMCwyXSwidmFsdWUiOiJcXHNldHsxfSBcXHRpbWVzIEJeXFxjaXJjXzAoMSkifSx7InBvc2l0aW9uIjpbMSwwXSwidmFsdWUiOiIqIn0seyJwb3NpdGlvbiI6WzEsMV0sInZhbHVlIjoiQl8wXlxcY2lyYygxKSJ9XSwiZWRnZXMiOlt7ImZyb20iOjAsInRvIjozLCJ2YWx1ZSI6IlxcZXhpc3RzICEifSx7ImZyb20iOjMsInRvIjo0LCJ2YWx1ZSI6IlxcdGV4dHtjb25zdH1fMCJ9LHsiZnJvbSI6MSwidG8iOjQsInZhbHVlIjoiXFxldGEifSx7ImZyb20iOjIsInRvIjo0LCJ2YWx1ZSI6Ilxcc2ltZXEiLCJsYWJlbFBvc2l0aW9uIjoicmlnaHQifSx7ImZyb20iOjAsInRvIjoxfSx7ImZyb20iOjIsInRvIjoxfV19
 \xymatrix{
 \set{0} \times B^\circ_0(1) \ar@{->}[r]^{\exists !} \ar@{->}[d] & * \ar@{->}[d]^{\const_0} \\
-[0, 1] \times B_0^\circ(1) \ar@{->}[r]^{\eta} & B_0^\circ(1) \\
+I \times B_0^\circ(1) \ar@{->}[r]^{\eta} & B_0^\circ(1) \\
 \set{1} \times B^\circ_0(1) \ar@{->}[ru]_{\simeq} \ar@{->}[u] & 
 }
 $$
@@ -40,19 +40,19 @@ $$
 
 ### 定义 1.1 (拓扑区间)
 
-设闭区间 $[0, 1] \sub \R$ 为携带了 $\R$ 的度量拓扑的拓扑子空间, 若 $[0, 1]$ 被称为 **拓扑区间 (topological interval)**, 当其满足了：
+设闭区间 $I \sub \R$ 为携带了 $\R$ 的度量拓扑的拓扑子空间, 若 $I$ 被称为 **拓扑区间 (topological interval)**, 当其包含了：
 
-1. 携带了连续函数 $\const_0 : * \to [0, 1]$ 以及 $\const_1 : * \to [0, 1]$;
-2. 携带了从该区间到点拓扑空间 $*$ ($\Top$ 中的终对象) 的唯一连续函数 $[0, 1] \to *$.
+1. 常值连续函数 $\const_0 : * \to I$ 以及 $\const_1 : * \to I$;
+2. 从该区间到点拓扑空间 $*$ ($\Top$ 中的终对象) 的唯一连续函数 $I \to *$.
 
 事实上即可将点空间 $*$ 的 **余对角 (codiagonal)** $\nabla_*$, 即从不交并点空间 $* \sqcup *$ (其中 $* \sqcup * \simeq \Disc{\set{0, 1}}$) 到点空间的唯一连续函数分解为以下形式：
 $$
-\nabla_* : * \sqcup * \overset{(\const_0, \const_1)}{\to} [0, 1] \to *
+\nabla_* : * \sqcup * \overset{(\const_0, \const_1)}{\to} I \to *
 $$
 
 ### 定义 1.2 (同伦)
 
-设 $X, Y \in \Top$, 以及连续函数 $f, g : X \to Y$, 若存在连续函数 $\eta : X \times [0, 1] \to Y$ (其中 $[0, 1]$ 为拓扑区间) 使得其被称为：
+设 $X, Y \in \Top$, 以及连续函数 $f, g : X \to Y$, 若存在连续函数 $\eta : X \times I \to Y$ (其中 $I$ 为拓扑区间) 使得其被称为：
 
 - 从 $f$ 到 $g$ 的 **左同伦 (left homotopy)**, 记为 $\eta : f \Rightarrow g$; 或
 - $f$ **同伦于 (homotopic to)** $g$, 记为 $f \sim_h g$.
@@ -63,7 +63,7 @@ $$
 % https://darknmt.github.io/res/xypic-editor/#eyJub2RlcyI6W3sicG9zaXRpb24iOlswLDBdLCJ2YWx1ZSI6IlggXFx0aW1lcyBcXHNldHswfSJ9LHsicG9zaXRpb24iOlsxLDFdLCJ2YWx1ZSI6IlkifSx7InBvc2l0aW9uIjpbMCwyXSwidmFsdWUiOiJYIFxcdGltZXMgXFxzZXR7MX0ifSx7InBvc2l0aW9uIjpbMCwxXSwidmFsdWUiOiJYIFxcdGltZXMgWzAsIDFdIn1dLCJlZGdlcyI6W3siZnJvbSI6MywidG8iOjEsInZhbHVlIjoiXFxldGEifSx7ImZyb20iOjAsInRvIjoxLCJ2YWx1ZSI6ImYifSx7ImZyb20iOjIsInRvIjoxLCJ2YWx1ZSI6ImciLCJsYWJlbFBvc2l0aW9uIjoicmlnaHQifSx7ImZyb20iOjAsInRvIjozLCJ2YWx1ZSI6IihcXHRleHR7aWR9LCBcXHRleHR7Y29uc3R9XzApIiwibGFiZWxQb3NpdGlvbiI6InJpZ2h0In0seyJmcm9tIjoyLCJ0byI6MywidmFsdWUiOiIoXFx0ZXh0e2lkfSwgXFx0ZXh0e2NvbnN0fV8xKSJ9XX0=
 \xymatrix{
 X \times \set{0} \ar@{->}[rd]^{f} \ar@{->}[d]_{{(\id, \const_0)}} &  \\
-X \times [0, 1] \ar@{->}[r]^{\eta} & Y \\
+X \times I \ar@{->}[r]^{\eta} & Y \\
 X \times \set{1} \ar@{->}[ru]_{g} \ar@{->}[u]^{{(\id, \const_1)}} & 
 }
 $$
@@ -78,12 +78,12 @@ $$
 
 - 自反性 $\Forall{f \in \Top(X, Y)} f \sim_h f$：
 
-  设有连续函数 $\eta : X \times [0, 1] \overset{\text{pr}_1}{\to} X \overset{f}{\to} Y$, 则可使得下图可交换：
+  设有连续函数 $\eta : X \times I \overset{\text{pr}_1}{\to} X \overset{f}{\to} Y$, 则可使得下图可交换：
   $$
   % https://darknmt.github.io/res/xypic-editor/#eyJub2RlcyI6W3sicG9zaXRpb24iOlswLDBdLCJ2YWx1ZSI6IlggXFx0aW1lcyBcXHNldHswfSJ9LHsicG9zaXRpb24iOlsyLDFdLCJ2YWx1ZSI6IlkifSx7InBvc2l0aW9uIjpbMCwyXSwidmFsdWUiOiJYIFxcdGltZXMgXFxzZXR7MX0ifSx7InBvc2l0aW9uIjpbMCwxXSwidmFsdWUiOiJYIFxcdGltZXMgWzAsIDFdIn0seyJwb3NpdGlvbiI6WzEsMV0sInZhbHVlIjoiWCJ9XSwiZWRnZXMiOlt7ImZyb20iOjAsInRvIjoxLCJsYWJlbFBvc2l0aW9uIjoibGVmdCIsInZhbHVlIjoiZiJ9LHsiZnJvbSI6MiwidG8iOjEsInZhbHVlIjoiZiIsImxhYmVsUG9zaXRpb24iOiJyaWdodCJ9LHsiZnJvbSI6MCwidG8iOjMsInZhbHVlIjoiKFxcdGV4dHtpZH0sIFxcdGV4dHtjb25zdH1fMCkiLCJsYWJlbFBvc2l0aW9uIjoicmlnaHQifSx7ImZyb20iOjIsInRvIjozLCJ2YWx1ZSI6IihcXHRleHR7aWR9LCBcXHRleHR7Y29uc3R9XzEpIn0seyJmcm9tIjozLCJ0byI6NCwidmFsdWUiOiJcXHRleHR7cHJ9XzEiLCJsYWJlbFBvc2l0aW9uIjoiaW5zaWRlIn0seyJmcm9tIjo0LCJ0byI6MSwidmFsdWUiOiJmIiwibGFiZWxQb3NpdGlvbiI6Imluc2lkZSJ9XX0=
   \xymatrix{
   X \times \set{0} \ar@{->}[rrd]^{f} \ar@{->}[d]_{{(\text{id}, \text{const}_0)}} &  &  \\
-  X \times [0, 1] \ar@{->}[r]|-{\text{pr}_1} & X \ar@{->}[r]|-{f} & Y \\
+  X \times I \ar@{->}[r]|-{\text{pr}_1} & X \ar@{->}[r]|-{f} & Y \\
   X \times \set{1} \ar@{->}[rru]_{f} \ar@{->}[u]^{{(\text{id}, \text{const}_1)}} &  & 
   }
   $$
@@ -91,12 +91,12 @@ $$
 
 - 对称性 $\Forall{f, g \in \Top(X, Y)} f \sim_h g \implies g \sim_h f$：
 
-  假设 $f \sim_h g$ 为同伦 $\eta_1 : f \Rightarrow g$, 则有 $\eta_1(-, 0) = f$ 以及 $\eta_1(-, 1) = g$, 若定义有连续函数 $\Map{\eta_2}{X \times [0, 1]}{Y}{(x, t)}{\eta_1(x, 1-t)}$, 则可使得下图交换：
+  假设 $f \sim_h g$ 为同伦 $\eta_1 : f \Rightarrow g$, 则有 $\eta_1(-, 0) = f$ 以及 $\eta_1(-, 1) = g$, 若定义有连续函数 $\Map{\eta_2}{X \times I}{Y}{(x, t)}{\eta_1(x, 1-t)}$, 则可使得下图交换：
   $$
   % https://darknmt.github.io/res/xypic-editor/#eyJub2RlcyI6W3sicG9zaXRpb24iOlswLDBdLCJ2YWx1ZSI6IlggXFx0aW1lcyBcXHNldHswfSJ9LHsicG9zaXRpb24iOlsxLDFdLCJ2YWx1ZSI6IlkifSx7InBvc2l0aW9uIjpbMCwyXSwidmFsdWUiOiJYIFxcdGltZXMgXFxzZXR7MX0ifSx7InBvc2l0aW9uIjpbMCwxXSwidmFsdWUiOiJYIFxcdGltZXMgWzAsIDFdIn1dLCJlZGdlcyI6W3siZnJvbSI6MCwidG8iOjMsInZhbHVlIjoiKFxcdGV4dHtpZH0sIFxcdGV4dHtjb25zdH1fMCkiLCJsYWJlbFBvc2l0aW9uIjoicmlnaHQifSx7ImZyb20iOjIsInRvIjozLCJ2YWx1ZSI6IihcXHRleHR7aWR9LCBcXHRleHR7Y29uc3R9XzEpIn0seyJmcm9tIjowLCJ0byI6MSwiYmVuZCI6MCwidmFsdWUiOiJcXGV0YV8xKC0sIDEpID0gZyJ9LHsiZnJvbSI6MiwidG8iOjEsImJlbmQiOjAsImxhYmVsUG9zaXRpb24iOiJyaWdodCIsInZhbHVlIjoiXFxldGFfMSgtLCAwKSA9IGYifSx7ImZyb20iOjMsInRvIjoxLCJ2YWx1ZSI6IlxcZXRhXzIiLCJsYWJlbFBvc2l0aW9uIjoiaW5zaWRlIn1dfQ==
   \xymatrix{
   X \times \set{0} \ar@{->}[d]_{{(\text{id}, \text{const}_0)}} \ar@{->}[rd]^{{\eta_1(-, 1) = g}} &  \\
-  X \times [0, 1] \ar@{->}[r]|-{\eta_2} & Y \\
+  X \times I \ar@{->}[r]|-{\eta_2} & Y \\
   X \times \set{1} \ar@{->}[u]^{{(\text{id}, \text{const}_1)}} \ar@{->}[ru]_{{\eta_1(-, 0) = f}} & 
   }
   $$
@@ -106,7 +106,7 @@ $$
 
   分别假设 $f \sim_h g$ 以及 $g \sim_h h$ 为同伦 $\eta_1 : f \Rightarrow g$ 以及 $\eta_2 : g \Rightarrow h$, 那么则有 $\eta_1(-, 0) = f, \eta_1(-, 1) = g$ 以及 $\eta_2(-, 0) = g, \eta_2(-, 1) = h$, 若定义有连续函数 $\eta_3 = \eta_2 \circ \eta_1$：
   $$
-  \Map{\eta_3}{X \times [0, 1]}{Y}{(x, t)}{\cases{ \eta_1(x, 2t) & if $0 \leq t \leq \frac{1}{2}$ \\ \eta_2(x, 2t-1) & if $\frac{1}{2} \leq t \leq 1$ }}
+  \Map{\eta_3}{X \times I}{Y}{(x, t)}{\cases{ \eta_1(x, 2t) & if $0 \leq t \leq \frac{1}{2}$ \\ \eta_2(x, 2t-1) & if $\frac{1}{2} \leq t \leq 1$ }}
   $$
   则使得有 $\eta_3(-, 0) = \eta_1(-, 0) = f$ 和 $\eta_3(-, \frac{1}{2}) = \eta_1(-, 1) = \eta_2(-, 0) = g$ 以及 $\eta_3(-, 1) = \eta_2(-, 1) = h$, 因此 $\eta_3$ 为从 $f$ 到 $h$ 的同伦.
 
@@ -131,26 +131,26 @@ $$
 
 ##### 证明
 
-定义连续函数的复合 $X \overset{f}{\to} Y \overset{g'}{\underset{g}\rightrightarrows} Z \overset{h}\to W$, 若有同伦 $\eta_1 : g \Rightarrow g'$, 即有连续函数 $\eta_1 : Y \times [0, 1] \to Z$, 则它们应满足结合律, 即应有同伦 $\eta_2 : h \circ g \circ f \Rightarrow h \circ g' \circ f$, 那么只需取 $\eta_2 = h \circ \eta_1 \circ (f, \id)$ 即可使得下图可交换：
+定义连续函数的复合 $X \overset{f}{\to} Y \overset{g'}{\underset{g}\rightrightarrows} Z \overset{h}\to W$, 若有同伦 $\eta_1 : g \Rightarrow g'$, 即有连续函数 $\eta_1 : Y \times I \to Z$, 则它们应满足结合律, 即应有同伦 $\eta_2 : h \circ g \circ f \Rightarrow h \circ g' \circ f$, 那么只需取 $\eta_2 = h \circ \eta_1 \circ (f, \id)$ 即可使得下图可交换：
 $$
 % https://darknmt.github.io/res/xypic-editor/#eyJub2RlcyI6W3sicG9zaXRpb24iOlsxLDBdLCJ2YWx1ZSI6IlkifSx7InBvc2l0aW9uIjpbMywxXSwidmFsdWUiOiJXIn0seyJwb3NpdGlvbiI6WzEsMl0sInZhbHVlIjoiWSJ9LHsicG9zaXRpb24iOlsxLDFdLCJ2YWx1ZSI6IlkgXFx0aW1lcyBbMCwgMV0ifSx7InBvc2l0aW9uIjpbMiwxXSwidmFsdWUiOiJaIn0seyJwb3NpdGlvbiI6WzAsMV0sInZhbHVlIjoiWCBcXHRpbWVzIFswLCAxXSJ9LHsicG9zaXRpb24iOlswLDBdLCJ2YWx1ZSI6IlgifSx7InBvc2l0aW9uIjpbMCwyXSwidmFsdWUiOiJYIn1dLCJlZGdlcyI6W3siZnJvbSI6MCwidG8iOjMsInZhbHVlIjoiKFxcdGV4dHtpZH0sIFxcdGV4dHtjb25zdH1fMCkiLCJsYWJlbFBvc2l0aW9uIjoicmlnaHQifSx7ImZyb20iOjIsInRvIjozLCJ2YWx1ZSI6IihcXHRleHR7aWR9LCBcXHRleHR7Y29uc3R9XzEpIn0seyJmcm9tIjozLCJ0byI6NCwidmFsdWUiOiJcXGV0YV8xIn0seyJmcm9tIjowLCJ0byI6NCwidmFsdWUiOiJnIiwibGFiZWxQb3NpdGlvbiI6Imluc2lkZSJ9LHsiZnJvbSI6MiwidG8iOjQsInZhbHVlIjoiZyciLCJsYWJlbFBvc2l0aW9uIjoiaW5zaWRlIn0seyJmcm9tIjo0LCJ0byI6MSwidmFsdWUiOiJoIiwibGFiZWxQb3NpdGlvbiI6Imluc2lkZSJ9LHsiZnJvbSI6NiwidG8iOjUsInZhbHVlIjoiKFxcdGV4dHtpZH0sIFxcdGV4dHtjb25zdH1fMCkiLCJsYWJlbFBvc2l0aW9uIjoicmlnaHQifSx7ImZyb20iOjcsInRvIjo1LCJ2YWx1ZSI6IihcXHRleHR7aWR9LCBcXHRleHR7Y29uc3R9XzApIn0seyJmcm9tIjo2LCJ0byI6MCwidmFsdWUiOiJmIn0seyJmcm9tIjo3LCJ0byI6MiwidmFsdWUiOiJmIiwibGFiZWxQb3NpdGlvbiI6InJpZ2h0In0seyJmcm9tIjo1LCJ0byI6MywidmFsdWUiOiIoZiwgXFx0ZXh0e2lkfV97WzAsIDFdfSkifV19
 \xymatrix{
 X \ar@{->}[d]_{{(\text{id}, \text{const}_0)}} \ar@{->}[r]^{f} & Y \ar@{->}[d]_{{(\text{id}, \text{const}_0)}} \ar@{->}[rd]|-{g} &  &  \\
-X \times [0, 1] \ar@{->}[r]^{{(f, \text{id}_{[0, 1]})}} & Y \times [0, 1] \ar@{->}[r]^{\eta_1} & Z \ar@{->}[r]|-{h} & W \\
+X \times I \ar@{->}[r]^{{(f, \text{id}_{I})}} & Y \times I \ar@{->}[r]^{\eta_1} & Z \ar@{->}[r]|-{h} & W \\
 X \ar@{->}[u]^{{(\text{id}, \text{const}_0)}} \ar@{->}[r]_{f} & Y \ar@{->}[u]^{{(\text{id}, \text{const}_1)}} \ar@{->}[ru]|-{g'} &  & 
 }
 $$
 
 ### 定义 1.6 (同伦范畴)
 
-若将全体连续函数的同伦的集合类视为态射, 则由它们所组成的范畴被称为 **同伦范畴 (homotopy category)**, 记为 $\text{Ho}(\Top)$, 具体定义为：
+若将全体连续函数的同伦的集合类视为态射, 则由它们所组成的范畴被称为 **同伦范畴 (homotopy category)**, 记为 $\Ho{\Top}$, 具体定义为：
 
-- $\Ob{\text{Ho}(\Top)} \coloneqq \Ob{\Top}$;
-- $\Hom{\text{Ho}(\Top)}{X}{Y} \coloneqq [X, Y]$;
-- $1_{\text{Ho}(\Top)} \coloneqq \kappa(1_\Top)$;
-- $\text{Ho}(\Top)$ 中的复合态射为 $\Top$ 中的复合态射, 由 [命题 1.5](#命题_1.5_(同伦类兼容结合律)) 保证了结合律.
+- $\Ob{\Ho{\Top}} \coloneqq \Ob{\Top}$;
+- $\Hom{\Ho{\Top}}{X}{Y} \coloneqq [X, Y]$;
+- $1_{\Ho{\Top}} \coloneqq \kappa(1_\Top)$;
+- $\Ho{\Top}$ 中的复合态射为 -$\Top$ 中的复合态射, 由 [命题 1.5](#命题_1.5_(同伦类兼容结合律)) 保证了结合律.
 
-其中于 $\Top$ 中的连续函数则可由函子 $\Top \overset{\kappa}{\to} \text{Ho}(\Top)$ 映射为它所对应的同伦类, 即 $\Map{\kappa}{\Top(X, Y)}{[X, Y]}{f}{[f]}$.
+其中于 $\Top$ 中的连续函数则可由函子 $\Top \overset{\kappa}{\to} \Ho{\Top}$ 映射为它所对应的同伦类, 即 $\Map{\kappa}{\Top(X, Y)}{[X, Y]}{f}{[f]}$.
 
 ### 定义 1.7 (同伦等价)
 
@@ -163,8 +163,8 @@ $$
 
 ### 注释 (同伦等价为同伦范畴中的同构)
 
-- 事实上, 若给定一个 $\Top$ 中的连续函数 $f$ 是同伦等价的, 当且仅当函子 $\kappa$ 的像 $\kappa(f)$ 于 $\text{Ho}(\Top)$ 中是同构.
-- $\text{Ho}(\Top)$ 中的对象虽然亦是拓扑空间, 但通常被称为同伦型, 该范畴中的拓扑空间也许离真正的同胚还十分 "遥远", 但却可以拥有相同的同伦型.
+- 事实上, 若给定一个 $\Top$ 中的连续函数 $f$ 是同伦等价的, 当且仅当函子 $\kappa$ 的像 $\kappa(f)$ 于 $\Ho{\Top}$ 中是同构.
+- $\Ho{\Top}$ 中的对象虽然亦是拓扑空间, 但通常被称为同伦型, 该范畴中的拓扑空间也许离真正的同胚还十分 "遥远", 但却可以拥有相同的同伦型.
 
 ### 例子 1.8 (同胚为同伦等价)
 
@@ -180,7 +180,7 @@ $$
 
 - 自反性 $\Forall{X \in \Top} X \simeq_h X$：
 
-  由于有恒等连续函数 $\id_X : X \to X$, 而函子保有单位态射, 因此 $\kappa(\id_X) = \id_X : \End_{\text{Ho}(\Top)}(X)$, 这显然是个同伦范畴中的同构关系.
+  由于有恒等连续函数 $\id_X : X \to X$, 而函子保有单位态射, 因此 $\kappa(\id_X) = \id_X : \End_{\Ho{\Top}}(X)$, 这显然是个同伦范畴中的同构关系.
 
 - 对称性 $\Forall{X, Y \in \Top} X \simeq_h Y \implies Y \simeq_h X$：
 
@@ -200,11 +200,11 @@ $$
   % https://darknmt.github.io/res/xypic-editor/#eyJub2RlcyI6W3sicG9zaXRpb24iOlszLDFdLCJ2YWx1ZSI6IlgifSx7InBvc2l0aW9uIjpbMCwyXSwidmFsdWUiOiJYIn0seyJwb3NpdGlvbiI6WzEsMF0sInZhbHVlIjoiWSJ9LHsicG9zaXRpb24iOlswLDBdLCJ2YWx1ZSI6IlgifSx7InBvc2l0aW9uIjpbMCwxXSwidmFsdWUiOiJYIFxcdGltZXMgWzAsIDFdIn0seyJwb3NpdGlvbiI6WzIsMV0sInZhbHVlIjoiWSJ9LHsicG9zaXRpb24iOlsxLDJdLCJ2YWx1ZSI6IlkifSx7InBvc2l0aW9uIjpbMSwxXSwidmFsdWUiOiJZIFxcdGltZXMgWzAsIDFdIn1dLCJlZGdlcyI6W3siZnJvbSI6MywidG8iOjIsInZhbHVlIjoiZiJ9LHsiZnJvbSI6MywidG8iOjQsImxhYmVsUG9zaXRpb24iOiJyaWdodCIsInZhbHVlIjoiKFxcdGV4dHtpZH0sIFxcdGV4dHtjb25zdH1fMCkifSx7ImZyb20iOjEsInRvIjo0LCJ2YWx1ZSI6IihcXHRleHR7aWR9LCBcXHRleHR7Y29uc3R9XzEpIn0seyJmcm9tIjo1LCJ0byI6MCwidmFsdWUiOiJmJyIsImxhYmVsUG9zaXRpb24iOiJpbnNpZGUifSx7ImZyb20iOjEsInRvIjo2LCJ2YWx1ZSI6ImYiLCJsYWJlbFBvc2l0aW9uIjoicmlnaHQifSx7ImZyb20iOjYsInRvIjo1LCJ2YWx1ZSI6IlxcdGV4dHtpZH1fWSIsImxhYmVsUG9zaXRpb24iOiJyaWdodCJ9LHsiZnJvbSI6NywidG8iOjUsInZhbHVlIjoiXFxldGFfMyJ9LHsiZnJvbSI6MiwidG8iOjUsInZhbHVlIjoiZycgXFxjaXJjIGcifSx7ImZyb20iOjQsInRvIjo3LCJ2YWx1ZSI6IihmLCBcXHRleHR7aWR9X3tbMCwgMV19KSJ9LHsiZnJvbSI6MiwidG8iOjcsInZhbHVlIjoiKFxcdGV4dHtpZH0sIFxcdGV4dHtjb25zdH1fMCkiLCJsYWJlbFBvc2l0aW9uIjoicmlnaHQifSx7ImZyb20iOjYsInRvIjo3LCJ2YWx1ZSI6IihcXHRleHR7aWR9LCBcXHRleHR7Y29uc3R9XzEpIn1dfQ==
   \xymatrix{
   X \ar@{->}[r]^{f} \ar@{->}[d]_{{(\text{id}, \text{const}_0)}} & Y \ar@{->}[rd]^{g' \circ g} \ar@{->}[d]_{{(\text{id}, \text{const}_0)}} &  &  \\
-  X \times [0, 1] \ar@{->}[r]^{{(f, \text{id}_{[0, 1]})}} & Y \times [0, 1] \ar@{->}[r]^{\eta_3} & Y \ar@{->}[r]|-{f'} & X \\
+  X \times I \ar@{->}[r]^{{(f, \text{id}_{I})}} & Y \times I \ar@{->}[r]^{\eta_3} & Y \ar@{->}[r]|-{f'} & X \\
   X \ar@{->}[u]^{{(\text{id}, \text{const}_1)}} \ar@{->}[r]_{f} & Y \ar@{->}[ru]_{\text{id}_Y} \ar@{->}[u]^{{(\text{id}, \text{const}_1)}} &  & 
   }
   $$
-  显然其中只需取同伦的连续映射为 $f' \circ \eta_3 \circ (f, \id_{[0, 1]}) : X \times [0, 1] \to X$ 即可得证. 另一方面, 同伦 $h \circ h' \Rightarrow \id_Z$ 亦是类似的证明方式, 该处略过.
+  显然其中只需取同伦的连续映射为 $f' \circ \eta_3 \circ (f, \id_{I}) : X \times I \to X$ 即可得证. 另一方面, 同伦 $h \circ h' \Rightarrow \id_Z$ 亦是类似的证明方式, 该处略过.
 
 ### 定义 1.10 (可缩拓扑空间)
 
@@ -221,6 +221,6 @@ $$
 ##### 证明
 
 - 若设有连续函数 $p : B^n \to *$, 则可定义它的一个映射至开/闭球原点的逆态射 $\const_0 : * \to B^n$, 使得 $p \circ \const_0 = \id_*$, 由 [命题 1.3](#命题_1.3_(同伦构成等价关系)) 得知同伦作为等价关系满足自反性, 因此有 $p \circ \const_0 = \id_* \Rightarrow \id_*$ 成立.
-- 另一方面, 由于 $\const_0 \circ p = \const_0 : \End_{\text{Ho}(\Top)}(B^n)$, 而定义连续映射 $\Map{\eta}{B^n \times [0, 1]}{B^n}{(x, t)}{t \cdot x}$ 则可证明它与 $\id_{B^n}$ 是同伦的, 因为 $\eta(-, 0) = \const_0$ 而 $\eta(-, 1) = \id_{B^n}$, 因此 $\const_0 \circ p \Rightarrow \id_{B^n}$ 成立.
+- 另一方面, 由于 $\const_0 \circ p = \const_0 : \End_{\Ho{\Top}}(B^n)$, 而定义连续映射 $\Map{\eta}{B^n \times I}{B^n}{(x, t)}{t \cdot x}$ 则可证明它与 $\id_{B^n}$ 是同伦的, 因为 $\eta(-, 0) = \const_0$ 而 $\eta(-, 1) = \id_{B^n}$, 因此 $\const_0 \circ p \Rightarrow \id_{B^n}$ 成立.
 
 {% end%}
