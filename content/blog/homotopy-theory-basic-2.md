@@ -154,7 +154,7 @@ $$
 - $\displaystyle \Ob{ \prod_{i \in I} \mathcal{G}_i } \coloneqq \prod_{i \in I} \Ob{\mathcal{G}_i}$;
 - $\Hom{\prod_{i \in I} \mathcal{G}_i}{(x_i)_{i \in I}}{(y_i)_{i \in I}} \coloneqq \displaystyle \prod_{i \in I} \Hom{\mathcal{G}_i}{x_i}{y_i}$.
 
-这里有一些相关的例子z：
+这里有一些相关的例子：
 
 - 考虑一族群 $\set{G_i}_{i \in I}$ 的消圈群胚 $\mathcal{G}_i = BG_i$, 那么 $BG_i$ 的乘积同构于对 $\set{G_i}_{i \in I}$ 的群直积消圈, 即有：
   $$
