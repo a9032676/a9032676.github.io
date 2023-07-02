@@ -108,8 +108,10 @@ U \ar@{->}[r]^{f} \ar@{->}[rd]_{g \circ f} & V \ar@{->}[d]^{g} & u \ar@{|->}[rd]
 $$
 其中 $f$ 为 $U$ 到 $V$ 的线性映射, $g$ 为 $V$ 到 $W$ 的线性映射, 因此有 $f \in \mathcal{L}(U, V)$ 以及 $g \in \mathcal{L}(V, W)$, 且：
 $$
-\text{Vect}(U, V) = \text{Hom}_{\text{Vect}}(U, V) \coloneqq \mathcal{L}(U, V) \\
-\text{Vect}(V, W) = \text{Hom}_{\text{Vect}}(V, W) \coloneqq \mathcal{L}(V, W)
+\begin{align}
+\text{Vect}(U, V) = \text{Hom}_{\text{Vect}}(U, V) & \coloneqq \mathcal{L}(U, V) \\
+\text{Vect}(V, W) = \text{Hom}_{\text{Vect}}(V, W) & \coloneqq \mathcal{L}(V, W)
+\end{align}
 $$
 那么即合成态射 $g \circ f$ 是线性映射的合成, 所以 $g \circ f \coloneqq gf \in \mathcal{L}(U, W)$, 且对于任意 $u, u_1, u_2 \in U$ 以及 $\lambda \in \mathbb F$, 合成线性映射 $g \circ f$ 满足了以下条件：
 
