@@ -49,9 +49,8 @@ mathjax = true
 1. 只证明右同余模 $H$ 的情况, 因此假设 $a, b \in G$, 则：
 
    - 自反性：$a \equiv_r a \pmod{H} \iff aa^{-1} = e \in H$.
-
-- 对称性：若有 $a \equiv_r b \pmod{H} \iff ab^{-1} \in H$, 则  $(ab^{-1})^{-1} \in H  \implies ba^{-1} \in H \implies b \equiv_r a$.
-  - 传递性：若有 $a \equiv_r b \pmod{H} \iff ab^{-1} \in H$ 以及 $b \equiv_r c \pmod{H} \iff bc^{-1} \in H$, 显然 $(ab^{-1})(bc^{-1}) = ac^{-1} \in H \implies a \equiv_r c \pmod{H}$.
+   - 对称性：若有 $a \equiv_r b \pmod{H} \iff ab^{-1} \in H$, 则  $(ab^{-1})^{-1} \in H  \implies ba^{-1} \in H \implies b \equiv_r a$.
+   - 传递性：若有 $a \equiv_r b \pmod{H} \iff ab^{-1} \in H$ 以及 $b \equiv_r c \pmod{H} \iff bc^{-1} \in H$, 显然 $(ab^{-1})(bc^{-1}) = ac^{-1} \in H \implies a \equiv_r c \pmod{H}$.
 
 2. 同样只证右同余模 $H$ 的情况, 若有 $a \in G$, 则由 $a$ 右同余于 $x$ 模 $H$ 的等价关系所构成的等价类为：
    $$
@@ -388,7 +387,7 @@ $$
 
 ### 定理 3.2.7 (商群的泛性质)
 
-对于任意群 $G, H$, 若 $f : G \to H$ 为群同态, $N \lhd G$ 且 $N \sub \operatorname{Ker} f$, 则：
+若 $f : G \to H$ 为群同态, $N \lhd G$ 且 $N \sub \operatorname{Ker} f$, 则：
 
 1. 可诱导出存在唯一同态 $\begin{align} G/N & \overset{\hat{f}}{\to} H \\ aN & \mapsto f(a) \end{align}$, 其中任意 $a \in G$;
 2. $\operatorname{Im} f = \operatorname{Im} \hat f$ 以及 $\operatorname{Ker} \hat f = (\operatorname{Ker} f)/N$;
@@ -431,7 +430,7 @@ $$
 
 ### 定理 3.2.8 (第一群同构定理)
 
-对于任意群 $G, H$, 若 $f : G \to H$ 为群同态, 则 $f$ 诱导出同构 $G/\operatorname{Ker} f \cong \operatorname{Im} f$, 即使得下图可交换：
+对于任意群 $G, H$, 若 $f : G \to H$ 为群同态, 则 $f$ 可诱导出同构 $G/\operatorname{Ker} f \cong \operatorname{Im} f$, 即使得下图可交换：
 $$
 % https://darknmt.github.io/res/xypic-editor/#eyJub2RlcyI6W3sicG9zaXRpb24iOlswLDBdLCJ2YWx1ZSI6IkcifSx7InBvc2l0aW9uIjpbMSwwXSwidmFsdWUiOiJIIn0seyJwb3NpdGlvbiI6WzAsMV0sInZhbHVlIjoiRy9cXG9wZXJhdG9ybmFtZXtLZXJ9IGYifSx7InBvc2l0aW9uIjpbMSwxXSwidmFsdWUiOiJcXG9wZXJhdG9ybmFtZXtJbX0gZiJ9XSwiZWRnZXMiOlt7ImZyb20iOjAsInRvIjoxLCJ2YWx1ZSI6ImYifSx7ImZyb20iOjAsInRvIjoyLCJsaW5lIjoic29saWQiLCJ2YWx1ZSI6IlxccGkiLCJsYWJlbFBvc2l0aW9uIjoicmlnaHQiLCJoZWFkIjoidHdvaGVhZHMiLCJ0YWlsIjoibm9uZSJ9LHsiZnJvbSI6MiwidG8iOjMsInZhbHVlIjoiXFxjb25nIiwibGFiZWxQb3NpdGlvbiI6InJpZ2h0IiwidGFpbCI6Imhvb2siLCJoZWFkIjoidHdvaGVhZHMifSx7ImZyb20iOjMsInRvIjoxLCJsYWJlbFBvc2l0aW9uIjoicmlnaHQiLCJ0YWlsIjoiaG9vayIsInZhbHVlIjoiXFxjdXAifV19
 \xymatrix{
@@ -555,26 +554,40 @@ $$
 $$
 事实上该处告诉我们当任意 $G$ 的子群的阶小于另一子群时, 那么由 $G$ "商掉" 一个比 $H$ 更小的子群 $K$ 时, 则类似于一般的除法遵从 "分母越小, 整体越大" 的原则, 因此 $|G/K| \geq |G/H|$ 成立.
 
-### 定理 3.2.12 (满同态诱导出包含核的子群与像中任意子群的双射)
+### 定理 3.2.12 (满同态诱导出子群间的双射)
 
-对于任意群 $G, H$, 若有满同态 $f : G \to H$, 分别定义：
-$$
-\begin{align}
-S_f(G) & \coloneqq \set{ K < G : \operatorname{Ker} f < K } \\
-S(H) & \coloneqq \set{ J < H : \text{$J$ 为 $H$ 中的任意子群} }
-\end{align}
-$$
-则以下命题成立：
+设有群 $G_1, G_2$ 以及满同态 $\varphi : G_1 \to G_2$：
 
-1. 存在双射 $\begin{align} S_f(G) & \overset{\varphi}{\to} S(H) \\ K & \mapsto f(K) \end{align}$;
-2. 对于任意 $K \in S_f(G)$, 且 $K \lhd G$, 则有 $f(K) \lhd H$ 以及 $f^{-1}(J) \lhd G$.
+1. $\varphi$ 可诱导出以下集合间的映射为双射 $\hat\varphi$：
+   $$
+   \begin{array}{cc}
+   \set{\text{子群 $H_2 < G_2$}} & \xleftrightarrow{\hat\varphi} & \set{\text{子群 $H_1 < G_1 : H_1 \supset \Ker{\varphi}$}} \\
+   \cup & & \cup \\
+   \set{\text{正规子群 $H_2 \lhd G_2$}} & \lrarr & \set{\text{正规子群 $H_1 \lhd G_1 : H_1 \supset \Ker{\varphi}$}} \\
+   H_2 & \mapsto & \varphi^{-1}(H_2) \\
+   \varphi(H_1) & \hspace{-19pt} \style{display:inline-block; transform:scale(-1,1);}{\mapsto} & H_1
+   \end{array}
+   $$
+   并且上述双射满足 $H_2 \sub H_2' \iff \varphi^{-1}(H_2) \sub \varphi^{-1}(H_2')$.
+
+2. 合成态射 $G_1 \overto{\varphi} G_2 \twoheadrightarrow G_2/H_2$ 诱导出同构 $G_1/\varphi^{-1}(H_2) \cong G_2/H_2$.
 
 ##### 证明
 
-1. 由于 $f$ 为满同态, 则有条件 $H = \operatorname{Im} f$, 现在证明：
-   - $\varphi$ 为单射：由于 $\operatorname{Ker} f < K$ 当且仅当 $f^{-1}(f(K)) = K$, 因此 $\varphi$ 是单射的.
-   - $\varphi$ 为满射：对于任意 $J \in S(H)$, 由于 $f^{-1}(J) < G$ 蕴含了 $\operatorname{Ker} f < f^{-1}(J)$ 且 $f(f^{-1}(J)) = J$, 因此 $\varphi$ 是满射的.
-2. 若 $K \lhd G$ 为正规子群, 由于 $\operatorname{Ker} f \lhd K \lhd G$, 则蕴含了 $f(K) \lhd H$ 且 $J \lhd H$ 蕴含了 $f^{-1}(J) \lhd G$.
+我们分别证明下述命题：
+
+- 上述映射 $\hat\varphi$ 为双射：
+
+  - $\hat\varphi$ 为单射：由于 $\varphi^{-1}(\varphi(H_1)) = H_1 \Ker{\varphi}$, 所以当满足 $\Ker{\varphi} \sub H_1$ 时我们有 $\varphi^{-1}(\varphi(H_1)) = H_1$, 因此 $\hat\varphi$ 为单射;
+  - $\hat\varphi$ 为满射：由于 $\varphi$ 是满射, 当且仅当 $\varphi(\varphi^{-1}(H_2)) = H_2$, 因此 $\hat\varphi$ 为满射.
+
+- 另一方面, 我们考虑正规子群间的对应：
+
+  由于对任意 $g \in G_1$ 有 $gH_1g^{-1} = H_1$, 透过满同态 $\varphi$ 得 $\varphi(gH_1g^{-1}) = \varphi(g)\varphi(H_1)\varphi(g)^{-1}$, 那么由上述双射 $\hat\varphi$ 则有：
+  $$
+  \Forall{g_1 \in G_1} g_1 H_1 g_1^{-1} = H_1 \iff \Forall{g_2 \in G_2} g_2 \varphi(H_1) g_2^{-1} = \varphi(H_1)
+  $$
+  最后由 [定理 3.2.8](#定理_3.2.8_(第一群同构定理)) 得 $G_1/\varphi^{-1}(H_2) \cong G_2/H_2$.
 
 ### 推论 3.2.13 (任意商群的子群皆为商群的形式)
 
@@ -585,7 +598,11 @@ $$
 
 ##### 证明
 
-1. 若有典范满同态 $\pi : G \to G/N$, 根据 [定理 3.2.12](#定理_3.2.12_(满同态诱导出包含核的子群与像中任意子群的双射)) 的 $(1)$ 则可诱导出双射 $\begin{align} S_{\pi}(G) & \overset{\varphi}{\to} S(G/N) \\ K & \mapsto \pi(K) = K/N \end{align}$.
-2. 根据 [定理 3.2.12](#定理_3.2.12_(满同态诱导出包含核的子群与像中任意子群的双射)) 的 $(2)$, 对于任意 $K \in S_{\pi}(G)$, 且 $K \lhd G$, 则推得 $\pi(K) = K/N \lhd G/N$ 成立.
+1. 若有典范满同态 $\pi : G \to G/N$, 根据 [定理 3.2.12](#定理_3.2.12_(满同态诱导出子群间的双射)) 的 $(1)$ 则可诱导出双射：
+   $$
+   \Map{\hat\pi}{\set{\text{子群 $H_1 < G : H_1 \supset \Ker{\varphi}$}}}{\set{\text{子群 $H_2 < G/N$}}}{K}{\pi(H_1) = K/N}
+   $$
+
+2. 同样根据上述定理关于正规子群的对应关系, 命题显然成立.
 
 {% end %}
