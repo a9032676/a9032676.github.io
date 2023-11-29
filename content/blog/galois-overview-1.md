@@ -6,7 +6,7 @@ draft = false
 
 [taxonomies]
 categories = ["伽罗瓦理论"]
-tags = ["数学", "代数学", "抽象代数", "群论"]
+tags = ["数学", "代数学", "抽象代数", "群论", "伽罗瓦理论"]
 
 [extra]
 lang = "zh"
