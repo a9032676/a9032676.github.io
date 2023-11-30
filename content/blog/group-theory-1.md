@@ -1,5 +1,5 @@
 +++
-title = "群论 1 - 群论基础, 群同态, 群结构"
+title = "群论 1 - 群与群同态"
 date = 2022-11-11
 draft = false
 
@@ -447,49 +447,5 @@ $(\Leftarrow)$ 对于任意 $a,b \in \bigcup_{i \in I} H_i$, 若 $ab^{-1} \in \b
 $(\Rightarrow)$ 由于 $H \or K = \set{ x_1^{k_1} x_2^{k_2} \dots x_n^{k_n} : x_i \in H \cup K, k_i \in \Z }$, 现在若假设 $x_i \in H$, 则与 $x_{i-1}$ 交换位置 ($0 < i \leq n$), 使得经过重排后的元素恰好左侧元素的乘积 $x_1^{k_1} x_2^{k_2} \dots x_j^{k_j} \in H$, 而右侧元素的乘积则, 因此 $H \or K \sub \set{ ab : a \in H, b \in K }$ 成立.
 
 $(\Leftarrow)$ 由于 $\set{ ab : a \in H, b \in K }$, 令 $x_1 = a$ 而 $x_2 = b$ 则有 $x_i \in H \cup K$, 那么 $x_1 x_2 \in H \or K$ 显然成立, 因此有 $H \or K \supset \set{ab : a \in H, b \in K}$.
-
-## 1.4. 直积, 半直积
-
-### 定义 1.4.1 (幺半群 / 群的直积, 投影同态)
-
-设 $I$ 为指标集, 并且 $(M_i)_{i \in I}$ 为一族以 $I$ 为指标的幺半群, 则 $(\prod_{i \in I} M_i, \cdot)$ 构成幺半群, 被称为一族幺半群 $(M_i)_{i \in I}$ 的 **幺半群直积 (direct product of monoid)**, 并定义其的二元运算为：
-$$
-\begin{align}
-\left( \prod_{i \in I} M_i \right) \times \left( \prod_{i \in I} M_i \right) & \overset{\cdot}{\to} \left( \prod_{i \in I} M_i \right) \\
-(x_i)_{i \in I} \cdot (y_i)_{i \in I} & \mapsto (x_i y_i)_{i \in I}
-\end{align}
-$$
-其中幺元为 $(e)_{i \in I}$. 若 $(x_i)_{i \in I}$ 中每个 $x_i$ 皆可逆, 即有 $(x_i)^{-1}_{i \in I} = (x_i^{-1})_{i \in I}$, 使得 $\prod_{i \in I} M_i$ 此时被称为一族群 $(M_i)_{i \in I}$ 的 **群直积 (direct product of group)**. 并且对于任意指标 $j \in I$, 直积所携带的 **投影同态 / 自然投射 (projective homomorphism / natural projections)** 定义为：
-$$
-\begin{align}
-\prod_{i \in I} M_i & \overset{p_j}{\to} M_j \\
-(x_i)_{i \in I} & \mapsto x_j
-\end{align}
-$$
-有限个幺半群 / 群 $M_1, \dots, M_n$ 的直积亦被记为 $M_1 \times \dots \times M_n$, 若 $M_1, \dots, M_n$ 为加法群, 则记为 $M_1 \oplus M_2 \oplus \dots \oplus M_n$.
-
-### 注释
-
-由于直积无非就是 $\operatorname{Mon}$ (幺半群范畴) 或 $\operatorname{Grp}$ (群范畴) 下的范畴积, 因此其亦直接满足了泛性质, 就引出了 [引理 1.4.2 (直积满足泛性质)](#引理_1.4.2_(直积满足泛性质)).
-
-### 引理 1.4.2 (直积满足泛性质)
-
-设 $I$ 为指标集, 并且 $\prod_{i \in I} M_i$ 幺半群直积, 则对于任意幺半群 $M'$ 以及一族同态 $\varphi_i : M' \to M_i$, 存在唯一的 $\varphi : M' \to M$ 使得下图：
-$$
-% https://darknmt.github.io/res/xypic-editor/#eyJub2RlcyI6W3sicG9zaXRpb24iOlswLDBdLCJ2YWx1ZSI6Ik0nIn0seyJwb3NpdGlvbiI6WzAsMV0sInZhbHVlIjoiXFxwcm9kX3tpIFxcaW4gSX0gTV9pIn0seyJwb3NpdGlvbiI6WzEsMV0sInZhbHVlIjoiTV9qIn1dLCJlZGdlcyI6W3siZnJvbSI6MSwidG8iOjIsInZhbHVlIjoicF9qIiwibGFiZWxQb3NpdGlvbiI6InJpZ2h0In0seyJmcm9tIjowLCJ0byI6MSwidmFsdWUiOiJcXGV4aXN0cyAhIFxcdmFycGhpIiwibGFiZWxQb3NpdGlvbiI6InJpZ2h0In0seyJmcm9tIjowLCJ0byI6MiwidmFsdWUiOiJcXHZhcnBoaV9qIn1dfQ==
-\xymatrix{
-M' \ar@{->}[d]_{\exists ! \varphi} \ar@{->}[rd]^{\varphi_j} &  \\
-\prod_{i \in I} M_i \ar@{->}[r]_{p_j} & M_j
-}
-$$
-对每个 $j$ 皆可交换, 即 $\forall j \in I, \varphi_j = p_j \circ \varphi$.
-
-##### 证明
-
-对于任意 $x \in M'$, 则 $\varphi$ 的唯一取法为 $\varphi(x) = (\varphi_i(x))_{i \in I}$, 使得 $\varphi(x)$ 构成同态.
-
-### 注释
-
-后续实际上还会有半直积的结构, 但将牵涉到包含自同构群, 群作用以及正规子群等的内容, 因此将移至后续部分中提及.
 
 {% end %}
