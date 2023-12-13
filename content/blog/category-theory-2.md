@@ -283,13 +283,13 @@ $$
 $$
 \xymatrix@C+1pc{
 \mathcal{C}
-\ruppertwocell^F{\ \varphi}
-\rlowertwocell_H{\ \psi}
+\ruppertwocell^F{\kern{0.5em} \varphi}
+\rlowertwocell_H{\kern{0.5em} \psi}
 \ar[r]|-G & \mathcal{D}
 }
 \overset{\text{合成为}}{\Longrightarrow}
 \xymatrix@C+1pc{
-\mathcal{C} \rtwocell<6>^{F}_{H}{\ \ \ \  \psi \circ \varphi} & \mathcal{D}
+\mathcal{C} \rtwocell<6>^{F}_{H}{\kern{1.5em} \psi \circ \varphi} & \mathcal{D}
 }
 $$
 
@@ -317,12 +317,12 @@ $$
 自然变换同样可以定义横合成：
 $$
 \xymatrix@C+1pc{
-\mathcal{C} \rtwocell<6>^{F_1}_{F_2}{\ \varphi} & \mathcal{D}
-\rtwocell<6>^{G_1}_{G_2}{\ \psi} & \mathcal{E}
+\mathcal{C} \rtwocell<6>^{F_1}_{F_2}{\kern{0.5em} \varphi} & \mathcal{D}
+\rtwocell<6>^{G_1}_{G_2}{\kern{0.5em} \psi} & \mathcal{E}
 }
 \overset{\text{合成为}}{\Longrightarrow}
 \xymatrix@C+1pc{
-\mathcal{C} \rtwocell<6>^{G_1 \circ F_1}_{G_2 \circ F_2}{\ \ \ \  \psi * \varphi} & \mathcal{E}
+\mathcal{C} \rtwocell<6>^{G_1 \circ F_1}_{G_2 \circ F_2}{\kern{1.5em} \psi * \varphi} & \mathcal{E}
 }
 $$
 不过为了准确地定义 $\psi * \varphi$ 这样的操作, 我们需要考虑构件 $(\psi * \varphi)_{(-)}$, 那么不妨挑选任一对象 $X \in \Ob{\mathcal{C}}$, 则对于对象 $X$ 的构件应为：
@@ -348,12 +348,12 @@ $$
 设有范畴 $\mathcal{C}, \mathcal{D}, \mathcal{E}$, 函子 $F_1, F_2 : \mathcal{C} \to \mathcal{D}$ 和 $G_1, G_2 : \mathcal{D} \to \mathcal{E}$, 以及自然变换 $\varphi : F_1 \Rightarrow F_2$ 与 $\psi : G_1 \Rightarrow G_2$, 则有自然变换的横合成 $\psi * \varphi : G_1 \circ F_1 \Rightarrow G_2 \circ F_2$, 即：
 $$
 \xymatrix@C+1pc{
-\mathcal{C} \rtwocell<6>^{F_1}_{F_2}{\ \varphi} & \mathcal{D}
-\rtwocell<6>^{G_1}_{G_2}{\ \psi} & \mathcal{E}
+\mathcal{C} \rtwocell<6>^{F_1}_{F_2}{\kern{0.5em} \varphi} & \mathcal{D}
+\rtwocell<6>^{G_1}_{G_2}{\kern{0.5em} \psi} & \mathcal{E}
 }
 \overset{\text{合成为}}{\Longrightarrow}
 \xymatrix@C+1pc{
-\mathcal{C} \rtwocell<6>^{G_1 \circ F_1}_{G_2 \circ F_2}{\ \ \ \  \psi * \varphi} & \mathcal{E}
+\mathcal{C} \rtwocell<6>^{G_1 \circ F_1}_{G_2 \circ F_2}{\kern{1.5em} \psi * \varphi} & \mathcal{E}
 }
 $$
 
@@ -441,8 +441,14 @@ $$
 
 设有范畴 $\mathcal{C}, \mathcal{D}, \mathcal{E}$, 函子 $F, F_1, F_2 : \mathcal{C} \to \mathcal{D}$ 以及 $G, G_1, G_2 : \mathcal{D} \to \mathcal{E}$：
 
-- 若有自然变换 $\eta : F_1 \Rightarrow F_2$, 则可对 $G$ 与 $\eta$ **Whisker 化 (Whiskering)** 使得诱导出自然变换 $G \circ \eta : (G \circ F_1) \Rightarrow (G \circ F_2)$, 并且对于任意 $X \in \Ob{\mathcal{C}}$, 定义有 $(G \eta)_X \coloneqq G(\eta_X)$.
-- 若有自然变换 $\eta : G_1 \Rightarrow G_2$, 则可对 $F$ 与 $\eta$ Whisker 化, 使得诱导出自然变换 $\eta \circ G : (G_1 \circ F) \Rightarrow (G_2 \circ F)$, 并且对于任意 $X \in \Ob{\mathcal{D}}$, 定义有 $(\eta G)_X \coloneqq \eta_{G(X)}$.
+- 对任意 $\eta : F_1 \Rightarrow F_2$ 则存在自然变换 $\xymatrix@C+1pc{
+  \mathcal{C} \rtwocell<6>^{G \circ F_1}_{G \circ F_2}{\kern{1.5em} G \eta} & \mathcal{E}
+  }$, 且对任意 $X \in \Ob{\mathcal{C}}$, 定义 $G \eta$ 的构件为 $(G \eta)_X \coloneqq G(\eta_X)$;
+- 对任意 $\epsilon : G_1 \Rightarrow G_2$, 则存在自然变换 $\xymatrix@C+1pc{
+  \mathcal{C} \rtwocell<6>^{G_1 \circ F}_{G_2 \circ F}{\kern{1.5em} \epsilon F} & \mathcal{E}
+  }$, 且对任意 $X \in \Ob{\mathcal{D}}$, 定义 $\epsilon F$ 的构件为 $(\epsilon F)_X \coloneqq \epsilon_{F(X)}$.
+
+我们称上述这样定义的 $(G \eta)_X$ 与 $(\epsilon F)_X$ 为 **Whisker 化 (Whiskering)**.
 
 ### 引理 2.2.10 (纵/横合成互换律)
 
@@ -450,11 +456,11 @@ $$
 $$
 \xymatrix@C+1pc{
 \mathcal{C}
-\ruppertwocell^{F_1}{\ \varphi}
-\rlowertwocell_{F_3}{\ \varphi'}
+\ruppertwocell^{F_1}{\kern{0.5em} \varphi}
+\rlowertwocell_{F_3}{\kern{0.5em} \varphi'}
 \ar[r]|-{F_2} & \mathcal{D}
-\ruppertwocell^{G_1}{\ \psi}
-\rlowertwocell_{G_3}{\ \psi'}
+\ruppertwocell^{G_1}{\kern{0.5em} \psi}
+\rlowertwocell_{G_3}{\kern{0.5em} \psi'}
 \ar[r]|-{G_2} & \mathcal{E}
 }
 $$
@@ -547,11 +553,11 @@ $$
 假设有自然同构 $\varphi : F \circ G \overset{\sim}{\to} 1_{\mathcal{D}}$, $\psi : G \circ F \overset{\sim}{\to} 1_{\mathcal{C}}$ 以及 $\psi' : G' \circ F \overset{\sim}{\to} 1_{\mathcal{C}}$, 若希望证明 $G$ 同构于 $G'$, 则可考虑将 $G' \circ F$ 引入, 使得将 $G$ 拓展为横合成 $1_{\mathcal{C}} * G$ 后有：
 $$
 \xymatrix@C+2pc{
-\mathcal{C} & \mathcal{D} \ltwocell<6>^{(G' \circ F) \circ G}_{1_{\mathcal{C}} \circ G}{\ \ \ \ \ \ \ \  \simeq \hphantom{abc} \psi' * 1_G}
+\mathcal{C} & \mathcal{D} \ltwocell<6>^{(G' \circ F) \circ G}_{1_{\mathcal{C}} \circ G}{\kern{3em} \simeq \hphantom{abc} \psi' * 1_G}
 }
 \overset{\text{函子结合律}}{\iff}
 \xymatrix@C+2pc{
-\mathcal{C} & \mathcal{D} \ltwocell<6>^{G' \circ (F \circ G)}_{G' \circ 1_{\mathcal{D}}}{\ \ \ \ \ \ \ \  \simeq \hphantom{abc} 1_{G'} * \varphi}
+\mathcal{C} & \mathcal{D} \ltwocell<6>^{G' \circ (F \circ G)}_{G' \circ 1_{\mathcal{D}}}{\kern{3em} \simeq \hphantom{abc} 1_{G'} * \varphi}
 }
 $$
 

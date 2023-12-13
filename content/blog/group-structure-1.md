@@ -360,7 +360,7 @@ $$
 
 - 群论中的常规做法：
 
-  由上述注释的讨论中我们知道 $N \lhd G$ 及 $N \lhd G'$, 并且知道 $G/N \simeq H \simeq G'/N$, 由此我们知道 $G/N$ 与 $G'/N$ 之间是双射, 所以对任意 $a \in G$ 则存在 $b \in G'$ 使得 $G/N \ni aN = bN \in G'/N$, 反之亦然, 因此 $GN = G'N$, 再加上 $N \sub A$ 且 $N \sub B$ 则意味着 $G = G'$, 而 $\varphi$ 本就是同态因此其为同构.
+  由上述注释的讨论中我们知道 $N \lhd G$ 及 $N \lhd G'$, 并且知道 $G/N \simeq H \simeq G'/N$, 由此我们知道 $G/N$ 与 $G'/N$ 之间是双射, 所以对任意 $a \in G$ 则存在 $b \in G'$ 使得 $G/N \ni aN = bN \in G'/N$, 反之亦然, 因此 $GN = G'N$, 再加上 $N \sub G$ 且 $N \sub G'$ 则意味着 $G = G'$, 而 $\varphi$ 本就是同态因此其为同构.
 
 - 透过交换图表追踪：
 
