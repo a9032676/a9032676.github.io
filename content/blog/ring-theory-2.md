@@ -222,7 +222,7 @@ $$
    \begin{array}{cc}
    \set{\text{双边理想 $I_2 < R_2$}} & \lrarr & \set{\text{双边理想 $I_1 < R_1 : I_1 \supset \Ker{\varphi}$}} \\
    I_2 & \mapsto & \varphi^{-1}(I_2) \\
-   \varphi(I_1) & \hspace{-19pt} \style{display:inline-block; transform:scale(-1,1);}{\mapsto} & I_1
+   \varphi(I_1) & \mapsfrom & I_1
    \end{array}
    $$
 
