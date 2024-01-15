@@ -687,19 +687,19 @@ V \ar@{->}[d]_{f} \ar@{->}[r]^{\text{ev}_V} & V^{**} \ar@{->}[d]^{f^{**}} \\
 W \ar@{->}[r]_{\text{ev}_W} & W^{**}
 }
 $$
-于是便得到了自然变换 $\op{ev} : 1_{\Vect_\mathbb{K}} \Rightarrow (-)^{**}$, 而由于 $(-)^*$ 是忠实函子, 因此易知 $\op{ev}$ 总是单射, 事实上可证明 $\op{ev}$ 为双射当且仅当 $V$ 是有限维的, 那么进一步将上述线性空间限制于全子范畴 $\op{FinVect}_\mathbb{K}$ 上则有自然同构：
+于是便得到了自然变换 $\op{ev} : 1_{\Vect_\mathbb{K}} \Rightarrow (-)^{**}$, 而由于 $(-)^*$ 是忠实函子, 因此易知 $\op{ev}$ 总是单射, 事实上可证明 $\op{ev}$ 为双射当且仅当 $V$ 是有限维的, 那么进一步将上述线性空间限制于全子范畴 $\FinVect_\mathbb{K}$ 上则有自然同构：
 $$
 \op{ev} : 1_{\op{FinVect}_\mathbb{K}} \overset{\sim}{\to} (-)^{**} = (-)^* \circ ((-)^*)^\oppos
 $$
-而于反范畴 ${\op{FinVect}_\mathbb{K}}^\oppos$ 中, 则可定义 $(-)^{**} \coloneqq ((-)^*)^\oppos \circ (-)^*$, 使得有自然同构：
+而于反范畴 ${\FinVect_\mathbb{K}}^\oppos$ 中, 则可定义 $(-)^{**} \coloneqq ((-)^*)^\oppos \circ (-)^*$, 使得有自然同构：
 $$
 \op{ev}^\oppos : 1_{{\op{FinVect}_\mathbb{K}}^\oppos} \overset{\sim}{\to} (-)^{**} = ((-)^*)^\oppos \circ (-)^*
 $$
-故 $(-)^* : {\op{FinVect}_\mathbb{K}}^\oppos \to {\op{FinVect}_\mathbb{K}}$ 为范畴间的等价, 而 $((-)^*)^\oppos : {\op{FinVect}_\mathbb{K}} \to {\op{FinVect}_\mathbb{K}}^\oppos$ 为它的拟逆函子.
+故 $(-)^* : {\FinVect_\mathbb{K}}^\oppos \to {\FinVect_\mathbb{K}}$ 为范畴间的等价, 而 $((-)^*)^\oppos : {\FinVect_\mathbb{K}} \to {\FinVect_\mathbb{K}}^\oppos$ 为它的拟逆函子.
 
 ### 例子 2.3.7 (矩阵乘法)
 
-选定域 $\mathbb{K}$, 定义 **矩阵范畴 (matrix category)** $\op{Mat}$ 为：
+选定域 $\mathbb{K}$, 称携带有以下资料的范畴 $\Mat$ 为 **矩阵范畴 (matrix category)**：
 
 - $\Ob{\op{Mat}} \coloneqq \Z_{\geq 0}$, 即该范畴中的对象为包含 $0$ 的正整数;
 
@@ -707,19 +707,16 @@ $$
 
 - 约定 $M_{0 \times n}(\mathbb{K}) = M_{m \times 0}(\mathbb{K}) \coloneqq \set{0}$;
 
-- 定义 $\op{Mat}$ 中的态射合成为矩阵乘法：
-  $$
-  \map{ \hom{n}{m} \times \hom{m}{k} }{\hom{n}{k}}{(A, B)}{BA}
-  $$
+- $\op{Mat}$ 中的态射合成为矩阵乘法 $\Map{\cdot}{ \hom{n}{m} \times \hom{m}{k} }{\hom{n}{k}}{(A, B)}{A \cdot B \coloneqq B \circ A}$.
 
 现在再定义函子 $F$ 为：
 $$
 \begin{align}
-\op{Mat} & \overset{F}{\to} \op{FinVect}_\mathbb{K} \\
-[n \in \Z_{\geq 0}] & \mapsto \mathbb{K}^{\oplus n} \coloneqq M_{n \times 1}(\mathbb{K}) \\
-[A \in \hom{n}{m}] & \mapsto F(A) \coloneqq \bb{ \begin{array}{cc} \mathbb{K}^{\oplus n} & \to & \mathbb{K}^{\oplus m} \\ v & \mapsto & Av \end{array} } 
+\op{Mat} & \overset{F}{\to} \FinVect_\mathbb{K} \\
+n & \mapsto \mathbb{K}^{\oplus n} \coloneqq M_{n \times 1}(\mathbb{K}) \\
+\bb{n \overto{A} m} & \mapsto \bb{ \begin{aligned} \mathbb{K}^{\oplus n} & \overto{F(A)} \mathbb{K}^{\oplus m} \\ v & \mapsto Av \end{aligned} } 
 \end{align}
 $$
-注意到 $F : \hom{n}{m} \to \hom{\mathbb{K}^{\oplus n}}{\mathbb{K}^{\oplus m}}$ 显然为双射, 因此 $F$ 全忠实, 再者有 $V \simeq \mathbb{K}^{\oplus \dim V}$, 因此 $F$ 亦是本质满的, 由 [定理 2.3.5](#定理_2.3.5_(范畴等价的等价定义)) 可知 $F$ 为范畴等价.
+注意到 $\hom{n}{m} \to \hom{\mathbb{K}^{\oplus n}}{\mathbb{K}^{\oplus m}}$ 显然为双射, 因此 $F$ 全忠实, 再者有 $V \simeq \mathbb{K}^{\oplus \dim V}$, 因此 $F$ 亦是本质满的, 由 [定理 2.3.5](#定理_2.3.5_(范畴等价的等价定义)) 可知 $F$ 为范畴等价.
 
 {% end %}
