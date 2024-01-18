@@ -145,7 +145,7 @@ $$
 
 设 $I$ 为指标集, 给定一对群 $G_1, G_2 \in \Grp$, 或更广义的说有一族群构成的 $n$-元组 $(G_1, G_2, \ldots, G_n)$：
 
-- 定义有态射 $\Map{\star}{\Ob\Grp \times \Ob\Grp}{\Ob\Grp}{(G_1, G_2)}{G_1 \star G_2}$, 或更广义的说定义 $\Map{\star_i}{\Ob\Grp \times \cdots \times \Ob\Grp}{\Ob\Grp}{(G_1, G_2, \ldots, G_n)}{\star_i\ G_i}$;
+- 定义有态射 $\Map{\star}{\Ob\Grp \times \Ob\Grp}{\Ob\Grp}{(G_1, G_2)}{G_1 \star G_2}$, 或更广义的说定义 $\Map{\star_i}{\Ob\Grp \times \cdots \times \Ob\Grp}{\Ob\Grp}{(G_1, G_2, \ldots, G_n)}{ \underset{i \in I}{\star}\ G_i}$;
 - 我们称上述的 $G_1 \star G_2$ 或 $\star_i\ G_i$ 为群的 **自由积 (free product)**, 当它们是 $\Grp$ 中的余积, 即 $\star_i\ G_i \simeq \coprod_i G_i \in \Grp$.
 
 ### 注释 (拓展为融合自由积)
@@ -199,7 +199,7 @@ $$
 - 对每个 $F_i = \lang S_i \rang$ 皆为由 $S_i$ 所生成的自由群;
 - 对每个 $N_i \lhd F_i$ 则是由 $R_i \sub F_i$ 所生成的 (注意自由群的子群仍为自由群).
 
-那么则有 $G_i$ 的自由积 $\star_i\ G_i \coloneqq \left\langle \coprod_i S_i \mid \coprod_{i} R_i \right\rangle = (\star_i\ F_i) \bigg/\b{\bigcup_{i} N_i}$.
+那么则有 $G_i$ 的自由积 $\star_i\ G_i \coloneqq \displaystyle \left\langle \coprod_i S_i \mid \coprod_{i} R_i \right\rangle = (\star_i\ F_i) \bigg/\b{\bigcup_{i} N_i}$.
 
 ## 3. 半直积与群扩张初步
 
