@@ -299,11 +299,11 @@ a \otimes n = a \otimes (\underbrace{1 + 1 + \cdots + 1}_{\text{$n$ 次}}) \over
 $$
 便得到 $\Map{u}{S_{A, \Z}}{F_\Ab(S_{A,\Z})}{a \otimes n}{n \cdot (a \otimes 1)}$, 最终就建立起双射 $\Map{\rho_A}{F_\Ab(S_{A,\Z})}{A}{n \cdot (a \otimes 1)}{n \cdot a}$, 而群的同态性也是显然的, 因此得到 $A \otimes \Z \simeq F_\Ab(S_{A,\Z}) \simeq A$.
 
-综上所述, $(\Ab, \otimes, \Z)$ 就构成了幺半范畴, 且该范畴还额外带有 **辩结构 (braiding)**, 即存在以下同构 (或自然同构 $\beta : (- \otimes -) \overto{\sim} (- \otimes -)$ 的构件)：
+综上所述, $(\Ab, \otimes, \Z)$ 就构成了幺半范畴, 且该范畴还额外带有 **辩结构 (braiding)**, 即是说当有以下同构 (或自然同构 $\beta : (-_1 \otimes -_2) \overto{\sim} (-_2 \otimes -_1)$ 的构件)：
 $$
 \beta_{X, Y} : X \otimes Y \overto{\sim} Y \otimes X
 $$
-而在 $(\Ab, \otimes, \Z)$ 中我们取这样子的同构为 $\Map{\beta_{A, B}}{A \otimes B}{B \otimes A}{a \otimes b}{b \otimes a}$, 因此又称 $(\Ab, \otimes, \Z)$ 为 **对称幺半范畴 (symmetric monoidal category)**.
+使得满足了条件 $\beta_{Y, X} \circ \beta_{X, Y} = 1_{X \otimes Y}$, 而在 $(\Ab, \otimes, \Z)$ 中我们定义这样子的同构为 $\Map{\beta_{A, B}}{A \otimes B}{B \otimes A}{a \otimes b}{b \otimes a}$, 易见 $\beta_{-, -}^2 = 1_{A \otimes B}$ 因此又称 $(\Ab, \otimes, \Z)$ 为 **对称幺半范畴 (symmetric monoidal category)**.
 
 ### 例子 3.3 ($R\Mod$ 范畴与 $R$-模 的张量积)
 
