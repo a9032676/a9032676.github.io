@@ -2,9 +2,19 @@
     {%- if loop.index % 2 == 0 -%}
         $${%- for line in sect | split(pat="\n") -%}
             {%- if line is starting_with(">") -%}
-                {{ line | trim_start_matches(pat=">") | replace(from="\\", to="\\\\") | replace(from="_", to="\_") | replace(from="*", to="\*") | replace(from="{", to="\{") | replace(from="}", to="\}") | safe }}
+                {%- set temp = line | trim_start_matches(pat=">") | trim_start -%}
+                {%- if temp is starting_with("%") -%}
+                    <br>
+                {%- else -%}
+                    {{ line | trim_start_matches(pat=">") | replace(from="\\", to="\\\\") | replace(from="_", to="\_") | replace(from="*", to="\*") | replace(from="{", to="\{") | replace(from="}", to="\}") | safe }}
+                {%- endif -%}
             {%- else -%}
-                {{ line | replace(from="\\", to="\\\\") | replace(from="_", to="\_") | replace(from="*", to="\*") | replace(from="{", to="\{") | replace(from="}", to="\}") | safe }}<br>
+                {%- set temp = line | trim_start -%}
+                {%- if temp is starting_with("%") -%}
+                    <br>
+                {%- else -%}
+                    {{ line | replace(from="\\", to="\\\\") | replace(from="_", to="\_") | replace(from="*", to="\*") | replace(from="{", to="\{") | replace(from="}", to="\}") | safe }}<br>
+                {%- endif -%}
             {%- endif -%}
         {%- endfor -%}$$
     {%- else -%}
