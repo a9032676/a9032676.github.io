@@ -41,7 +41,7 @@ mathjax = true
 - 若 $\set{x_n}_{n \geq 1}$ 既有上界又有下界, 则可等价地表述为 $\Exists{M > 0} \Forall{n \in \N^\times} |x_n| \leq M$, 并简称该数列是 **有界的 (bounded)**.
 - 若 $\Forall{M > 0} \Exists{n \in \N^\times} |x_n| > M$, 则称 $\set{x_n}_{n \geq 1}$ 是 **无界的 (unbounded)**.
 
-点列亦是类似的, 只需
+点列亦是类似的, 只需将 $|\cdot|$ 替换为合适的度量 $d$ 即可.
 
 ### 定义 1.1.1 (数列的极限, 收敛与发散)
 
@@ -183,7 +183,7 @@ $$
 2. 数列 $\set{x_n \cdot y_n}_{n \geq 1}$ 收敛且 $\displaystyle \lim_{n \to \infin} (x_n \cdot y_n) = \lim_{n \to \infin} x_n \cdot \lim_{n \to \infin} y_n$;
 3. 对任意 $\lambda \in \R$, 数列 $\set{\lambda \cdot x_n}$ 收敛且 $\displaystyle \lim_{n \to \infin} (\lambda \cdot x_n) = \lambda \cdot \lim_{n \to \infin} x_n$;
 4. 若 $\displaystyle \lim_{n \to \infin} y_n \neq 0$, 则数列 $\displaystyle \Set{ \frac{x_n}{y_n} }_{n \geq n}$ 收敛且 $\displaystyle \lim_{n \to \infin} \frac{x_n}{y_n} = \frac{\displaystyle \lim_{n \to \infin} x_n}{\displaystyle \lim_{n \to \infin} y_n}$;
-5. 若对充分大的 $n$ 有 $x_n \leq y_n$, 则 $\displaystyle \lim_{n \to \infin} x_n \leq \lim_{n \to \infin} y_n$ 成立 (将 $\leq$ 换为 $\geq$ 亦成立).
+5. 若 $\set{x_n}_{n \geq 1}$ 及 $\set{y_n}_{n \geq 1}$ 皆收敛且对充分大的 $n$ 有 $x_n \leq y_n$, 则 $\displaystyle \lim_{n \to \infin} x_n \leq \lim_{n \to \infin} y_n$ 成立 (将 $\leq$ 换为 $\geq$ 亦成立).
 
 ##### 证明
 
