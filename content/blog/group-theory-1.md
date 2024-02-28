@@ -309,10 +309,10 @@ $$
 
 设有群 $G, H$, 以及群同态 $f : G \to H$：
 
-- 定义 $f$ 的 **核 (kernel)** 为 $\op{Ker} f \coloneqq \set{ x \in G : f(x) = e \in H }$;
-- 定义 $f$ 的 **像 (image)** 为 $\op{Im} f \coloneqq \Set{ y \in H : \Exists{x \in G} y = f(x) }$, 或记为 $f(G)$;
-- 对于子集 $G' \sub G$, 定义 $G'$ 的 **像 (image)** 为 $f(G') \coloneqq \Set{y \in H : \Exists{x \in G'} y = f(x)} = \set{f(x) \in H : x \in G'}$;
-- 对于子集 $H' \sub H$, 定义 $H'$ 的 **原像 (inverse image)** 为 $f^{-1}(H') \coloneqq \Set{x \in G : \Exists{h \in H} f(x) = h} = \set{ x \in G : f(x) \in H' }$.
+- 定义 $f$ 的 **核 (kernel)** 为 $\op{Ker} f \coloneqq \Set{ x \in G : f(x) = e_H }$;
+- 定义 $f$ 的 **像 (image)** 为 $\op{Im} f \coloneqq \Set{ y \in H : \Exists{x \in G} f(x) = y }$, 或记为 $f(G)$;
+- 对于子集 $G' \sub G$, 定义 $G'$ 的 **像 (image)** 为 $f(G') \coloneqq \Set{y \in H : \Exists{x \in G'} f(x) = y} = \set{f(x) \in H : x \in G'}$;
+- 对于子集 $H' \sub H$, 定义 $H'$ 的 **原像 (inverse image)** 为 $f^{-1}(H') \coloneqq \Set{x \in G : \Exists{y \in H'} f(x) = y} = \set{ x \in G : f(x) \in H' }$.
 
 ### 命题 1.2.7 (单同态, 满同态与同构的等价定义)
 
