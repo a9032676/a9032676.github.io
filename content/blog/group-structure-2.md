@@ -191,7 +191,7 @@ $$
 ### 注释 (轨道空间与置换表示)
 
 - 注意到 "$x, y \in X$ 同属一个轨道", 给出 $X$ 上的等价关系 $\sim$, 称相应的商集 $X/\sim$ 为 **轨道空间 (orbit space)**, 记为 $G \backslash X$ (右作用则记为 $X/G$);
-- 将集合 $\Set{X \overto{\text{双射}} X}$ 连同双射间的合成可将该集合视为对称群 $S_X$ (或 $X$ 的自同构群 $\Aut(X)$), 因此群 $G$ 在 $X$ 上的作用相当于给定同态 $\map{G}{S_X = \Aut(X)}{g}{[g \mapsto gx]}$, 称之为群 $G$ 的 **置换表示 (permutation representation)**.
+- 将集合 $\Set{X \overto{\text{双射}} X}$ 连同双射间的合成可将该集合视为对称群 $S_X$ (或 $X$ 的自同构群 $\Aut(X)$), 因此群 $G$ 在 $X$ 上的作用相当于给定同态 $\map{G}{S_X = \Aut(X)}{g}{[x \mapsto gx]}$, 称之为群 $G$ 的 **置换表示 (permutation representation)**.
 
 ### 定义 2.4 (忠实, 自由与传递作用)
 
@@ -211,10 +211,10 @@ $$
 
 设有群 $G$ 以及它的子群 $H$, 我们有 $H$ 在 $G$ 上的作用 $\map{H \times G}{G}{(h, g)}{hg}$, 称之为 **左平移作用 (left shift action)**, 而对 $G$ 轨道分解后可得下述结论：
 
-- $G$ 的轨道无非就是右陪集 $Hg$ (如若有右平移作用 $\map{G \times H}{G}{(g, h)}{gh}$ 则它的轨道为左陪集 $gH$);
+- $G$ 的轨道无非就是右陪集 $Hg$ (如若有右平移作用 $\map{G \times H}{G}{(g, h)}{gh}$ 则它的轨道为左陪集 $gH$).
 - 由轨道所给出的轨道空间其实就是右陪集空间 $H \backslash G$ (同样地右平移作用为左陪集空间).
 - 它是自由的, 因为对任意的 $g \in G$, 只有当 $1_H \in H$ 作用于 $g$ 时才可使得自身不变, 而其他 $H$ 中的元素作用到 $g$ 后都将平移, 因此 $\Stab_H(g) = \set{1}$.
-- 它是传递的, 当且仅当 $G = H$
+- 它是传递的, 当且仅当 $G = H$.
 
 设有子群 $H, K \leq G$, 同样地双陪集也有类似解读, 例如 $H \times K^\oppos$ 在 $G$ 上的左作用就形同 $\map{H \times K^\oppos}{G}{(h, k)}{hgk}$, 那么相应的轨道则是 $HgK$ 而轨道空间无非就是 $H\backslash G / K$.
 

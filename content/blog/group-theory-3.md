@@ -390,7 +390,7 @@ $$
 若 $f : G \to H$ 为群同态, $N \lhd G$ 且 $N \sub \operatorname{Ker} f$, 则：
 
 1. 可诱导出存在唯一同态 $\begin{align} G/N & \overset{\hat{f}}{\to} H \\ aN & \mapsto f(a) \end{align}$, 其中任意 $a \in G$;
-2. $\operatorname{Im} f = \operatorname{Im} \hat f$ 以及 $\operatorname{Ker} \hat f = (\operatorname{Ker} f)/N$;
+2. $\operatorname{Im} f = \operatorname{Im} \hat f$ 以及 $\operatorname{Ker} \hat f = (\operatorname{Ker} f)/N$ (即子群 $\ker{f}$ 的像 $\pi(\ker{f})$);
 3. 若 $\hat f$ 为同构 $\iff$ $f$ 为满同态且 $N = \operatorname{Ker} f$.
 
 事实上即满足了泛性质, 使得 $\hat f \circ \varphi = f$, 其中 $\pi$ 为典范满同态, 即令下图交换 (其中 $\twoheadrightarrow$ 表示满同态)：
