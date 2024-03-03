@@ -19,9 +19,7 @@ mathjax = true
 
 {% mathjax_escape() %}
 
-## 1.1. 范畴论的基本概念
-
-### 前言
+## 前言
 
 学习每一门学科总得先有动机, 后再是兴趣, 范畴论当然亦不例外, 那么究竟范畴论有什么好处值得我们学习呢？以下是我大概整理出的一些好处：
 
@@ -35,15 +33,66 @@ mathjax = true
   - 就光范畴本身这个概念, 我们也可以很轻易地在范畴论中定义出范畴的范畴, 范畴的范畴的范畴, ..., 又或者是范畴上的态射, 态射本身作为范畴对象时又会形成一个范畴, 而态射的态射则自动升级为函子.
   - 例如在代数拓扑的同伦论中, 最基本的概念就是路径, 路径是连接拓扑空间中两点之间的一条 "连续的线段". 但在高维的情况底下, 这个点就会变成是一条路径！即若考虑连接 $k-1$ 维路径之间的 $k$ 维路径, 这种表述正正就可以被解释到 **高阶范畴论 (higher category theory)** 中去, 即若范畴的对象为 $k-1$ 维路径, 而对象之间的态射则为 $k$ 维路径, 不断地延申下去便可得出 **$n$-范畴** (当 $k \leq n$).
 
-以上这些论述当然都是不严谨的, 部分例子看不懂也没关系, 因为重要的不是看懂, 而是心理上能够感知到原来范畴论还有这些作用. 因此为了更加严谨地讨论, 我们需要做一些范畴论的基础铺垫, 亦即是以下我们将学到的内容了.
+以上这些论述当然都是不严谨的, 下面我们需要严格地讨论究竟何为范畴.
 
-### 注释 (范畴, 对象与态射)
+## 1.0. Grothendieck 宇宙
 
-范畴的构成其实非常简单, 一个范畴 $\mathcal{C}$ 的是由一系列的 **对象 (objects)** 以及 **态射 (morphisms)** 所组成的, 当中的对象可以是任意的数学对象, 仅需满足其保有了单位态射以及态射间的结合律, 最简单的例子则可从 **集合范畴 (category of sets)** 中开始了解, 则于该范畴内对象为某些集合 $A, B$, 以及态射 $f : A \to B$, 那么在该范畴中从 $A$ 到 $B$ 的态射 $f$ 则是集合之间的函数, 其单位态射即是一般的恒等函数, 并且函数之间的结合律是显然保证了的, 因此态射亦可被视为是函数这一概念的推广.
+### 注释 (范畴的大小)
+
+粗略地说, 范畴其实就是一族对象 (例如集合, 或者各种代数结构) 以及这些对象之间的一族态射 (映射, 函数的推广) 所构成的代数结构. 不过可能存在如 "由所有集合所构成的范畴" 或者 "由所有群所构成的范畴" 这样子的矛盾, 因为在 $\text{ZFC}$ 集合论中我们不可能存在 "所有集合的集合", 否则这将导致罗素悖论, 因此我们可以考虑以下一些处理方案：
+
+1. **Von Neumann–Bernays–Gödel 集合论**：将对象集定义为 **类 (class)**, 直觉上就是比集合要更大的 **搜集 (collections)**.
+2. **Grothendieck 宇宙**：仍将对象集定义为一般的集合, 我们称为 **Grothendieck 宇宙 (Grothendieck universes)**, 或简称为 **宇宙 (universes)**, 这是一个施加了除 $\text{ZFC}$ 额外更多的公理去保证集合的大小在一个合适的范围内.
+
+而方案 $(1)$ 我们无法在类上进行量化, 所以该方案被否决掉了. 而方案 $(2)$ 正是我们所需的, 宇宙就像是一道 "防火墙", 在其内可以进行大部分常见的集合论操作而不涉及到类, 并阻止了不合法, 有可能违反规则的操作, 因此我们现在引入关于它的定义.
+
+### 定义 1.0.1 (Grothendieck 宇宙)
+
+设 $\mathcal{U}$ 为集合, 称满足了以下条件的 $\mathcal{U}$ 为一个 **宇宙 (universe)**：
+
+1. $\empty \in \mathcal{U}$ 且 $\N \in \mathcal{U}$;
+2. 若 $x \in \mathcal{U}$ 且 $y \in x$, 则 $y \in \mathcal{U}$;
+3. 若 $x \in \mathcal{U}$, 则 $\set{x} \in \mathcal{U}$;
+4. 若 $x \in \mathcal{U}$, 则 $\mathcal{P}(x) \in \mathcal{U}$;
+5. 对任意 $i \in I$, 若 $(x_i)_{i \in I}$ 为一集族使得 $I \in \mathcal{U}$ 且 $x_i \in \mathcal{U}$, 则 $\ds \bigcup_{i \in I} x_i \in \mathcal{U}$;
+
+### 注释
+
+在原始的定义中, 性质 $(1)$ 是不必要的, 但在如今大多数书本上我们仍要求这个性质. 现在让我们讨论一些关于宇宙的相关结论.
+
+### 命题 1.0.2 (宇宙的基本性质)
+
+1. 若 $x \in \mathcal{U}$, 则 $\ds \bigcup_{y \in x} y \in \mathcal{U}$;
+2. 若 $x, y \in \mathcal{U}$, 则 $x \times y \in \mathcal{U}$;
+3. 若 $x \in \mathcal{U}$ 且 $y \sub x$, 则 $y \in \mathcal{U}$;
+4. 若 $x \in \mathcal{U}$, 那么任意 $x$ 的商集仍是 $\mathcal{U}$ 的元素;
+5. 对任意 $i \in I$, 若 $(x_i)_{i \in I}$ 为一集族使得 $I \in \mathcal{U}$ 且 $x_i \in \mathcal{U}$, 则 $\ds \coprod_{i \in I} x_i \in \mathcal{U}$;
+6. 若 $x, y \in \mathcal{U}$, 则任意 $x$ 与 $y$ 之间对应 (映射) 仍是 $\mathcal{U}$ 的元素;
+7. 若 $x, y \in \mathcal{U}$, 则任意 $x$ 与 $y$ 之间对应的集合仍是 $\mathcal{U}$ 的元素;
+8. 对任意 $i \in I$, 若 $(x_i)_{i \in I}$ 为一集族使得 $I \in \mathcal{U}$ 且 $x_i \in \mathcal{U}$, 则 $\ds \prod_{i \in I} x_i \in \mathcal{U}$;
+9. 若 $x \sub \mathcal{U}$ 且存在 $y \in \mathcal{U}$ 使得 $\text{card}(x) \leq \text{card}(y)$, 则 $x \in \mathcal{U}$;
+10. 对任意 $n \in \N$, 宇宙 $\mathcal{U}$ 包含了基数为 $n$ 的有限集.
+
+### 公理 1.0.3 (宇宙公理)
+
+对任意集合 $X$, 皆存在宇宙 $\mathcal{U}$ 使得 $X \in \mathcal{U}$.
+
+### 注释
+
+若要详细讨论上述这条公理的来由, 势必需要引入关于不可达基数的讨论, 而这不是我们讨论的重点, 因此从略带过.
+
+### 定义 1.0.4 ($\mathcal{U}$-集, $\mathcal{U}$-小集)
+
+对任意集合 $X$：
+
+- 若 $X \in \mathcal{U}$ 则称之为 **$\mathcal{U}$-集 ($\mathcal{U}$-set)**.
+- 若 $X$ 与某一个 $\mathcal{U}$-集 等势, 则称之为 **$\mathcal{U}$-小集 ($\mathcal{U}$-small set)**.
+
+## 1.1. 范畴论的基本概念
 
 ### 定义 1.1.1 (范畴, 态射集, 单位与合成态射, 自态射)
 
-若 $\mathcal{C}$ 被称为是 **范畴 (category)**, 其是由以下资料所构成的代数结构：
+若 $\mathcal{C}$ 被称为一个 **范畴 (category)**, 其是由以下资料所构成的代数结构：
 
 1. 称集合 $\op{Ob}(\mathcal{C})$ 的元素为 $\mathcal{C}$ 中的 **对象 (objects)**, 为了方便一些文章亦会简记为 $X \in \mathcal{C}$ 以替代 $X \in \op{Ob}(\mathcal{C})$;
 
@@ -58,7 +107,7 @@ mathjax = true
 
 4. 称映射 $\Map{1_X}{X}{X}{x}{x}$ 为 **单位态射 / 恒等态射 (identity morphism)**, 记为 $1_X$ 或 $\op{id}_X$;
 
-5. 对于任意 $X, Y, Z\in \op{Ob}(\mathcal{C})$, $\mathcal{C}$ 上的二元运算 $\Map{\circ}{\mathcal{C}(Y, Z) \times \mathcal{C}(X, Y)}{\mathcal{C}(X, Z)}{(f, g)}{f \circ g}$ 则是态射间的 **合成态射 (composition of morphisms)**, 在无歧义的情况下可将 $f \circ g$ 简记为 $fg$, 以 **交换图 (commutative diagram)** 观察则有：
+5. 对于任意 $X, Y, Z\in \op{Ob}(\mathcal{C})$, 称 $\mathcal{C}$ 中的二元运算 $\Map{\circ}{\mathcal{C}(Y, Z) \times \mathcal{C}(X, Y)}{\mathcal{C}(X, Z)}{(f, g)}{f \circ g}$ 为 **合成态射 (composition of morphisms)**, 在无歧义的情况下可将 $f \circ g$ 简记为 $fg$, 以 **图表 (diagram)** 观察则有：
    $$
    \xymatrix{
    X \ar@{->}[rd]_{f \circ g} \ar@{->}[r]^{g} & Y \ar@{->}[d]^{f} \\
@@ -71,7 +120,7 @@ mathjax = true
 
    - 单位态射律：$\Forall{f \in \mathcal{C}(X, Y)} 1_Y \circ f = f = f \circ 1_X$.
 
-     同样地, 该两条件透过交换图观察则有：
+     同样地, 该两条件通过 **交换图表 (commutative diagram)** 观察则有：
      $$
      % https://darknmt.github.io/res/xypic-editor/#eyJub2RlcyI6W3sicG9zaXRpb24iOls1LDFdLCJ2YWx1ZSI6IlgifSx7InBvc2l0aW9uIjpbNiwwXSwidmFsdWUiOiJZIn0seyJwb3NpdGlvbiI6WzcsMV0sInZhbHVlIjoiWiJ9LHsicG9zaXRpb24iOls0LDBdLCJ2YWx1ZSI6IlcifSx7InBvc2l0aW9uIjpbMSwwXSwidmFsdWUiOiJYIn0seyJwb3NpdGlvbiI6WzEsMV0sInZhbHVlIjoiWSJ9LHsicG9zaXRpb24iOlsyLDFdLCJ2YWx1ZSI6IlkifSx7InBvc2l0aW9uIjpbMCwwXSwidmFsdWUiOiJYIn1dLCJlZGdlcyI6W3siZnJvbSI6MCwidG8iOjIsInZhbHVlIjoiZiBcXGNpcmMgZyIsImxhYmVsUG9zaXRpb24iOiJyaWdodCIsImJlbmQiOjB9LHsiZnJvbSI6MCwidG8iOjEsInZhbHVlIjoiZyJ9LHsiZnJvbSI6MSwidG8iOjIsInZhbHVlIjoiZiJ9LHsiZnJvbSI6MywidG8iOjAsInZhbHVlIjoiaCJ9LHsiZnJvbSI6MywidG8iOjEsImJlbmQiOjAsImxhYmVsUG9zaXRpb24iOiJsZWZ0IiwidmFsdWUiOiJnIFxcY2lyYyBoIn0seyJmcm9tIjo0LCJ0byI6NSwidmFsdWUiOiJmIiwibGFiZWxQb3NpdGlvbiI6Imluc2lkZSJ9LHsiZnJvbSI6NSwidG8iOjYsInZhbHVlIjoiMV9ZIiwibGFiZWxQb3NpdGlvbiI6InJpZ2h0In0seyJmcm9tIjo0LCJ0byI6NiwidmFsdWUiOiIxX1kgXFxjaXJjIGYiLCJsYWJlbFBvc2l0aW9uIjoibGVmdCJ9LHsiZnJvbSI6NywidG8iOjQsInZhbHVlIjoiMV9YIiwibGFiZWxQb3NpdGlvbiI6ImxlZnQifSx7ImZyb20iOjcsInRvIjo1LCJiZW5kIjowLCJ2YWx1ZSI6ImYgXFxjaXJjIDFfWCIsImxhYmVsUG9zaXRpb24iOiJyaWdodCJ9XX0=
      \xymatrix{
@@ -81,61 +130,45 @@ mathjax = true
      $$
      注意到交换图本身其实就意味着态射间的 "等价关系", 因此我们时常称为 **图表可交换 (diagram commutes)**.
 
-### 例子 1.1.2 (代数学中常见的范畴)
+### 定义 1.1.2 ($\mathcal{U}$-范畴, $\mathcal{U}$-小范畴)
+
+设 $\mathcal{C}$ 为范畴：
+
+- 称 $\mathcal{C}$ 为 **$\mathcal{U}$-范畴 ($\mathcal{U}$-category)**, 当对任意 $X, Y \in \Ob{\mathcal{C}}$, 集合 $\Hom{\mathcal{C}}{X}{Y}$ 为 $\mathcal{U}$-小集;
+- 称 $\mathcal{C}$ 为 **$\mathcal{U}$-小范畴 ($\mathcal{U}$-small category)**, 当满足上述条件外, 态射集 $\Mor{\mathcal{C}}$ 亦为 $\mathcal{U}$-小集.
+
+### 注释
+
+- 一些文献中会称 $\mathcal{U}$-范畴 为 **局部 $\mathcal{U}$-小范畴 (locally $\mathcal{U}$-small category)**.
+- 范畴 $\mathcal{C}$ 是 $\mathcal{U}$-小范畴 $\iff$ 它是 $\mathcal{U}$-范畴且 $\Ob{\mathcal{C}}$ 为 $\mathcal{U}$-小集, 这由嵌入 $\map{\Ob{\mathcal{C}}}{\Mor{\mathcal{C}}}{X}{1_X}$ 给出.
+- 如果一些代数结构 (如群, 环, 拓扑空间等) 作为基础集时是一个 $\mathcal{U}$-集合, 则将它们称为如 $\mathcal{U}$-群, $\mathcal{U}$-环, $\mathcal{U}$-拓扑空间等 (或称为小集, 小群等).
+- 提前选定宇宙 $\mathcal{U}$, 由 [公理 1.0.3](#公理_1.0.3_(宇宙公理)), 我们总是可以扩大宇宙 $\mathcal{U}$ 使得 $\mathcal{C}$ 是 $\mathcal{U}$-小范畴.
+- **接下来总是默认任意的范畴皆为 $\mathcal{U}$-小范畴 的事实 (除非特别说明)**, 并将 $\mathcal{U}$-群, $\mathcal{U}$-环, $\mathcal{U}$-拓扑空间等前面的符号 $\mathcal{U}$ 省略不记.
+
+### 例子 1.1.3 (范畴的初步例子)
 
 以下这些较为常见且重要的例子：
 
-- 若以集合作为对象, 函数作为态射, 那么所形成的便是 **集合范畴 (category of sets)**, 记为 $\op{Set}$.
-- 若以群作为对象, 群同态作为态射, 那么所形成的便是 **群范畴 (category of groups)**, 记为 $\op{Grp}$, 而若是交换群所形成的范畴则称为 **交换群范畴 (category of abelian groups)**, 记为 $\op{Ab}$​​.
-- 若以环作为对象, 环同态作为态射, 那么所形成的便是 **环范畴 (category of rings)**, 记为 $\op{Ring}$, 而若是交换环所形成的范畴则称为 **交换环范畴 (category of commutative rings)**, 记为 $\op{CRing}$.
-- 若以拓扑空间作为对象, 连续映射作为态射, 那么所形成的便是 **拓扑空间范畴 (category of topological spaces)**, 记为 $\op{Top}$​.
-- 若以任意域 $\mathbb F$ 上的线性空间作为对象, 线性映射作为态射, 那么所形成的便是 **线性空间范畴 (category of vector spaces)**, 记为 $\op{Vect}_{\mathbb F}$, 一般于无歧义情况下亦可简记为 $\op{Vect}$.
+- 以集合作为对象, 函数作为态射, 所构成的范畴记为 $\op{Set}$, 特别地当其中的集合有限时亦构成范畴, 记为 $\text{FinSet}$.
+- 以群作为对象, 群同态作为态射, 所构成的范畴记为 $\op{Grp}$, 而交换群所构成的范畴则记为 $\op{Ab}$.
+- 以环作为对象, 环同态作为态射, 所构成的范畴记为 $\op{Ring}$, 而交换环所构成的范畴则记为 $\op{CRing}$.
+- 以任意域 $\mathbb F$ 上的线性空间作为对象, $\mathbb{F}$-线性映射作为态射, 所构成的范畴记为 $\op{Vect}_{\mathbb F}$, 一般于无歧义情况下亦可简记为 $\op{Vect}$.
+- 以 (含幺) 环 $R$ 上的 左 $R$-模 作为对象, $R$-线性映射 作为态射, 所构成的范畴记为 $_R\Mod$, 同样地所有 右 $R$-模 连同 $R$-线性映射所构成的范畴则记为 $\Mod_R$. 而当 $R$ 本身可交换, 则 $\Mod_R = \op{_R\Mod}$, 而当 $R = \Z$ 则 $_R \Mod = \Ab$.
+- 以交换环 $R$ 上的 $R$-代数 作为对象, $R$-代数同态 作为态射, 所构成的范畴记为 $R\text{-Alg}$, 如若为交换 $R$-代数则记为 $R\text{-CAlg}$, 李代数则记为 $R\text{-Lie}$.
+- 以拓扑空间作为对象, 连续函数作为态射, 所构成的范畴记为 $\Top$, 而带基点的拓扑空间所构成的范畴则记为 $\Top^*$.
 
-### 例子 1.1.3 (线性空间范畴上的合成线性映射)
+### 定义 1.1.4 (离散范畴, 连通范畴)
 
-更具体地, 例如我们所研究的对象是线性空间, 那么自然会放到线性空间范畴上作研究, 那么于 $\op{Vect}$ 范畴中, 根据 [例子 1.1.2 (代数学中常见的范畴)](#例子_1.1.2_(代数学中常见的范畴)), 我们知道其对象必定是个线性空间而态射是线性映射, 那么我们可以这样子定义 $\op{Vect}$：
+设 $\mathcal{C}$ 为范畴：
 
-- $\op{Ob}(\op{Vect}) \coloneqq \set{ \text{所有域 $\mathbb F$ 上的线性空间} }$;
-- $\op{Mor}(\op{Vect}) \coloneqq \set{ 所有线性映射 }$.
-
-并且考虑如有线性空间 $U, V, W \in \op{Ob(Vect)}$, 线性映射 $f, g \in \op{Mor(Vect)}$, 有如下交换图：
-$$
-% https://darknmt.github.io/res/xypic-editor/#eyJub2RlcyI6W3sicG9zaXRpb24iOlswLDBdLCJ2YWx1ZSI6IlUifSx7InBvc2l0aW9uIjpbMSwwXSwidmFsdWUiOiJWIn0seyJwb3NpdGlvbiI6WzEsMV0sInZhbHVlIjoiVyJ9LHsicG9zaXRpb24iOlsyLDBdLCJ2YWx1ZSI6InUifSx7InBvc2l0aW9uIjpbMywxXSwidmFsdWUiOiJ3ID0gZyhmKHUpKSA9IGcodikifSx7InBvc2l0aW9uIjpbMywwXSwidmFsdWUiOiJ2ID0gZih1KSJ9XSwiZWRnZXMiOlt7ImZyb20iOjAsInRvIjoxLCJ2YWx1ZSI6ImYifSx7ImZyb20iOjEsInRvIjoyLCJ2YWx1ZSI6ImcifSx7ImZyb20iOjAsInRvIjoyLCJ2YWx1ZSI6ImcgXFxjaXJjIGYiLCJsYWJlbFBvc2l0aW9uIjoicmlnaHQifSx7ImZyb20iOjMsInRvIjo0LCJ0YWlsIjoibWFwc3RvIn0seyJmcm9tIjo1LCJ0byI6NCwidGFpbCI6Im1hcHN0byJ9LHsiZnJvbSI6MywidG8iOjUsInRhaWwiOiJtYXBzdG8ifV19
-\xymatrix{
-U \ar@{->}[r]^{f} \ar@{->}[rd]_{g \circ f} & V \ar@{->}[d]^{g} & u \ar@{|->}[rd] \ar@{|->}[r] & v = f(u) \ar@{|->}[d] \\
- & W &  & w = g(f(u)) = g(v)
-}
-$$
-其中 $f$ 为 $U$ 到 $V$ 的线性映射, $g$ 为 $V$ 到 $W$ 的线性映射, 因此有 $f \in \mathcal{L}(U, V)$ 以及 $g \in \mathcal{L}(V, W)$, 且：
-$$
-\begin{align}
-\text{Vect}(U, V) = \text{Hom}_{\text{Vect}}(U, V) & \coloneqq \mathcal{L}(U, V) \\
-\text{Vect}(V, W) = \text{Hom}_{\text{Vect}}(V, W) & \coloneqq \mathcal{L}(V, W)
-\end{align}
-$$
-那么即合成态射 $g \circ f$ 是线性映射的合成, 所以 $g \circ f \coloneqq gf \in \mathcal{L}(U, W)$, 且对于任意 $u, u_1, u_2 \in U$ 以及 $\lambda \in \mathbb F$, 合成线性映射 $g \circ f$ 满足了以下条件：
-
-- **保加性 (additivity)**：$g(f(u_1 + u_2)) = g(f(u_1)) + g(f(u_2))$;
-- **保线性 (homogeneity)**：$g(f(\lambda u)) = \lambda g(f(u))$.
-
-而 $\op{Vect}$ 的单位态射实际上就是线性空间中的 **单位线性映射 (identity linear map)**, 即 $I_{\op{Vect}} = I \in \mathcal{L}(V, V)$.
-
-### 例子 1.1.4 (阿贝尔群范畴上的双线性映射)
-
-若设有 $\op{Ab}$ 范畴 (即交换群所构成的范畴), 态射的定义与 $\op{Grp}$ 的情况相同, 即亦是群同态, 但由于 $\op{Ab}$ 中的对象都是交换群, 那么其同态集 (这里以群作为对象, 因此态射集就是同态集)上的同态可相加, 因此同态集便具备了交换群结构 (即对于任二交换群 $G, H$, $(\op{Hom}(G, H), +)$ 构成加法交换群). 更具体地, 即对于任意交换群 $A, B, C$, 以及任意合成群同态 $\varphi : \op{Hom}(B, C) \times \op{Hom}(A, B) \to \op{Hom}(A, C)$, 使得群同态 $\varphi$ 应满足 **双线性 (bi-linearivity)**：
-$$
-\begin{align}
-\varphi(f + g, h) & = \varphi(f, h) + \varphi(g, h) & \forall f, g \in \text{Hom}(B, C), \quad h \in \text{Hom}(A, B) \\
-\varphi(f, g + h) & = \varphi(f, g) + \varphi(f, h) & \forall f \in \text{Hom}(B, C), \quad g,h \in \text{Hom}(A, B)
-\end{align}
-$$
-至于为什么需要满足双线性？实际上该定义与交换群的张量积群到任意交换群的群同态定义是等价的, 为了解释这句话需要一些额外的铺垫, 因此该问题会留到后续部分进行解答.
+- 当其中的任意对象 $X \in \Ob{\mathcal{C}}$ 都仅有唯一的态射 $1_X$ 时, 则称 $\mathcal{C}$ 为 **离散范畴 (discrete category)**.
+- 对任意的 $X, Y \in \Ob{\mathcal{C}}$, 当 $\Hom{\mathcal{C}}{X}{Y} \neq \empty$, 则称 $\mathcal{C}$ 为 **连通范畴 (connected category)**.
 
 ### 注释 (对偶性)
 
-在范畴论中, 我们会经常讨论一个结构, 或者一个概念的 **对偶性 / 二元性 (duality)**, 例如说首先给予某个范畴 $\mathcal{C}$, 然后直观上将 $\mathcal{C}$ 内所有的态射的方向逆转, 即例如 $f : A \to B$ 就变为了逆态射 $f^{-1} : B \to A$, 这便形成了原范畴 $\mathcal{C}$ 的范畴. 更详细地, 我们甚至还有以下这些常见的对偶关系：
+在范畴论中 **对偶性 / 二元性 (duality)** 无处不在. 一个简单的例子, 设有范畴 $\mathcal{C}$, 挑选 $\mathcal{C}$ 中的任一态射 $f : A \to B$, 将其态射的方向逆转后得到 $f^{\oppos} : B \to A$, 而 $\Ob{\mathcal{C}}$ 连带 $\mathcal{C}$ 中所有被逆转的态射则构成了 $\mathcal{C}$ 的对偶范畴. 除了范畴本身的对偶性外, 还有许多范畴中结构的对偶概念, 如：
 
-- 任意范畴 $\mathcal{C}$ 的对偶概念是对偶范畴 $\mathcal{C}^{\op{op}}$, 这将于 [定义 1.1.5 (对偶范畴)](#定义_1.1.5_(对偶范畴)) 提及;
+- 任意范畴 $\mathcal{C}$ 的对偶概念是对偶范畴 $\mathcal{C}^{\op{op}}$, 这将于 [定义 1.1.5](#定义_1.1.5_(对偶范畴)) 提及;
 - **始对象 (initial object)** 与 **终对象 (terminal object)** 相互对偶;
 - **协变函子 (covariant functor)** 与 **逆变函子 (contravariant functor)** 相互对偶;
 - **单同态 (monomorphism)** 与 **满同态 (epimorphism)** 相互对偶;
@@ -146,91 +179,66 @@ $$
 
 ### 定义 1.1.5 (对偶范畴)
 
-对于任意范畴 $\mathcal{C}$, 其 **对偶范畴 / 反范畴 (opposite category)** 记为 $\mathcal{C}^{\op{op}}$, 并定义如下：
+设 $\mathcal{C}$ 为范畴, 称 $\mathcal{C}^{\op{op}}$ 为 $\mathcal{C}$ 的 **对偶范畴 / 反范畴 (opposite category)**, 定义为以下资料所构成的范畴：
 
 - $\op{Ob}(\mathcal{C}^{\op{op}}) \coloneqq \op{Ob}(\mathcal{C})$;
 - $\mathcal{C^{\op{op}}}(X, Y) \coloneqq \mathcal{C}(Y, X)$;
 - $\mathcal{C}^{\op{op}}$ 中单位态射与 $\mathcal{C}$ 的定义一致;
 - $\mathcal{C}^{\op{op}}$ 中合成态射 $\circ$ 定义为 $\mathcal{C}$ 的反向合成, 即：$\Map{\circ}{\mathcal{C}^\oppos(Y, Z) \times \mathcal{C}^\oppos(X, Y)}{\mathcal{C}^\oppos(X, Z)}{(f, g)}{g \circ_\mathcal{C} f}$, 其中 $\circ_{\mathcal{C}}$ 为 $\mathcal{C}$ 中的合成态射.
 
-直观上, 对偶范畴 $\mathcal{C^{\op{op}}}$ 中的对象与 $\mathcal{C}$ 的对象保持一致, 但将当中的态射反转方向, 即上述合成态射如下图：
-$$
-% https://darknmt.github.io/res/xypic-editor/#eyJub2RlcyI6W3sicG9zaXRpb24iOlswLDBdLCJ2YWx1ZSI6IlgifSx7InBvc2l0aW9uIjpbMSwwXSwidmFsdWUiOiJZIn0seyJwb3NpdGlvbiI6WzEsMV0sInZhbHVlIjoiWSJ9LHsicG9zaXRpb24iOlswLDFdLCJ2YWx1ZSI6IlgifSx7InBvc2l0aW9uIjpbMiwwXSwidmFsdWUiOiJaIn0seyJwb3NpdGlvbiI6WzIsMV0sInZhbHVlIjoiWiJ9LHsicG9zaXRpb24iOlszLDFdLCJ2YWx1ZSI6IlxcbWF0aGNhbHtDfV57XFx0ZXh0e29wfX0ifSx7InBvc2l0aW9uIjpbMywwXSwidmFsdWUiOiJcXG1hdGhjYWx7Q30ifV0sImVkZ2VzIjpbeyJmcm9tIjowLCJ0byI6MSwidmFsdWUiOiJmIiwibGFiZWxQb3NpdGlvbiI6InJpZ2h0In0seyJmcm9tIjoyLCJ0byI6MywidmFsdWUiOiJmIiwibGFiZWxQb3NpdGlvbiI6InJpZ2h0In0seyJmcm9tIjoxLCJ0byI6NCwidmFsdWUiOiJnIiwibGFiZWxQb3NpdGlvbiI6InJpZ2h0In0seyJmcm9tIjo1LCJ0byI6MiwibGFiZWxQb3NpdGlvbiI6InJpZ2h0IiwidmFsdWUiOiJnIn0seyJmcm9tIjo1LCJ0byI6MywiYmVuZCI6NDksInZhbHVlIjoiZiBcXGNpcmMgZyA9IGcgXFxjaXJjX3tcXG1hdGhjYWx7Q319IGYifSx7ImZyb20iOjAsInRvIjo0LCJiZW5kIjo0OSwidmFsdWUiOiJnIFxcY2lyY197XFxtYXRoY2Fse0N9fSBmIn0seyJmcm9tIjo0LCJ0byI6NywibGFiZWxQb3NpdGlvbiI6Imluc2lkZSIsImxpbmUiOiJzb2xpZCIsInZhbHVlIjoiXFxpbiJ9LHsiZnJvbSI6NSwidG8iOjYsImxhYmVsUG9zaXRpb24iOiJpbnNpZGUiLCJ2YWx1ZSI6IlxcaW4ifV19
-\xymatrix{
-X \ar@{->}[r]_{f} \ar@/^1pc/@{->}[rr]^{g \circ_{\mathcal{C}} f} & Y \ar@{->}[r]_{g} & Z \ar@{}[r]|-{\in} & \mathcal{C} \\
-X & Y \ar@{->}[l]_{f} & Z \ar@{->}[l]_{g} \ar@/^1pc/@{->}[ll]^{f \circ g = g \circ_{\mathcal{C}} f} \ar@{}[r]|-{\in} & \mathcal{C}^{\text{op}}
-}
-$$
+### 注释
 
-### 注释 (子范畴)
-
-我们在其他的代数结构或者数学结构中总能遇到子结构的概念, 例如 集合论中的子集, 抽象代数中的子群 / 子环, 拓扑空间中的子空间 等, 那么于范畴上是否亦可以定义类似的概念, 使得这些子结构都能在范畴中得到统一看待呢？答案当然是可以的, 除了较为显然的结论外 (即一个子范畴对象集肯定是其父范畴对象集的子集, 态射集亦同理), 还需要额外保有恒等态射, 合成态射, 以及例如对于任意两个子范畴中对象的态射 $f : X \to Y$, 那么 $X$ 与 $Y$ 都需要在子范畴中, 因此有以下 [定义 1.1.6 (子范畴, 全子范畴)](#定义_1.1.6_(子范畴,_全子范畴)) 的精确定义.
+- 通常 $\mathcal{C}$ 中 $f$ 的对偶于 $\mathcal{C}^\oppos$ 中被记为 $f^\oppos$, 而于无歧义的情况下, 方便起见可将符号 $^\oppos$ 略去.
+- 直观上, $\mathcal{C}$ 中的合成态射 $g \circ f : X \overto{f} Y \overto{g} Z$, 于对偶范畴 $\mathcal{C}^\oppos$ 中形同 $f \circ g : X \overfrom{f} Y \overfrom{g} Z$.
 
 ### 定义 1.1.6 (子范畴, 全子范畴)
 
 对于任意范畴 $\mathcal{C, D}$, 若称 $\mathcal{D}$ 为 $\mathcal{C}$ 的 **子范畴 (subcategory)**, 记为 $\mathcal{D} \sub \mathcal{C}$, 当其满足了以下条件：
 
-- $\op{Ob}(\mathcal{D}) \sub \op{Ob}(\mathcal{C})$ 以及 $\op{Mor}(\mathcal{D}) \sub \op{Mor}(\mathcal{C})$;
-- 对任意 $X \in \op{Ob}(\mathcal{D})$, 应保有单位态射 $1_X$;
-- 对任意 $f \in \op{Mor}(\mathcal{D})$, 且 $f : X \to Y$, 其来源 $X$ 与目标 $Y$ 都应在 $\op{Ob}(\mathcal{D})$ 中, 即 $X, Y \in \op{Ob}(\mathcal{D})$;
-- 对任意 $f, g \in \op{Mor}(\mathcal{D})$, 若它们可合成, 则 $g \circ f$ 亦应该在 $\op{Mor}(\mathcal{D})$ 中, 即 $g \circ f \in \op{Mor}(\mathcal{D})$.
+- **对象集封闭**：$\op{Ob}(\mathcal{D}) \sub \op{Ob}(\mathcal{C})$ 以及 $\op{Mor}(\mathcal{D}) \sub \op{Mor}(\mathcal{C})$;
+- **保有单位态射**：$\Forall{X \in \op{Ob}(\mathcal{D})} 1_X \in \End(\mathcal{D})$;
+- **来源与目标封闭**：$\Forall{f \in \Hom{\mathcal{C}}{X}{Y}} X, Y \in \op{Ob}(\mathcal{D})$;
+- **态射合成封闭**：$\Forall{f, g \in \op{Mor}(\mathcal{D})} g \circ f \in \Mor{\mathcal{C}} \implies g \circ f \in \op{Mor}(\mathcal{D})$.
 
-特别地, 对于任意 $X, Y \in \op{Ob}(\mathcal{D})$, 若 $\mathcal{D}(X, Y) = \mathcal{C}(X, Y)$ 成立, 则称 $\mathcal{D}$ 为 **全子范畴 (full subcategory)**.
+特别地, 若 $\Forall{X, Y \in \op{Ob}(\mathcal{D})} \mathcal{D}(X, Y) = \mathcal{C}(X, Y)$ 成立, 则称 $\mathcal{D}$ 为 $\mathcal{C}$ 的 **全子范畴 (full subcategory)**.
 
 ### 例子 1.1.7 (交换群范畴, 有限维线性空间范畴)
 
-- $\op{Ab}$ 为 $\op{Grp}$ 的全子范畴, 因为所有交换群必然是所有群的子集, 并且 $\op{Ab}(X, Y) = \op{Grp}(X, Y)$, 无非都是同样的群同态映射所构成的态射集.
+- $\op{Ab}$ 为 $\op{Grp}$ 的全子范畴, 因为所有交换群必然是所有群的子集, 并且 $\op{Ab}(X, Y) = \op{Grp}(X, Y)$.
 - 域 $\mathbb F$ 上的有限维线性空间范畴 $\op{FinVect}_{\mathbb F}$ 是 $\op{Vect}_{\mathbb F}$ 的全子范畴.
 
 ## 1.2. 同态与同构
 
-### 注释
-
-其实构造范畴本身的基本结构在最开始的时候就已经定义完毕了, 但如果光这样范畴论就变得索然无味了, 它就好比只是有躯干但没有内在灵魂的一个人, 我们研究范畴论就只是单纯把各种学科对应到不同的范畴上后就没有下文了吗？当然不是, 因此对于范畴的内部结构 (无论是对象还是态射)我们也需要进一步研究, 那么便衍生了以下数个重要概念 (同构, 各种范畴内的特殊对象, 范畴的泛性质与泛构造等).
-
 ### 注释 (单同态, 满同态, 同构)
 
-虽然我们知道了交换图实际上就是范畴中态射之间的等价关系, 而我们仍需有一种结构能够刻画对象之间的等价关系, 那么该种概念就被称之为 **同构 (isomorphism)**, 简而言之对于某一个范畴 $\mathcal{C}$ 中的对象 $X$, 若果任意的 $x \in X$ 被 $f$ 态射到任意的 $Y$ 中, 并且能够再经过 $f$ 的逆态射 $f^{-1}$ 返回到 $X$ 中, 使得 $x = f^{-1}(f(x))$, 同样地对于任意的 $y \in Y$ 亦是如此, 则可得知 $X$ 与 $Y$ 之间必然是一一对应的, 更一般地在集合范畴中就是个双射函数, 即：
-$$
-f^{-1}(f(x)) = x \overset{f}{\underset{f^{-1}}{\rightleftarrows}} y = f(f^{-1}(y))
-$$
-因此这里的 $f$ 便构成同构关系, 同样地单射与满射的推广便是范畴中的 单同态 (态射结合可左消除) 与 满同态 (可右消除).
+将函数的单射与满射的消除律抽象出来, 我们可以得到单同态与满同态, 而将双射的条件进一步放宽, 则得到同构的概念.
 
 ### 定义 1.2.1 (单同态, 满同态, 同构, 自同构)
 
-对于任意范畴 $\mathcal{C}$, 对象 $X, Y\in \op{Ob}(\mathcal{C})$, 以及任意态射 $f \in \mathcal{C}(X, Y)$：
+设 $\mathcal{C}$ 为范畴, 对象 $X, Y\in \op{Ob}(\mathcal{C})$, 以及任意态射 $f : X \to Y$：
 
-- 若对于任意 $Z \in \op{Ob}(\mathcal{C})$ 有任意态射 $g_1, g_2 : \mathcal{C}(Z, X)$ 使得 $Z \overset{g_1}{\underset{g_2}{\rightrightarrows}} X \overset{f}{\to} Y$ 可左消除：
+- 称 $f$ 为 **单同态 (monomorphism)**, 记为 $f : X \hookrightarrow Y$, 当它可被左消除 (以图表 $W \underset{g_2}{\overset{g_1}{\rightrightarrows}} X \overto{f} Y$ 观察则是可被右消除)：
   $$
-  f \circ g_1 = f \circ g_2 \implies g_1 = g_2
+  \Forall{W \in \op{Ob}(\mathcal{C})} \Forall{g_1, g_2 \in \mathcal{C}(W, X)} f \circ g_1 = f \circ g_2 \implies g_1 = g_2
   $$
-  则称 $f$ 为 **单同态 (monomorphism)**, 记为 $f : X \hookrightarrow Y$.
 
-- 若对于任意 $Z \in \op{Ob}(\mathcal{C})$ 有任意态射 $g_1, g_2 : \mathcal{C}(Y, Z)$ 使得 $X \overset{f}{\to} Y \overset{g_1}{\underset{g_2}{\rightrightarrows}} Z$ 可右消除：
+- 称 $f$ 为 **满同态 (epimorphism)** 的, 记为 $f : X \rightarrowtail Y$, 当它可被右消除 (以图表 $X \overto{f} Y \underset{g_2}{\overset{g_1}{\rightrightarrows}} Z$ 观察则是可被左消除)：
   $$
-  g_1 \circ f = g_2 \circ f \implies g_1 = g_2
+  \Forall{Z \in \op{Ob}(\mathcal{C})} \Forall{g_1, g_2 : \mathcal{C}(Y, Z)} g_1 \circ f = g_2 \circ f \implies g_1 = g_2
   $$
-  则称 $f$ 为 **满同态 (epimorphism)** 的, 记为 $f : X \rightarrowtail Y$.
 
-- 若存在 $g \in \mathcal{C}(Y, X)$ 使得满足：
+- 若存在 $g : Y \to X$ 使得同时满足：
 
-  - $1_X = g \circ f$, 即对于任意 $x \in X$, 有 $x = g(f(x))$;
-  - $f \circ g = 1_Y$, 即对于任意 $y \in Y$, 有 $y = f(g(y))$.
+  - $1_X = g \circ f$, 即 $\Forall{x \in X} x = g(f(x))$;
+  - $f \circ g = 1_Y$, 即 $\Forall{y \in Y} y = f(g(y))$.
 
   则有以下结论：
 
-  - 称 $g$ 为 $f$ 的 **逆态射 (inverse morphism)**, 记 $g = f^{-1}$, 其唯一性将于 [命题 1.2.5 (逆态射的唯一性)](#命题_1.2.5_(逆态射的唯一性)) 中证明.
-  - 称 $f$ 为 **同构 (isomorphism)**, 记为 $X \overset{\sim}{\to} Y$ 或 $X \cong Y$, 并记所有 $X, Y$ 之间的所有同构构成的集为 $\op{Iso}(X, Y)$.
+  - 称 $g$ 为 $f$ 的 **逆态射 (inverse morphism)**, 记为 $f^{-1}$, 其唯一性由 [命题 1.2.5](#命题_1.2.5_(逆态射的唯一性)) 给出.
+  - 称 $f$ 为 **同构 (isomorphism)**, 记为 $X \overset{\sim}{\to} Y$ 或 $X \cong Y$ 或 $X \simeq Y$, 并记所有 $X, Y$ 之间的所有同构构成的集为 $\op{Iso}(X, Y)$.
   - 特别地, 若有 $X = Y$, 称同构 $f \in \mathcal{C}(X, X) = \op{End}_{\mathcal{C}}(X)$ 为 **自同构 (automorphism)**, 并记所有 $X$ 上所有自同构态射集为 $\op{Aut}(X)$.
 
-### 例子 1.2.2 (代数学中常见的同态)
-
-- 在集合范畴上, **单射函数 (injective function)** 是单同态, **满射函数 (surjective function)** 是满同态, **双射函数 (bijective function)** 便是同构, 并且考虑 $\R \to \R$ 上的双射函数亦构成自同构.
-- 在群范畴上, **单群同态 (injective group homomorphism)**, **满群同态 (surjective group homomorphism)** 以及 **群同构 (group isomorphism)** 分别为单同态, 满同态与同构, 并且若考虑置换群 $S_n$, 其的群自同构将构成该范畴上的自同构.
-- **同胚 / 拓扑同构 (homeomorphism)** 是在拓扑空间范畴 $\op{Top}$ 上的同构关系.
-- **微分同胚 (diffeomorphism)** 便是在 **光滑流形 / 微分流形 / 可微流形范畴 (category of smooth manifolds)** $\op{Diff}$ 上的同构关系.
-
-### 命题 1.2.3 (单同态的基本性质)
+### 命题 1.2.2 (单同态的基本性质)
 
 设 $\mathcal{C}$ 为任意范畴, 对象 $X, Y, Z \in \Ob{\mathcal{C}}$ 及任意态射 $f : X \to Y$ 与 $g : Y \to Z$：
 
@@ -240,25 +248,18 @@ $$
 
 ##### 证明
 
-1. 若设 $g_1, g_2 \in \mathcal{C}(Z, X)$, 那么在 $\mathcal{C}^{\op{op}}$ 中, 由于所有态射逆转方向, 则有 $g_1, g_2 \in \mathcal{C}^{\op{op}}(X, Z)$ 以及 $f \in \mathcal{C}^{\op{op}}(Y, X)$, 使得 $g_1 \circ f = g_2 \circ f \implies g_1 = g_2$, 因此得证.
+1. 将 $\mathcal{C}$ 中可被右消除的图表 $X \underset{\varphi'}{\overset{\varphi}{\rightrightarrows}} Y \overto{f} Z$ 态射逆转得 $X \underset{\varphi'}{\overset{\varphi}{\leftleftarrows}} Y \overfrom{f} Z$, 显然于 $\mathcal{C}^{\op{op}}$ 中图表可被左消除, 因此其为满射.
 
-2. 设有对象 $W \in \op{Ob}(\mathcal{C})$, $\gamma, \gamma' \in \mathcal{C}(W, X)$, 我们需要证明的是 $\gamma = \gamma'$, 那么根据以下可用条件：
-   $$
-   \begin{gather}
-   (g \circ f) \circ \gamma = (g \circ f) \circ \gamma' \tag1 \\
-   \text{$f$ 为单同态} \iff [\forall S \in \text{Ob}(\mathcal{C}), \quad \varphi, \varphi' \in \mathcal{C}(S, X), \quad f \circ \varphi = f \circ \varphi' \implies \varphi = \varphi'] \tag2 \\
-   \text{$g$ 为单同态} \iff [\forall S \in \text{Ob}(\mathcal{C}), \quad \psi, \psi' \in \mathcal{C}(S, Y), \quad g \circ \psi = g \circ \psi' \implies \psi = \psi'] \tag3 \\
-   \end{gather}
-   $$
-   首先使用条件 $(2)$, 设 $\varphi = \gamma$ 以及 $\varphi' = \gamma'$, 则有 $f \circ \gamma = f \circ \gamma' \implies \gamma = \gamma'$, 现在再应用条件 $(3)$, 设 $\psi = f \circ \gamma$ 以及 $\psi' = f \circ \gamma'$ 则有 $g \circ f \circ \gamma = g \circ f \circ \gamma' \implies \gamma = \gamma'$, 最后由 $(1)$ 确保使得命题成立. 而范畴论的好处是可以让我们 "看见" 证明, 即如下交换图：
-   $$
-   % https://darknmt.github.io/res/xypic-editor/#eyJub2RlcyI6W3sicG9zaXRpb24iOlswLDBdLCJ2YWx1ZSI6IlcifSx7InBvc2l0aW9uIjpbMiwwXSwidmFsdWUiOiJYIn0seyJwb3NpdGlvbiI6WzQsMF0sInZhbHVlIjoiWSJ9LHsicG9zaXRpb24iOls2LDBdLCJ2YWx1ZSI6IloifV0sImVkZ2VzIjpbeyJmcm9tIjowLCJ0byI6MSwiYmVuZCI6LTMwLCJsYWJlbFBvc2l0aW9uIjoiaW5zaWRlIiwidmFsdWUiOiJcXHZhcnBoaScgPSBcXGdhbW1hJyJ9LHsiZnJvbSI6MCwidG8iOjEsImJlbmQiOjMwLCJ2YWx1ZSI6IlxcdmFycGhpID0gXFxnYW1tYSIsImxhYmVsUG9zaXRpb24iOiJpbnNpZGUifSx7ImZyb20iOjEsInRvIjoyLCJ2YWx1ZSI6ImYiLCJsYWJlbFBvc2l0aW9uIjoibGVmdCIsInRhaWwiOiJob29rIn0seyJmcm9tIjoyLCJ0byI6MywidmFsdWUiOiJnIiwidGFpbCI6Imhvb2sifSx7ImZyb20iOjAsInRvIjoyLCJiZW5kIjo2MCwidmFsdWUiOiJcXHBzaSA9IGYgXFxjaXJjIFxcZ2FtbWEiLCJ0YWlsIjoibm9uZSJ9LHsiZnJvbSI6MCwidG8iOjIsImJlbmQiOi02MCwibGFiZWxQb3NpdGlvbiI6InJpZ2h0IiwidmFsdWUiOiJcXHBzaScgPSBmIFxcY2lyYyBcXGdhbW1hJyJ9XX0=
-   \xymatrix{
-   W \ar@/_/@{->}[rr]|-{\varphi' = \gamma'} \ar@/^/@{->}[rr]|-{\varphi = \gamma} \ar@/^1.5pc/@{->}[rrrr]^{\psi = f \circ \gamma} \ar@/_1.5pc/@{->}[rrrr]_{\psi' = f \circ \gamma'} &  & X \ar@{^{(}->}[rr]^{f} &  & Y \ar@{^{(}->}[rr]^{g} &  & Z
-   }
-   $$
+2. 由于 $g$ 为单同态 $\iff$ 图表 $X \underset{\varphi'}{\overset{\varphi}{\rightrightarrows}} Y \overto{g} Z$ 可被右消除, 而 $f$ 为单同态 $\iff$ 图表 $W \underset{\psi'}{\overset{\psi}{\rightrightarrows}} X \overto{f} Y$ 可被右消除, 显然图表 $W \underset{\psi'}{\overset{\psi}{\rightrightarrows}} X \overto{f} Y \overto{g} Z$ 可被右消除.
 
 3. 由于 $g \circ f$ 为单同态意味着 $(g \circ f) \circ h_1 = (g \circ f) \circ h_2$ 透过结合律与消除 $g$ 后得 $f \circ h_1 = f \circ h_2$, 因此 $h_1 = h_2$, 显然 $f$ 仍为单同态.
+
+### 例子 1.2.3 (代数学中常见的同态)
+
+- 在集合范畴 $\Sets$ 中, **单射函数 (injective function)** 是单同态, **满射函数 (surjective function)** 是满同态, **双射函数 (bijective function)** 便是同构, 并且考虑 $\R \to \R$ 上的双射函数亦构成自同构.
+- 在群范畴 $\Grp$ 中, **单同态 (group monomorphism)**, **满同态 (group epimorphism)** 以及 **群同构 (group isomorphism)** 分别为单同态, 满同态与同构.
+- 在拓扑空间范畴 $\op{Top}$ 中, **同胚 (homeomorphism)** 是同构.
+- 在微分流形范畴 $\op{Diff}$ 中, **微分同胚 (diffeomorphism)** 同构.
 
 ### 命题 1.2.4 (满同态的基本性质)
 
@@ -270,21 +271,18 @@ $$
 
 ##### 证明
 
-类似于 [命题 1.2.3 (单同态的基本性质)](#命题_1.2.3_(单同态的基本性质)) 中的证明, 读者可尝试自证.
+类似于 [命题 1.2.2](#命题_1.2.2_(单同态的基本性质)) 中的证明, 读者可尝试自证.
 
 ### 命题 1.2.5 (逆态射的唯一性)
 
-对于任意范畴 $\mathcal{C}$, 对象 $X, Y \in \op{Ob}(\mathcal{C})$, 态射 $f : \mathcal{C}(X, Y)$, 则具有以下性质：
+对于任意范畴 $\mathcal{C}$, 对象 $X, Y \in \op{Ob}(\mathcal{C})$, 态射 $f : X \to Y$, 则具有以下性质：
 
-1. **唯一性 (uniqueness)**：若存在 $f$ 的逆态射 $g : \mathcal{C}(Y, X)$, 则称 $g$ 是 **唯一态射 (unique morphism)**;
-2. $(f^{-1})^{-1} = f$.
+1. **逆态射的唯一性**：若存在 $f$ 的逆态射 $g : Y \to X$, 则 $g$ 是唯一的;
+2. **双重取逆等价于自身**：$(f^{-1})^{-1} = f$.
 
 ##### 证明
 
-1. 假设 $f \in \mathcal{C}(X, Y)$ 的另一逆态射为 $g \in \mathcal{C}(Y, X)$, 即有 $g \circ f = 1_X$, 需证明 $g = f^{-1}$, 则有：
-   $$
-   g = g \circ 1_Y = g \circ (f \circ f^{-1}) = (g \circ f) \circ f^{-1} = f^{-1}
-   $$
+1. 设另一逆态射为 $g' : Y \to X$, 则有 $g = g \circ 1_Y = g \circ (f \circ g') = (g \circ f) \circ g' = 1_X \circ g' = g'$.
 
 2. 由上述逆态射的唯一性所保证.
 
@@ -356,13 +354,13 @@ $$
   }
   $$
 
-同样地, 我们可将上述仅有两个对象之间的乘积或余积进一步推广至多个对象, 那么对于任意范畴 $\mathcal{C}$ 以及一族以 $I$ 为指标集的对象 $\set{X_i}_{i \in I}$：
+同样地, 我们可将上述仅有两个对象之间的乘积或余积进一步推广至一族对象 $\set{X_i}_{i \in I}$：
 
-- 若 $\prod_{i \in I} X_i \in \op{Ob}(\mathcal{C})$ 被称为是一族对象 $\set{X_i}_{i \in I}$ 的乘积, 当对于任意 $i \in I$ ($I$ 为指标集) 其有一族典范投射：
+- 称 $\ds \prod_{i \in I} X_i \in \op{Ob}(\mathcal{C})$ 为是一族对象 $\set{X_i}_{i \in I}$ 的乘积, 当对于任意 $i \in I$ ($I$ 为指标集) 其有一族典范投射：
   $$
   p_i : \left( \prod_{i \in I} X_i \right) \to X_i
   $$
-  使得其满足了泛性质, 即对于任意其他对象 $Q \in \op{Ob}(\mathcal{C})$ 以及态射 $Q \overset{f_i}{\to} X_i$, 存在唯一态射 $(f_i)_{i \in I} : Q \to \prod_{i \in I} X_i$ 使得下图可交换：
+  使得其满足了泛性质, 即对于任意其他对象 $Q \in \op{Ob}(\mathcal{C})$ 以及态射 $Q \overset{f_i}{\to} X_i$, 存在唯一态射 $\ds (f_i)_{i \in I} : Q \to \prod_{i \in I} X_i$ 使得下图可交换：
   $$
   % https://darknmt.github.io/res/xypic-editor/#eyJub2RlcyI6W3sicG9zaXRpb24iOlswLDFdLCJ2YWx1ZSI6IlxccHJvZF97aSBcXGluIEl9IFhfaSJ9LHsicG9zaXRpb24iOlsxLDFdLCJ2YWx1ZSI6IlhfaSJ9LHsicG9zaXRpb24iOlswLDBdLCJ2YWx1ZSI6IlEifV0sImVkZ2VzIjpbeyJmcm9tIjowLCJ0byI6MSwidmFsdWUiOiJwX2kiLCJsYWJlbFBvc2l0aW9uIjoicmlnaHQifSx7ImZyb20iOjIsInRvIjowLCJ2YWx1ZSI6IihmX2kpX3tpIFxcaW4gSX0iLCJsYWJlbFBvc2l0aW9uIjoicmlnaHQiLCJsaW5lIjoiZGFzaGVkIn0seyJmcm9tIjoyLCJ0byI6MSwidmFsdWUiOiJmX2kifV19
   \xymatrix{
@@ -371,11 +369,11 @@ $$
   }
   $$
 
-- 若 $\coprod_{i \in I} X_i \in \op{Ob}(\mathcal{C})$ (或记为 $\bigoplus_{i \in I} X_i$)被称为是一族对象 $\set{X_i}_{i \in I}$ 的余积, 当对于任意 $i \in I$ ($I$ 为指标集)其有一族典范注射：
+- 称 $\ds \coprod_{i \in I} X_i \in \op{Ob}(\mathcal{C})$ (或记为 $\ds \bigoplus_{i \in I} X_i$) 为是一族对象 $\set{X_i}_{i \in I}$ 的余积, 当对于任意 $i \in I$ ($I$ 为指标集)其有一族典范注射：
   $$
   p_i : X_i \to \left( \coprod_{i \in I} X_i \right)
   $$
-  使得其满足了泛性质, 即对于任意其他对象 $Q \in \op{Ob}(\mathcal{C})$ 以及态射 $X_i \overset{f_i}{\to} Q$, 存在唯一态射 $(f_i)_{i \in I} : \coprod_{i \in I} X_i \to Q$ 使得下图可交换：
+  使得其满足了泛性质, 即对于任意其他对象 $Q \in \op{Ob}(\mathcal{C})$ 以及态射 $X_i \overset{f_i}{\to} Q$, 存在唯一态射 $\ds (f_i)_{i \in I} : \coprod_{i \in I} X_i \to Q$ 使得下图可交换：
   $$
   % https://darknmt.github.io/res/xypic-editor/#eyJub2RlcyI6W3sicG9zaXRpb24iOlswLDFdLCJ2YWx1ZSI6IlxcY29wcm9kX3tpIFxcaW4gSX0gWF9pIn0seyJwb3NpdGlvbiI6WzEsMV0sInZhbHVlIjoiWF9pIn0seyJwb3NpdGlvbiI6WzAsMF0sInZhbHVlIjoiUSJ9XSwiZWRnZXMiOlt7ImZyb20iOjEsInRvIjowLCJ2YWx1ZSI6InBfaSIsImxhYmVsUG9zaXRpb24iOiJsZWZ0In0seyJmcm9tIjowLCJ0byI6MiwidmFsdWUiOiIoZl9pKV97aSBcXGluIEl9IiwibGFiZWxQb3NpdGlvbiI6ImxlZnQiLCJsaW5lIjoiZGFzaGVkIn0seyJmcm9tIjoxLCJ0byI6MiwidmFsdWUiOiJmX2kiLCJsYWJlbFBvc2l0aW9uIjoicmlnaHQifV19
   \xymatrix{
@@ -420,24 +418,18 @@ $$
   \end{align}
   $$
 
-使用类似于 [定义 1.3.3 (乘积, 余积)](#定义_1.3.3_(乘积,_余积)) 的方式我们可推广并构造出一族范畴的乘积范畴 $\prod_{i \in I} \mathcal{C}_i$, 定义为：
+### 注释 (乘积范畴的推广)
 
-- $\op{Ob}(\prod_{i \in I} \mathcal{C}_i)  \coloneqq\prod_{i \in I} \op{Ob}(\mathcal{C}_i)$;
+利用类似于 [定义 1.3.3 (乘积, 余积)](#定义_1.3.3_(乘积,_余积)) 的手段, 可推广并构造出一族范畴 $(\mathcal{C}_i)_{i \in I}$ 的乘积范畴 $\ds \prod_{i \in I} \mathcal{C}_i$, 定义为：
 
-- $\prod_{i \in I} \mathcal{C}_i( \prod_{i \in I} X_i, \prod_{i \in I} Y_i ) \coloneqq \prod_{i \in I} \mathcal{C}_i(X_i, Y_i)$;
+- $\ds \op{Ob}\b{\prod_{i \in I} \mathcal{C}_i}  \coloneqq\prod_{i \in I} \op{Ob}(\mathcal{C}_i)$;
 
-- $1_{\prod_{i \in I} \mathcal{C}_i} \coloneqq (1_{X_1}, 1_{X_2}, \dots, 1_{X_i}, \dots)$;
+- $\ds \hom{\prod_{i \in I} X_i}{\prod_{i \in I} Y_i} \coloneqq \prod_{i \in I} \mathcal{C}_i(X_i, Y_i)$;
 
-- $\prod_{i \in I} \mathcal{C}_i$ 的合成态射则定义为：
-  $$
-  \begin{align}
-  \prod_{i \in I} \mathcal{C}_i(Y_i, Z_i) \times 
-  \prod_{i \in I} \mathcal{C}_i(X_i, Y_i) & \overset{\circ}{\to} 
-  \prod_{i \in I} \mathcal{C}_i(X_i, Z_i) \\
-  (g_1, g_2, \dots, g_i, \dots) \circ (f_1, f_2, \dots, f_i, \dots) & \mapsto (g_1 \circ f_1, g_2 \circ f_2, \dots, g_i \circ f_i, \dots)
-  \end{align}
-  $$
+- $\ds 1 \coloneqq (1_{X_1}, 1_{X_2}, \dots, 1_{X_i}, \dots)$;
 
-使用与上述同样的方式可构造出对偶的 **余积范畴 (coproduct category)**, 分别记为 $\mathcal{C} + \mathcal{D}$ 或 $\mathcal{C} \oplus \mathcal{D}$ 以及 $\coprod_{i \in I} \mathcal{C}_i$ 或 $\bigoplus_{i \in I} \mathcal{C}_i$, 这里不再一一阐述, 读者可尝试自证其的确构成范畴.
+- $\ds \prod_{i \in I} \mathcal{C}_i$ 的合成态射无非就是元组中逐项态射合成.
+
+对偶的 **余积范畴 (coproduct category)** 亦类似, 分别记为 $\mathcal{C} + \mathcal{D}$ 或 $\mathcal{C} \oplus \mathcal{D}$ 以及 $\ds \coprod_{i \in I} \mathcal{C}_i$ 或 $\ds \bigoplus_{i \in I} \mathcal{C}_i$, 这里不再一一阐述, 读者可尝试自证其的确构成范畴.
 
 {% end %}
