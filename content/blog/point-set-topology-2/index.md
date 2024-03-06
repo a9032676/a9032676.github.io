@@ -49,10 +49,10 @@ mathjax = true
 
 ### 定义 2.1.4 (拓扑基, 子基)
 
-设 $(X, \tau)$ 为拓扑空间, $\beta \sub \tau$ 为 $X$ 中开集的子集合, 则：
+设 $(X, \tau)$ 为拓扑空间, 且 $\beta \sub \tau$ 为 $X$ 中一族开集, 则：
 
-- 称 $\beta$ 为 $\tau$ 的 **拓扑基 (base / basis)** 当对于任意 $O \in \tau$ 是 $\beta$ 中元素的并;
-- 称 $\beta$ 为 $\tau$ 的 **子基 (subbase / subbasis)** 当对于任意 $O \in \tau$ 是 $\beta$ 中元素有限交的并.
+- 称 $\beta$ 为 $\tau$ 的 **拓扑基 (base / basis)**, 当任意开集 $O \in \tau$ 是 $\beta$ 中任意元素的并, 即 $\Forall{\text{开集 $O \in \tau$}} O = \ds \bigcup_{B \in \beta} B$.
+- 称 $\beta$ 为 $\tau$ 的 **子基 (subbase / subbasis)**, 当任意开集 $O \in \tau$ 是 $\beta$ 中元素有限交的并, 即定义 $\ds \mathcal{S}_\beta \coloneqq \Set{ \bigcap_{i \in I}^n B_i : B_i \in \beta }$ 使得 $\Forall{\text{开集 $O \in \tau$}} O = \ds \bigcup_{s \in \mathcal{S}_\beta} s$.
 
 ### 注释
 
@@ -62,7 +62,7 @@ mathjax = true
 
 设 $X$ 为任意集：
 
-1. $X$ 中子集合的搜集 $\beta \sub \mathcal{P}(X)$ 若为 $\tau \sub \mathcal{P}(X)$ 的拓扑基当且仅当：
+1. $X$ 中子集合的搜集 $\beta \sub \mathcal{P}(X)$ 若为 $\tau \sub \mathcal{P}(X)$ 的拓扑基 $\iff$ 以下条件任一成立：
    1. 对于 $X$ 中的任意点 $x \in X$ 至少含于 $\beta$ 中的一个元素中, 即存在 $B \sub \beta$ 使得 $x \in B \in \beta$;
    2. 对于任意 $B_1, B_2 \in \beta$ 且对于任意点 $x \in B_1 \cap B_2$, 存在 $B \in \beta$ 使得 $x \in B \sub B_1 \cap B_2$.
 2. 若 $B \sub \tau$ 为 $X$ 中拓扑 $\tau$ 的子基 $\iff$ $\tau$ 是包含了 $B$ 的最粗拓扑.
@@ -141,8 +141,8 @@ $$
 我们可以从已有的拓扑空间构造出新的空间, 例如以下这些即将提及的例子：
 
 1. [不交并空间](#例子_2.1.12_(不交并空间));
-2. [子空间](#例子_2.1.13_(子空间拓扑));
-3. [商空间](#例子_2.1.14_(商拓扑空间));
+2. [子空间](#定义_2.1.13_(子空间拓扑));
+3. [商空间](#定义_2.1.14_(商拓扑空间));
 4. [乘积空间](#例子_2.1.15_(二元乘积拓扑空间)).
 
 并且于后续章节中我们可将以上这些例子对应到范畴论中, 并作为泛构造的特殊实例.
@@ -158,30 +158,49 @@ $$
 \bigsqcup_{i \in I} * = \op{Disc}(I)
 $$
 
-### 例子 2.1.13 (子空间拓扑)
+### 定义 2.1.13 (子空间拓扑)
 
-设 $(X, \tau_X)$ 为拓扑空间, 且有子集 $S \sub X$, 若 $(S, \tau_S)$ 称为 $(X, \tau_X)$ 的 **拓扑子空间 (topological subspace)**, 当 $S$ 的拓扑 $\tau_S$ 被定义为：
-$$
-\tau_S \coloneqq \Set{ U_S \sub S : \Exists{U_X \in \tau_X} U_S = U_X \cap S }
-$$
-事实上这亦被称为 **包含映射 (inclusion map)** 的 **始拓扑 (initial topology)**, 将于后续章节展开讨论.
+设 $(X, \tau_X)$ 为拓扑空间, 考虑以下资料：
 
-### 例子 2.1.14 (商拓扑空间)
+- 子集 $S \sub X$ (或视为 $\iota : S \hookrightarrow X$);
+- $S$ 的拓扑定义为 $\tau_S \coloneqq \Set{ U_S \sub S : \Exists{U_X \in \tau_X} U_S = U_X \cap S }$.
 
-设 $(X, \tau_X)$ 为拓扑空间, 且令 $R_\sim \sub X \times X$ 为 $X$ 中的等价关系, 则称 $(X/\sim, \tau_{\text{quot}})$ 为 **商拓扑空间 (quotient topological space)**, 且分别定义：
+则以下结论成立：
 
-- 基础集 $X/\sim$ 为以 $R_\sim$ 作等价关系的商集 (即是等价类的集合);
+- 称 $(S, \tau_S)$ 为 $(X, \tau_X)$ 的 **拓扑子空间 (topological subspace)**.
+- 称 $\iota$ 为 **包含映射 (inclusion map)**.
+- 事实上这亦是 $\iota$ 的 **始拓扑 (initial topology)**, 将于后续章节展开讨论.
 
-- 若子集 $O \sub X/\sim$ 是开的 $\iff$ 对于 **典范投射 (canonical projection)** $\pi : X \to X/\sim$, 其原像 $\pi^{-1}(O)$ 于 $X$ 中是开的, 即空间中的拓扑定义为：
+### 定义 2.1.14 (商拓扑空间)
+
+设 $(X, \tau_X)$ 为拓扑空间, 考虑以下资料：
+
+- $R_\sim \sub X \times X$ 为 $X$ 中的等价关系;
+- 商集 $X / \sim$ 为以 $R_\sim$ 作等价关系的商集 (即是等价类的集合);
+- 连续且满的映射 $\pi : X \to X/\sim$;
+- $X / \sim$ 的拓扑记为 $\tau_{X/\sim}$;
+- 满足条件 $\tau_{X/\sim} = \Set{ O \sub X/\op{\sim} : \pi^{-1}(O) \in \tau_{X} }$.
+
+则以下结论成立：
+
+- 资料 $(X/\sim, \tau_{X/\sim})$ 构成拓扑空间, 称为 **商空间 (quotient space)**, 且称其中的拓扑 $\tau_{X/\sim}$ 为 **商拓扑 (quotient topology)**.
+
+- 称 $\pi$ 为 **典范投射 (canonical projection)** 或 **商映射 (quotient map)**, 换句话说 $\pi$ 为商映射当且仅当：
   $$
-  \tau_{\text{quot}} \coloneqq \set{ O \sub X/\sim : \text{$O$ 是 $X/\sim$ 中的开集} } = \set{ O \sub X/\sim : \text{$\pi^{-1}(O)$ 于 $X$ 中是开集} }
+  \Forall{U \sub X/\sim} U \in \tau_{X/\sim} \iff \pi^{-1}(U) \in \tau_X
   $$
 
-事实上这亦被称为 **投射 (projection)** $\pi$ 的 **终拓扑 (final topology)**, 将于后续章节展开讨论.
+- 事实上这亦是投射 $\pi$ 的 **终拓扑 (final topology)**, 将于后续章节展开讨论.
 
 ### 例子 2.1.15 (二元乘积拓扑空间)
 
-对于任意两个拓扑空间 $(X_1, \tau_{X_1})$ 以及 $(X_2, \tau_{X_2})$, 则称 $(X_1 \times X_2, \tau_{X_1 \times X_2})$ 为它们的 **二元乘积拓扑 (binary product topological space)**, 而它的拓扑 $\tau_{X_1 \times X_2}$ 则是由拓扑基 $U_1 \times U_2$ 所生成的, 其中有 $U_1 \in \tau_{X_1}$ 以及 $U_2 \in \tau_{X_2}$, 如下图：
+对于任意两个拓扑空间 $(X_1, \tau_{X_1})$ 以及 $(X_2, \tau_{X_2})$：
+
+- 定义 $X_1 \times X_2$ 的拓扑基 $\beta \sub \tau_{X_1 \times X_2}$ 为 $\set{ U_1 \times U_2 : U_1 \in \tau_{X_1}, U_2 \in \tau_{X_2} }$;
+- 定义拓扑 $\tau_{X_1 \times X_2}$ 为由 $\beta$ 所生成的, 即 $\ds \Set{ \bigcup_{U_1 \times U_2 \in \beta} (U_1 \times U_2) : U_1 \in \tau_{X_1}, U_2 \in \tau_{X_2} }$;
+- 称 $(X_1 \times X_2, \tau_{X_1 \times X_2})$ 为 **二元乘积拓扑空间 (binary product topological space)**.
+
+几何考量则如下图：
 
 ![img](ProductTopology.png)
 
@@ -213,7 +232,7 @@ $$
 
 ### 例子 2.1.18 (仿射空间中的 Zariski 拓扑)
 
-### 例子 2.1.19 (交换环的素数谱上的 Zariski 拓扑)
+### 例子 2.1.19 (交换环的素谱上的 Zariski 拓扑)
 
 ## 2.2. 闭集与闭包
 
@@ -512,14 +531,14 @@ $$
 
 - $\phi$ 构成 frame 同态, 假设有不可约闭集 $X \backslash U_0$, 定义 $\phi : U \mapsto \cases{\empty & 若 $U \sub U_0$ \\ \set{1} & 其他}$, 即分别需证明：
 
-  - $\phi$ 保有任意多的并, 即 $\phi(\bigcup_{i \in I} U_i) = \bigcup_{i \in I} \phi(U_i)$：
+  - $\phi$ 保有任意多的并, 即 $\ds \phi\b{\bigcup_{i \in I} U_i} = \bigcup_{i \in I} \phi(U_i)$：
 
-    - 由于 $\phi(\bigcup_{i \in I} U_i) = \empty$ 当且仅当 $\bigcup_{i \in I} U_i \sub U_0$, 而当任意多的并皆属于 $U_0$ 则意味着有 $U_i \sub U_0$, 因此根据 $\phi$ 的定义有 $\phi(U_i) = \empty$, 使得等式成立：
+    - 由于 $\ds \phi\b{\bigcup_{i \in I} U_i} = \empty$ 当且仅当 $\bigcup_{i \in I} U_i \sub U_0$, 而当任意多的并皆属于 $U_0$ 则意味着有 $U_i \sub U_0$, 因此根据 $\phi$ 的定义有 $\phi(U_i) = \empty$, 使得等式成立：
       $$
       \bigcup_{i \in I} \phi(U_i) = \bigcup_{i \in I} \empty = \empty = \phi \b{ \bigcup_{i \in I} U_i }
       $$
 
-    - 由于 $\phi(\bigcup_{i \in I} U_i) = \set{ 1 }$ 当且仅当 $\bigcup_{i \in I} U_i$ 不为 $U_0$ 的子集, 即 $\bigcup_{i \in I} U_i \sub X \backslash U_0$, 同样有 $U_i \sub X \backslash U_0$ 使得 $\phi(U_i) = \set{1}$, 使得等式成立：
+    - 由于 $\ds \phi\b{\bigcup_{i \in I} U_i} = \set{ 1 }$ 当且仅当 $\bigcup_{i \in I} U_i$ 不为 $U_0$ 的子集, 即 $\bigcup_{i \in I} U_i \sub X \backslash U_0$, 同样有 $U_i \sub X \backslash U_0$ 使得 $\phi(U_i) = \set{1}$, 使得等式成立：
       $$
       \bigcup_{i \in I} \phi(U_i) = \set{1} = \phi\b{ \bigcup_{i \in I} U_i }
       $$
