@@ -83,9 +83,9 @@ mathjax = true
 
 ##### 证明
 
-由于 $U$ 是任意开球的并集 $\iff U = \bigcup_{x_0 \in U} B_{x_0}^{\circ}(\epsilon_{x_0})$ , 现在验证 $\tau_d$ 对 $X$ 满足了拓扑公理：
+由于 $U$ 是任意开球的并集 $\iff U = \ds \bigcup_{x_0 \in U} B_{x_0}^{\circ}(\epsilon_{x_0})$ , 现在验证 $\tau_d$ 对 $X$ 满足了拓扑公理：
 
-1. $\empty \in \tau_d$​ 是显然的, 而无穷多个开球的并显然就有 $\bigcup_{x_0 \in X} B_{x_0}^{\circ}(\epsilon_{x_0}) = X \in \tau_d$​;
+1. $\empty \in \tau_d$​ 是显然的, 而无穷多个开球的并显然就有 $\ds \bigcup_{x_0 \in X} B_{x_0}^{\circ}(\epsilon_{x_0}) = X \in \tau_d$​;
 
 2. 显然任意多个开球的并 $U_1 \cup U_2 \cup \dots \cup U_n \in \tau_d$;
 
@@ -316,7 +316,7 @@ $$
 
 1. 由于 $\op{Cl}(\empty)$ 为包含了 $\empty$ 的最小闭集, 显然包含了 $\empty$ 的最小闭集仍是 $\empty$.
 
-2. $\op{Cl}(A) = \Bigcap{U \sub X\ \text{是闭集} \\ A \sub U} U \sub \Bigcap{U' \sub X\ \text{是闭集} \\ A \sub B \sub U'} U' = \op{Cl}(B)$.
+2. $\ds \op{Cl}(A) = \Bigcap{U \sub X\ \text{是闭集} \\ A \sub U} U \sub \Bigcap{U' \sub X\ \text{是闭集} \\ A \sub B \sub U'} U' = \op{Cl}(B)$.
 
 3. $(\Rightarrow)$ 由于有 $A \sub \op{Cl}(A)$ 以及 $B \sub \op{Cl}(B)$, 那么得 $A \cup B \sub \op{Cl}(A) \cup \op{Cl}(B)$, 且根据 [命题 2.2.2](#命题_2.2.2_(闭集的基本性质)) 的 $(3)$ 得知包含了 $A \cup B$ 的 $\op{Cl}(A) \cup \op{Cl}(B)$ 仍为闭集, 而 $\op{Cl}(A \cup B)$ 为包含了 $A \cup B$ 的最小闭集, 因此 $\op{Cl}(A \cup B) \sub \op{Cl}(A) \cup \op{Cl}(B)$ 成立.
 
@@ -324,7 +324,7 @@ $$
 
 4. 类似于 $(3)$, 由于 $A \sub \op{Cl}(A)$ 以及 $B \sub \op{Cl}(B)$ 可得 $A \cap B \sub \op{Cl}(A) \cap \op{Cl}(B)$, 且根据 [命题 2.2.2](#命题_2.2.2_(闭集的基本性质)) 的 $(2)$ 得知 $\op{Cl}(A) \cap \op{Cl}(B)$ 仍为闭集, 而 $\op{Cl}(A \cap B)$ 为包含了 $A \cap B$ 的最小闭集, 因此 $\op{Cl}(A \cap B) \sub \op{Cl}(A) \cap \op{Cl}(B)$ 成立.
 
-5. $\op{Cl}(\op{Cl}(A)) = \Bigcap{U \sub X\ \text{是闭集} \\ \op{Cl}(A) \sub U} U = \Bigcap{U \sub X\ \text{是闭集} \\ A \sub \op{Cl}(A) \sub U} U = \op{Cl}(A)$.
+5. $\ds \op{Cl}(\op{Cl}(A)) = \Bigcap{U \sub X\ \text{是闭集} \\ \op{Cl}(A) \sub U} U = \Bigcap{U \sub X\ \text{是闭集} \\ A \sub \op{Cl}(A) \sub U} U = \op{Cl}(A)$.
 
 ### 命题 2.2.6 (有限多个并的闭包是闭包的并)
 
@@ -533,12 +533,12 @@ $$
 
   - $\phi$ 保有任意多的并, 即 $\ds \phi\b{\bigcup_{i \in I} U_i} = \bigcup_{i \in I} \phi(U_i)$：
 
-    - 由于 $\ds \phi\b{\bigcup_{i \in I} U_i} = \empty$ 当且仅当 $\bigcup_{i \in I} U_i \sub U_0$, 而当任意多的并皆属于 $U_0$ 则意味着有 $U_i \sub U_0$, 因此根据 $\phi$ 的定义有 $\phi(U_i) = \empty$, 使得等式成立：
+    - 由于 $\ds \phi\b{\bigcup_{i \in I} U_i} = \empty$ 当且仅当 $\ds \bigcup_{i \in I} U_i \sub U_0$, 而当任意多的并皆属于 $U_0$ 则意味着有 $U_i \sub U_0$, 因此根据 $\phi$ 的定义有 $\phi(U_i) = \empty$, 使得等式成立：
       $$
       \bigcup_{i \in I} \phi(U_i) = \bigcup_{i \in I} \empty = \empty = \phi \b{ \bigcup_{i \in I} U_i }
       $$
 
-    - 由于 $\ds \phi\b{\bigcup_{i \in I} U_i} = \set{ 1 }$ 当且仅当 $\bigcup_{i \in I} U_i$ 不为 $U_0$ 的子集, 即 $\bigcup_{i \in I} U_i \sub X \backslash U_0$, 同样有 $U_i \sub X \backslash U_0$ 使得 $\phi(U_i) = \set{1}$, 使得等式成立：
+    - 由于 $\ds \phi\b{\bigcup_{i \in I} U_i} = \set{ 1 }$ 当且仅当 $\ds \bigcup_{i \in I} U_i$ 不为 $U_0$ 的子集, 即 $\bigcup_{i \in I} U_i \sub X \backslash U_0$, 同样有 $U_i \sub X \backslash U_0$ 使得 $\phi(U_i) = \set{1}$, 使得等式成立：
       $$
       \bigcup_{i \in I} \phi(U_i) = \set{1} = \phi\b{ \bigcup_{i \in I} U_i }
       $$

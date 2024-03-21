@@ -17,6 +17,8 @@ mathjax = true
 
 {% caution() %}本文存在部分内容尚未完全施工完毕, 作者将尽快更新！{% end %}
 
+{% mathjax_escape() %}
+
 ## 3.1. 连续函数
 
 ### 定义 3.1.1 (连续函数)
@@ -36,19 +38,16 @@ $$
 
 - 若假设有集合范畴 $\Sets$, 且定义 $\Map{U}{\Top}{\Sets}{(X, \tau_X)}{X}$ 为 **遗忘函子 (forgetful functor)**, 意味着 $U$ 是 **忠实 (faithful)** 的, 即下述映射是单射的：
   $$
-  \map{\op{Top}((X, \tau_X), (Y, \tau_Y))}{\Sets(U((X, \tau_X)), U((Y, \tau_Y)))}{[(X, \tau_X) \overset{\text{连续函数}}{\to} (Y, \tau_Y)]}{[X \overset{\text{函数}}{\to} Y]}
+  \map{\op{Top}((X, \tau_X), (Y, \tau_Y))}{\Sets(U((X, \tau_X)), U((Y, \tau_Y)))}{\bb{(X, \tau_X) \overset{\text{连续函数}}{\to} (Y, \tau_Y)}}{\bb{X \overset{\text{函数}}{\to} Y}}
   $$
 
 - 若任意范畴携带了从其到集合范畴的忠实函子, 则该范畴被称为 **具体范畴 (concrete category)**, 显然 $\Top$ 便是具体范畴.
 
 ### 例子 3.1.3 (乘积拓扑空间的构造是函子式的)
 
-设 $(X_1, \tau_{X_1}), (X_2, \tau_{X_2}), (Y_1, \tau_{Y_1}), (Y_2, \tau_{Y_2})$ 为拓扑空间, 以及一对连续函数：
+考虑以下连续函数：
 $$
-\begin{align}
-f_1 : (X_1, \tau_{X_1}) \to (Y_1, \tau_{Y_1}) \\
-f_2 : (X_2, \tau_{X_2}) \to (Y_2, \tau_{Y_2})
-\end{align}
+f_1 : (X_1, \tau_{X_1}) \to (Y_1, \tau_{Y_1}) \qquad f_2 : (X_2, \tau_{X_2}) \to (Y_2, \tau_{Y_2})
 $$
 则可诱导出它们在基础集的二元积上的函数 $\Map{f_1 \times f_2}{X_1 \times X_2}{Y_1 \times Y_2}{(x_1, x_2)}{(f_1(x_1), f_2(x_2))}$, 且 $f_1 \times f_2$ 亦表示了是从二元乘积拓扑空间 $X_1 \times X_2$ 到 $Y_1 \times Y_2$ 的连续函数, 即：
 $$
@@ -65,8 +64,8 @@ $$
 
 设 $(X, \tau)$ 为拓扑空间, 则必然存在唯一的连续函数：
 
-- 从空拓扑空间到 $X$ 的连续函数 $\empty \overset{\exists!}{\to} X$, 其中 $\empty$ 为 $\Top$ 中的始对象;
-- 从 $X$ 到点拓扑空间的连续函数 $X \overset{\exists!}{\to} *$, 其中 $*$ 为 $\Top$ 中的终对象.
+- 从空拓扑空间到 $X$ 的连续函数 $\empty \overto{\exists!} X$, 其中 $\empty$ 为 $\Top$ 中的始对象;
+- 从 $X$ 到点拓扑空间的连续函数 $X \overto{\exists!} *$, 其中 $*$ 为 $\Top$ 中的终对象.
 
 ### 例子 3.1.5 (常连续函数)
 
@@ -149,7 +148,7 @@ $$
 
 ### 例子 3.1.13 (投射为开连续函数)
 
-设 $(X_1, \tau_{X_1})$ 与 $(X_2, \tau_{X_2})$ 为拓扑空间, 则由它们所组成的乘积拓扑空间的投射 $(X_1 \times X_2, \tau_{X_1 \times X_2}) \overto{\text{pr}_i} (X_i, \tau_{X_i})$ 仍是开映射.
+设 $(X_1, \tau_{X_1})$ 与 $(X_2, \tau_{X_2})$ 为拓扑空间, 则由它们所组成的乘积拓扑空间的投射 $(X_1 \times X_2, \tau_{X_1 \times X_2}) \overto{\op{pr}_i} (X_i, \tau_{X_i})$ 仍是开映射.
 
 ### 定义 3.1.14 (饱和集)
 
@@ -237,3 +236,5 @@ $$
 
 
 未完待续...
+
+{% end %}
