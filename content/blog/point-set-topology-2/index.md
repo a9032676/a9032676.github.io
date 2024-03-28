@@ -17,7 +17,7 @@ mathjax = true
 
 {% good() %}本文内容已完全施工完毕, 读者可放心阅读！{% end %}
 
-{% important() %}本文最后更新日期：2024-04-27{% end %}
+{% important() %}本文最后更新日期：2024-04-28{% end %}
 
 {% mathjax_escape() %}
 
@@ -206,19 +206,20 @@ $$
 
 设 $(X, \tau_X)$ 为拓扑空间, 考虑以下资料：
 
-- $R_\sim \sub X \times X$ 为 $X$ 中的等价关系;
-- 商集 $X / \sim$ 为以 $R_\sim$ 作等价关系的商集 (即是等价类的集合);
-- 连续且满的映射 $\pi : X \to X/\sim$;
-- $X / \sim$ 的拓扑记为 $\tau_{X/\sim}$;
-- 满足条件 $\tau_{X/\sim} = \Set{ O \sub X/\op{\sim} : \pi^{-1}(O) \in \tau_{X} }$.
+- $\mathcal{R} \sub X \times X$ 为 $X$ 中的等价关系;
+- $X /\mathcal{R}$ 为以 $\mathcal{R}$ 作等价关系的商集;
+- 由 $\mathcal{R}$ 诱导出的映射 $\Map{\pi}{X}{X/\mathcal{R}}{x}{[x]_\mathcal{R}}$;
+- $X/\mathcal{R}$ 的拓扑定义为 $\tau_{X/\mathcal{R}} \coloneqq \Set{ [O]_\mathcal{R} \sub X/\mathcal{R} : \pi^{-1}\b{[O]_\mathcal{R}} \in \tau_{X} }$.
 
 则以下结论成立：
 
-- 资料 $(X/\sim, \tau_{X/\sim})$ 构成拓扑空间, 称为 **商空间 (quotient space)**, 且称其中的拓扑 $\tau_{X/\sim}$ 为 **商拓扑 (quotient topology)**.
+- 资料 $\b{X/R, \tau_{X/R}}$ 构成拓扑空间, 称为商掉等价关系 $\mathcal{R}$ 后的 **商空间 (quotient space)**;
+
+- 称其中的拓扑 $\tau_{X/\mathcal{R}}$ 为 **商拓扑 (quotient topology)**.
 
 - 称 $\pi$ 为 **典范投射 (canonical projection)** 或 **商映射 (quotient map)**, 换句话说 $\pi$ 为商映射当且仅当：
   $$
-  \Forall{U \sub X/\sim} U \in \tau_{X/\sim} \iff \pi^{-1}(U) \in \tau_X
+  \Forall{[U]_\mathcal{R} \sub X/\mathcal{R}} [U]_\mathcal{R} \in \tau_{X/\mathcal{R}} \iff \pi^{-1}\b{[U]_\mathcal{R}} \in \tau_X
   $$
 
 - 事实上这亦是投射 $\pi$ 的 **终拓扑 (final topology)**, 将于后续章节展开讨论.
@@ -279,7 +280,7 @@ $$
 
 ### 例子 2.3.8 (交换环的素谱上的 Zariski 拓扑)
 
-我们将上述 [例子 2.3.7](#例子_2.3.7_(仿射空间中的 Zariski 拓扑)) 从域 $k^n$ 推广至任意交换环 $R$, 且令 $\text{PrimeIdl}(R)$ 为所有 $R$ 上素理想的集合, 那么对于任意 $\mathcal{F} \sub R$, 同样可以定义：
+我们将上述 [例子 2.3.7](#例子_2.3.7_(仿射空间中的_Zariski_拓扑)) 从域 $k^n$ 推广至任意交换环 $R$, 且令 $\text{PrimeIdl}(R)$ 为所有 $R$ 上素理想的集合, 那么对于任意 $\mathcal{F} \sub R$, 同样可以定义：
 $$
 V(\mathcal{F}) \coloneqq \Set{ \mathfrak{p} \in \text{PrimeIdl}(R) : \mathcal{F} \sub \mathfrak{p} }
 $$
