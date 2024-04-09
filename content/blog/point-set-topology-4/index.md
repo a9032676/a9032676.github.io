@@ -15,9 +15,9 @@ mathjax = true
 
 +++
 
-{% caution() %}本文存在部分内容尚未完全施工完毕, 作者将尽快更新！{% end %}
+{% good() %}本文内容已完全施工完毕, 读者可放心阅读！{% end %}
 
-{% important() %}本文最后更新日期：2024-04-28{% end %}
+{% important() %}本文最后更新日期：2024-04-09{% end %}
 
 {% mathjax_escape() %}
 
@@ -350,7 +350,7 @@ $$
 
 - 一族闭区间 $\Set{ [a_i, b_i] \sub \R }_{1 \leq i \leq n}$ (其中 $a_i \leq b_i$), 它们连同由 $\R$ 所诱导出的度量拓扑 $\tau_i \sub \mathcal{P}(\R)$ 组成了拓扑空间 $([a_i, b_i], \tau_i)$;
 - 而上述闭区间 $[a_i, b_i]$ 的笛卡尔积连同乘积拓扑 $\tau_\text{Prod}$ 构成了乘积空间 $\ds \b{\prod_{1 \leq i \leq n} [a_i, b_i], \tau_\text{Prod}}$;
-- 子集 $\ds S_\leq = \Set{ \vec{x} \in \R^n : \Forall{1 \leq i \leq n} a_i \leq x_i \leq b_i } \sub \R^n$ 连同 $\R^n$ 中的子拓扑 $\tau_\text{Sub}$ 同样构成子空间 $\ds \b{S_\leq, \tau_\text{Sub}}$. 
+- 子集 $\ds S_\leq \colon \Set{ \vec{x} \in \R^n : \Forall{1 \leq i \leq n} a_i \leq x_i \leq b_i } \sub \R^n$ 连同 $\R^n$ 中的子拓扑 $\tau_\text{Sub}$ 同样构成子空间 $\ds \b{S_\leq, \tau_\text{Sub}}$. 
 
 则可得到以下同胚：
 $$
@@ -403,8 +403,113 @@ $$
 
 ### 例子 4.2.10 (圆柱体, 莫比乌斯带, 环面)
 
+考虑一个正方形, 即 $[0, 1]^2$, 我们可以将它的左右/上下对边分别粘合, 则可构造出环面 $T^2$：
+
+![img](TorusAsQuotientOfSquare.png)
+
+类似地, 如果将左右对边反向粘合, 则可得到以下的莫比乌斯带：
+
+![img](MoebiusStripAsQuotientOfSquare.png)
+
 ### 例子 4.2.11 (球极投影)
 
+设 $n \in \N$, 总是存在去除其中一个极点 $N = (0, \cdots, 0, 1) \in S^n$ 的 $S^n$ 与 $\R^n$ 之间的同胚：
+$$
+\R^{n + 1} \supset S^n \backslash \set{N} \overto{\simeq} \R^n
+$$
+该映射称之为 **球极投影 (stereographic projection)**.
+
+##### 证明
+
+首先对于 $n = 2$ 的情况, 即是说需要构造映射 $S^2 \backslash \set{N} \to \R^2$, 其中 $S^2$ 的极点为 $N = (0, 0, 1) \in \R^3$, 然后可以将带有原点 $O \in \R^3$ 的二维平面视作 $\R^3$ 下的子空间, 例如：
+$$
+\R^2_\text{P} \coloneqq \Set{ (x, y, z) \in \R^3 : z = 0 } \simeq \R^2 \sub \R^3
+$$
+考虑定义一个更广义的映射 $\varphi : S^2 \backslash \set{N} \to \R^2_\text{P}$, 并将球面上的点 $P \in S^2 \backslash \Set{N}$ 映射至投影平面 $\R^2_\text{P}$ 上的一个点 $\varphi(P)$. 从几何上观察, 我们希望构造穿过点 $N, P$, 然后最终抵达 $\varphi(P)$ 的一条直线, 例如以下立体交互图：
+
+<div id="StereoProj-1"></div>
+
+现在将 $N, P, \varphi(P)$ 这些直线上的点皆视为向量, 那么我们知道向量 $P - N$ 与该直线保持同一方向 (但从原点 $O$ 出发), 再乘以任意的 $t \in \R$, 那么我们可以获得一条与上述直线平行的长直线 $t(P - N)$, 再将该直线向上 ($Z$ 轴方向) 抬升至 $N$, 记该直线上的一点为 $\ell = (x, y, z)$, 用公式表达即有：
+$$
+N + t(P - N) = \ell
+$$
+我们亦可用交互图观察：
+
+<div id="StereoProj-2"></div>
+
+可见当 $\ell$ 抬升至 $1$ 时, 它与上方直线重叠, 且将 $\ell$ 限制于 $z = 0$ 时则有 $\ell|_{z = 0} = \varphi(P)$, 可得以下线性方程组：
+$$
+\begin{align}
+N + t(P - N) & = \ell \\
+\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
++ t \begin{bmatrix}p_1 \\ p_2 \\ p_3 - 1 \end{bmatrix}
+& = \begin{bmatrix}x \\ y \\ 0 \end{bmatrix}
+\end{align}
+\implies
+\begin{dcases}
+\begin{aligned}
+t p_1 & = x \\
+t p_2 & = y \\
+1 + t (p_3 - 1) & = 0
+\end{aligned}
+\end{dcases}
+$$
+通过简单的移项, 容易解得 $t = \ds \frac{1}{1 - p_3}$, 因此 $\ds x = \frac{p_1}{1 - p_3}$ 而 $\ds y = \frac{p_2}{1 - p_3}$, 从而建立了映射 $\Map{\varphi}{S^2 \backslash \set{N}}{\R^2_\text{P}}{(p_1, p_2, p_3)}{\b{\frac{p_1}{1 - p_3}, \frac{p_2}{1 - p_3}, 0}}$, 而将该映射推广后则得：
+$$
+\Map{\varphi}{\R^{n + 1} \supset S^n \backslash \set{N}}{\R^n_\text{P}}{(x_1, x_2, \cdots, x_{n + 1})}{\ds \frac{1}{1 - x_{n + 1}} \cdot (x_1, x_2, \cdots, x_n, 0)}
+$$
+再由将 $S^n \backslash \set{N}$ 视作为 $S^{n + 1}$ 的子空间以及有理函数是连续的这个结论, 容易得到上述映射是连续的.
+
+另一方面, 利用与上方同样的手段, 需要找出逆映射 $\varphi^{-1} : \R^2_\text{P} \to S^2 \backslash \set{N}$ 并证明它是连续的. 考虑设 $Q \in \R^2_\text{P}$, 我们知道对任意 $t \in \R$ 有：
+$$
+\begin{align}
+N + t(Q - N) & = \ell \\
+\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
++ t \begin{bmatrix} q_1 \\ q_2 \\ 0 - 1 \end{bmatrix}
+& = \begin{bmatrix} x \\ y \\ z \end{bmatrix}
+\end{align}
+\implies
+\begin{dcases}
+\begin{aligned}
+t q_1 & = x \\
+t q_2 & = y \\
+1 - t & = z
+\end{aligned}
+\end{dcases}
+$$
+而将点 $\ell = (x, y, z)$ 限制于 $S^2 \backslash \set{N} = \Set{ (x, y, z) \in \R^3 : x^2 + y^2 + z^2 = 1 } \backslash \set{N}$ 时则有 $\ell|_{S^n \backslash \set{N}} = \varphi^{-1}(Q)$​, 那么将上述 $x,y,z$ 分别代入：
+$$
+\begin{align}
+(tq_1)^2 + (tq_2)^2 + (1 - t)^2 & = 1 \\
+t^2 q_1^2 + t^2 q_2^2 + \b{1 - 2 t + t^2} & = 1 \\
+\b{q_1^2 + q_2^2 + 1} t^2 - 2t & = 0
+\end{align}
+$$
+通过二次通项公式可得两个关于 $t$ 的解分别为：
+$$
+t = 0 \quad \text{或} \quad t = \frac{2}{q_1^2 + q_2^2 + 1}
+$$
+再将该结果代入到原来的线性方程组, 容易解得 $(x, y, z) = (0, 0, 1) = N$ 或：
+$$
+(x, y, z) = \b{\frac{2 q_1}{q_1^2 + q_2^2 + 1}, \frac{2 q_2}{q_1^2 + q_2^2 + 1}, \frac{q_1^2 + q_2^2 - 1}{q_1^2 + q_2^2 + 1}}
+$$
+从而有 $\Map{\varphi^{-1}}{\R^2_\text{P}}{S^2 \backslash \set{N}}{(q_1, q_2, 0)}{\text{上述结论}}$​, 再将该映射推广后则得：
+$$
+\Map{\varphi^{-1}}{\R^n_\text{P}}{S^n \backslash \set{N}}{(x_1, x_2, \cdots, x_n, 0)}{ \frac{1}{x_1^2 + x_2^2 + \cdots + x_n^2 + 1} \cdot \b{ 2 x_1, 2 x_2, \cdots, 2 x_n, x_1^2 + x_2^2 + \cdots + x_n^2 - 1 }}
+$$
+同样地, 有理函数是连续的, 这便证得了 $S^n \backslash \set{N} \overto{\simeq} \R^n_\text{P} \overto{\simeq} \R^n$.
+
 ### 命题 4.2.12 (欧氏空间维度的拓扑不变量)
+
+对 $n_1, n_2 \in \N$, 只要 $n_1 \neq n_2$, 则以 $n_1, n_2$ 为维度的欧氏空间, 它们之间不同胚, 即 $\R^{n_1} \not\simeq \R^{n_2}$.
+
+### 注释
+
+该命题的证明手段不是初等的, 需要用代数拓扑中的上同调等相关工具方可给出证明, 因此证明从略.
+
+<script>
+    embedNotebook('https://www.wolframcloud.com/obj/a61140c2-141d-4060-84b4-73f5fd8c7d90', 'StereoProj-1', null, Infinity, false);
+    embedNotebook('https://www.wolframcloud.com/obj/8e1ee7a7-5e4c-46cd-aaca-23bc418ed96a', 'StereoProj-2', null, Infinity, false);
+</script>
 
 {% end %}
