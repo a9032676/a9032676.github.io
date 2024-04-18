@@ -26,13 +26,13 @@ mathjax = true
 
 ### 定义 2.1.1 (子环, 理想, 平凡理想, 真理想)
 
-设 $R$ 为环以及非空集 $S \sub R$：
+设 $(R, + , \cdot)$ 为环以及非空集 $I, S \sub R$：
 
-- 若称 $S$ 为 $R$ 的 **子环 (subring)**, 记为 $S < R$, 当 $S$ 的加法及乘法运算于 $R$ 中封闭, 且 $S$ 构成环;
-- 子环 $I < R$ 若被称为 **左理想 (left ideal)**, 当满足了 $\Forall{r \in R} \Forall{x \in I} rx \in I$;
-- 子环 $I < R$ 若被称为 **右理想 (right ideal)**, 当满足了 $\Forall{r \in R} \Forall{x \in I} xr \in I$;
-- 子环 $I < R$ 若被称为 (双边) **理想 (ideal)**, 当 $I$ 同时为左与右理想;
-- 子环中若仅包含零元, 则其称为 **平凡理想 (trivial ideal)** 或 **零理想 (zero ideal)**, 记为 $0$;
+- 称 $(S, +, \cdot)$ 为 $(R, +, \cdot)$ 的 **子环 (subring)**, 记为 $S < R$, 当 $S$ 的加法及乘法运算于 $R$ 中封闭, 且 $(S, + , \cdot)$ 构成环;
+- 称加法子群 $(I, +)$ 为 $R$ 的 **左理想 (left ideal)**, 当满足了 $\Forall{r \in R} \Forall{x \in I} rx \in I$;
+- 称加法子群 $(I, +)$ 为 **右理想 (right ideal)**, 当满足了 $\Forall{r \in R} \Forall{x \in I} xr \in I$;
+- 称加法子群 $(I, +)$ 为 (双边) **理想 (ideal)**, 当 $I$ 同时为左与右理想;
+- 称加法子群 $(I, +)$ 为 **平凡理想 (trivial ideal)** 或 **零理想 (zero ideal)**, 记为 $0$, 当其中仅包含零元;
 - 若环 $R$ 的理想 $I$ 满足了 $I \neq 0$ 以及 $I \neq R$, 则称 $I$ 为 **真理想 (proper ideal)**.
 
 ### 例子 2.1.2 (构成理想的例子与反例)
