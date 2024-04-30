@@ -1,0 +1,97 @@
+<!doctype html><html lang=zh><head><meta charset=UTF-8><meta content="width=device-width,initial-scale=1.0" name=viewport><meta content="light dark" name=color-scheme><title>F-Algebra 简记</title><meta name=description><link href=/img/favicon-32x32.png rel=icon sizes=32x32 type=image/png><link href=/img/favicon-16x16.png rel=icon sizes=16x16 type=image/png><link href=/img/apple-touch-icon.png rel=apple-touch-icon sizes=180x180><link href=https://fonts.googleapis.com rel=preconnect><link href=https://fonts.gstatic.com rel=preconnect><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Jost&display=swap" rel=stylesheet><link href=https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css rel=stylesheet><link href=/css/var.css rel=stylesheet><link href=/css/base.css rel=stylesheet><link href=/css/header.css rel=stylesheet><link href=/css/footer.css rel=stylesheet><link href=/css/post.css rel=stylesheet><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script>MathJax = {
+            loader: {
+                load: ['[custom]/xypic.js'],
+                paths: {custom: 'https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3@3.0.1/build/'}
+            },
+            tex: {
+                packages: {'[+]': ['xypic']},
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                processEscapes: true,
+				macros: {
+					/*
+						MathJax.startup.input[0].configuration.handlers.get("macro")._configuration.items
+					*/
+					// https://github.com/mathjax/MathJax/pull/1810/files
+					AA:"\u00c5",alef:"\\aleph",alefsym:"\\aleph",Alpha:"\\mathrm{A}",and:"\\land",ang:"\\angle",Bbb:"\\mathbb",Beta:"\\mathrm{B}",bold:"\\mathbf",bull:"\\bullet",C:"\\mathbb{C}",Chi:"\\mathrm{X}",clubs:"\\clubsuit",cnums:"\\mathbb{C}",Complex:"\\mathbb{C}",coppa:"\u03D9",Coppa:"\u03D8",Dagger:"\\ddagger",Digamma:"\u03DC",darr:"\\downarrow",dArr:"\\Downarrow",Darr:"\\Downarrow",diamonds:"\\diamondsuit",empty:"\\emptyset",Epsilon:"\\mathrm{E}",Eta:"\\mathrm{H}",euro:"\u20AC",exist:"\\exists",geneuro:"\u20AC",geneuronarrow:"\u20AC",geneurowide:"\u20AC",H:"\\mathbb{H}",hAar:"\\Leftrightarrow",harr:"\\leftrightarrow",Harr:"\\Leftrightarrow",hearts:"\\heartsuit",image:"\\Im",infin:"\\infty",Iota:"\\mathrm{I}",isin:"\\in",Kappa:"\\mathrm{K}",koppa:"\u03DF",Koppa:"\u03DE",lang:"\\langle",larr:"\\leftarrow",Larr:"\\Leftarrow",lArr:"\\Leftarrow",lrarr:"\\leftrightarrow",Lrarr:"\\Leftrightarrow",lrArr:"\\Leftrightarrow",Mu:"\\mathrm{M}",N:"\\mathbb{N}",natnums:"\\mathbb{N}",Nu:"\\mathrm{N}",O:"\\emptyset",officialeuro:"\u20AC",Omicron:"\\mathrm{O}",or:"\\lor",P:"\u00B6",pagecolor:["",1],part:"\\partial",plusmn:"\\pm",Q:"\\mathbb{Q}",R:"\\mathbb{R}",rang:"\\rangle",rarr:"\\rightarrow",Rarr:"\\Rightarrow",rArr:"\\Rightarrow",real:"\\Re",reals:"\\mathbb{R}",Reals:"\\mathbb{R}",Rho:"\\mathrm{P}",sdot:"\\cdot",sampi:"\u03E1",Sampi:"\u03E0",sect:"\\S",spades:"\\spadesuit",stigma:"\u03DB",Stigma:"\u03DA",sub:"\\subset",sube:"\\subseteq",supe:"\\supseteq",Tau:"\\mathrm{T}",textvisiblespace:"\u2423",thetasym:"\\vartheta",uarr:"\\uparrow",uArr:"\\Uparrow",Uarr:"\\Uparrow",varcoppa:"\u03D9",varstigma:"\u03DB",vline:"\\smash{\\large\\lvert}",weierp:"\\wp",Z:"\\mathbb{Z}",Zeta:"\\mathrm{Z}",
+					dashint: "\\unicodeInt{x2A0D}",
+					ddashint: "\\unicodeInt{x2A0E}",
+					oiint: "\\unicodeInt{x222F}",
+					oiiint: "\\unicodeInt{x2230}",
+					ointctrclockwise: "\\unicodeInt{x2233}",
+					varointclockwise: "\\unicodeInt{x2232}",
+					ds: "\\displaystyle",
+					unicodeInt: ["\\mathop{\\vcenter{\\mathchoice{\\huge\\unicode{#1}\\,}{\\unicode{#1}}{\\unicode{#1}}{\\unicode{#1}}}\\,}\\nolimits", 1],
+					underforall: ["\\underset{\\substack{#1}}{\\forall}\\,", 1], Forall: ["\\underforall{#1}", 1],
+					underexists: ["\\underset{\\substack{#1}}{\\exists}\\,", 1], Exists: ["\\underexists{#1}", 1], Exist: ["\\Exists{#1}", 1],
+					underexistsu: ["\\underset{\\substack{#1}}{\\exists!}\\,", 1], ExistsU: ["\\underexistsu{#1}", 1], ExistU: ["\\ExistsU{#1}", 1],
+					underbigcap: ["\\bigcap_{\\substack{#1}}", 1], Bigcap: ["\\underbigcap{#1}", 1],
+					underbigcup: ["\\bigcup_{\\substack{#1}}", 1], Bigcup: ["\\underbigcup{#1}", 1],
+					underbigsqcup: ["\\bigsqcup_{\\substack{#1}}", 1], Bigsqcup: ["\\underbigsqcup{#1}", 1],
+					To: "\\Rightarrow", tto: "\\rightrightarrows",
+                    from: "\\leftarrow", From: "\\Leftarrow", ffrom: "\\leftleftarrows",
+					lto: "\\longrightarrow", lTo: "\\Longrightarrow",
+                    lfrom: "\\longleftarrow", lFrom: "\\Longleftarrow",
+					overto: ["\\overset{#1}{\\to}", 1], overTo: ["\\overset{#1}{\\To}", 1],
+                    overtto: ["\\overset{#1}{\\tto}", 1], undertto: ["\\underset{#1}{\\tto}", 1], overundertto: ["\\overset{#1}{\\underset{#2}{\\tto}}", 2],
+                    overfrom: ["\\overset{#1}{\\from}", 1], overFrom: ["\\overset{#1}{\\From}", 1],
+                    overffrom: ["\\overset{#1}{\\ffrom}", 1], underffrom: ["\\underset{#1}{\\ffrom}", 1], overunderffrom: ["\\overset{#1}{\\underset{#2}{\\ffrom}}", 2],
+					overlto: ["\\overset{#1}{\\lto}", 1], overlTo: ["\\overset{#1}{\\lTo}", 1],
+                    overlfrom: ["\\overset{#1}{\\lfrom}", 1], overlFrom: ["\\overset{#1}{\\lFrom}", 1],
+					mapsfrom: "\\mathrel{\\style{display: inline-block; transform: rotateY(180deg);}{\\mapsto}}",
+					map: ["\\begin{align} #1 & \\to #2 \\\\ #3 & \\mapsto #4 \\end{align}", 4],
+					mmap: ["\\begin{align} #1 & \\to #2 \\\\ #3 & \\mapsto #4 \\\\ #5 & \\mapsto #6 \\end{align}", 6],
+					lrmap: ["\\begin{align} #1 & \\to #2 \\\\ #3 & \\mapsto #4 \\\\ #5 & \\mapsfrom #6 \\end{align}", 6],
+					Map: ["\\begin{align} #2 & \\overset{#1}{\\to} #3 \\\\ #4 & \\overset{\\hphantom{#1}}{\\mapsto} #5 \\end{align}", 5],
+					LMap: ["\\begin{align} #2 & \\overset{#1}{\\from} #3 \\\\ #4 & \\overset{\\hphantom{#1}}{\\mapsfrom} #5 \\end{align}", 5],
+					MMap: ["\\begin{align} #2 & \\overset{#1}{\\to} #3 \\\\ #4 & \\overset{\\hphantom{#1}}{\\mapsto} #5 \\\\ #6 & \\overset{\\hphantom{#1}}{\\mapsto} #7 \\end{align}", 7],
+					LRMap: ["\\begin{align} #2 & \\overset{#1}{\\to} #3 \\\\ #4 & \\overset{\\hphantom{#1}}{\\mapsto} #5 \\\\ #6 & \\overset{\\hphantom{#1}}{\\mapsfrom} #7 \\end{align}", 7],
+                    abs: ["\\left|#1\\right|", 1], Abs: ["\\abs{#1}", 1],
+                    floor: ["\\left\\lfloor #1 \\right\\rfloor", 1], Floor: ["\\floor{#1}", 1],
+                    ceil: ["\\left\\lceil #1 \\right\\rceil", 1], Ceil: ["\\ceil{#1}", 1],
+					b: ["\\left(#1\\right)", 1], bb: ["\\left[#1\\right]", 1], Bb: ["\\left\\{#1\\right\\}", 1],
+					kb: ["\\phantom{#1} \\mathclap{#1 \\phantom{#1}}{\\b{#2}}", 2],
+					kbb: ["\\phantom{#1} \\mathclap{#1 \\phantom{#1}}{\\bb{#2}}", 2],
+					kBb: ["\\phantom{#1} \\mathclap{#1 \\phantom{#1}}{\\Bb{#2}}", 2],
+                    opname: ["\\operatorname{#1}", 1], op: ["\\opname{#1}", 1],
+					// Some common categories notations
+					Sets: "\\mathrm{Set}", Mon: "\\mathrm{Mon}", Grp: "\\mathrm{Grp}", Ab: "\\mathrm{Ab}", Ring: "\\mathrm{Ring}", CRing: "\\mathrm{CRing}", Cat: "\\mathrm{Cat}",
+					Top: "\\mathrm{Top}", PTop: "\\Top^{*/}",
+					Abel: "\\mathrm{Abel}", Vect: "\\mathrm{Vect}", FinVect: "\\mathrm{FinVect}", Mat: "\\mathrm{Mat}",
+					Mod: "\\mathrm{Mod}", Frame: "\\mathrm{Frame}", Locale: "\\mathrm{Locale}",
+					Ch: "\\mathrm{Ch}", Grpd: "\\mathrm{Grpd}", InfGrpd: "\\infin\\Grpd", Core: "\\mathrm{Core}", Fct: "\\mathrm{Fct}",
+					PSh: ["\\kb{\\mathrm{PSh}}{#1}", 1], Psh: ["\\PSh{#1}", 1],
+					Ho: ["\\kb{\\mathrm{Ho}}{#1}", 1],
+					Ob: ["\\kb{\\mathrm{Ob}}{#1}", 1], Mor: ["\\kb{\\mathrm{Mor}}{#1}", 1],
+					Hom: ["\\kb{\\mathrm{Hom}_{#1}}{#2, #3}", 3], hom: ["\\kb{\\mathrm{Hom}}{#1, #2}", 2],
+                    End: ["\\mathrm{End}"], Iso: ["\\mathrm{Iso}"], Aut: ["\\mathrm{Aut}"],
+					compose: "\\circ", comp: "\\compose",
+					id: "\\mathrm{id}", const: "\\mathrm{const}", oppos: "\\mathrm{op}",
+					// Some algebra common notations
+					ker: "\\op{Ker}", Ker: ["\\kb{\\mathrm{Ker}}{#1}", 1],
+                    im: "\\op{Im}", Im: ["\\kb{\\mathrm{Im}}{#1}", 1],
+					Stab: "\\op{Stab}", Orb: "\\op{Orb}", Fix: "\\op{Fix}", Ad: "\\op{Ad}",
+                    // Some topological common notations
+                    disc: "\\op{Disc}", Disc: ["\\kb{\\mathrm{Disc}}{#1}", 1],
+                    codisc: "\\op{CoDisc}", CoDisc: ["\\kb{\\mathrm{CoDisc}}{#1}", 1],
+					cl: "\\op{Cl}", Cl: ["\\kb{\\mathrm{Cl}}{#1}", 1],
+					inter: "\\op{Int}", Inter: ["\\kb{\\mathrm{Int}}{#1}", 1]
+				}
+            },
+            startup: {
+                pageReady: () => {
+                    MathJax.startup.defaultPageReady().then(() => {
+                        toggleXypicTheme(localStorage.getItem('theme')=='dark');
+                    });
+                }
+            },
+			options: {
+				skipHtmlTags: ["script","noscript","style","textarea","pre","code", "span"],
+				processHtmlClass: "md-mathjax-preview|md-inline-math|inline-math-export-jax|math-in-toc",
+				ignoreHtmlClass: 'tex2jax_ignore',
+			}
+        };</script><script async id=MathJax-script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js></script><body><script>if(localStorage.getItem('theme')=='dark'){document.body.classList.add('dark-mode');}</script><header class=blur><div class=top><a class="header blog" href=/blog><i class="ri-quill-pen-line ri-2x"></i><span>Blog</span></a><a class=back href=/><i class="ri-arrow-left-s-line ri-1x"></i><span>Home</span></a><div class=icon><a aria-label=home href=/ id=go-home><i class="ri-user-6-line ri-xl"></i></a><a aria-label="rss feed" href=/blog/rss.xml><i class="ri-rss-line ri-xl"></i></a><button aria-label="dark light mode switch" id=color-toggle><i class="ri-moon-line ri-xl"></i></button><button aria-label="table of content" id=toc-toggle><i class="ri-menu-2-line ri-xl"></i></button></div></div><div id=progress-bar></div></header><div class=wrap><div class=blank></div><main><div id=top></div><article><script crossorigin=anonymous src=https://unpkg.com/wolfram-notebook-embedder@0.3/dist/wolfram-notebook-embedder.min.js></script><script>var embedNotebook = (url, containerID, width, maxHeight, showBorder) => WolframNotebookEmbedder.embed(url, document.getElementById(containerID), {
+                    width: width,
+                    maxHeight: maxHeight,
+                    showBorder: showBorder,
+                });</script><h1>F-Algebra 简记</h1><div id=post-info><div class=date><span id=publish>2022-08-31</span></div><div class=tags><a class=tag href=https://9032676.com/tags/fan-chou-lun><i class="ri-hashtag ri-sm"></i><span>范畴论</span></a><a class=tag href=https://9032676.com/tags/plt><i class="ri-hashtag ri-sm"></i><span>PLT</span></a><a class=tag href=https://9032676.com/tags/han-shu-shi-bian-cheng><i class="ri-hashtag ri-sm"></i><span>函数式编程</span></a></div></div><blockquote class="note good"><i class="ri-thumb-up-line ri-lg"></i><div class=content><p>本文内容已完全施工完毕, 读者可放心阅读！</div></blockquote><h3 id=定义_1.1_($F$-algebra)>定义 1.1 ($F$-algebra)</h3><p>设有范畴 $\mathcal{C}$，自函子 $F : \mathcal{C \to C}$：<ul><li><p>对于 $A \in \mathcal{C}$ 以及态射 $\alpha: F(A) \to A$， 二元组 $(A, \alpha)$ 构成了 <strong>$F$-algebra</strong>. 当中 $A$ 被称为 <strong>carrier of the algebra</strong>.</p> <p>而对于 $F$-algebra 范畴上的同态 $h : (A, \alpha) \to (B, \beta)$，设有 $f : \mathcal{C}(A, B)$，则可使原范畴 $\mathcal{C}$ 有 $f \circ \alpha = \beta \circ F(f)$，即令下图交换：</p></ul><p>$$<br>\xymatrix{<br>F(A) \ar@{->}[d]_{\alpha} \ar@{->}[r]^{F(f)} & F(B) \ar@{->}[d]^{\beta} \\<br>A \ar@{->}[r]_{f} & B<br>}<br><br>$$<ul><li><p>对于 $A \in \mathcal{C}$ 以及态射 $\alpha : A \to F(A)$，二元组 $(A, \alpha)$ 构成了 <strong>$F$-coalgebra</strong>. 当中 $A$ 被称为 <strong>carrier of the coalgebra</strong>.</p> <p>而对于从 $F$-coalgebra 范畴上的同态 $h : (A, \alpha) \to (B, \beta)$，设有 $f : \mathcal{C}(A, B)$，则可使原范畴 $\mathcal{C}$ 有 $\beta \circ f = F(f) \circ \alpha$，即令下图交换： $$<br> \xymatrix{<br> F(A) \ar@{->}[r]^{F(f)} & F(B) \\<br> A \ar@{->}[u]^{\alpha} \ar@{->}[r]_{f} & B \ar@{->}[u]_{\beta}<br> }<br> <br>$$</p></ul><p>其中 $F$-coalgebra 是 $F$-algebra 的对偶概念，而对象为 $F$-(co)algebra，态射为它们之间的同态的范畴则被称为 <strong>$F$-(co)algebra 范畴</strong>，记为 $F\text{-(co)alg}$.<h3 id=例子_1.2>例子 1.2</h3><p>设有群 $\mathcal{G} = (G, m : G \times G \to G)$ 以及 $m(x, y) = x \cdot y$，若将 $\mathcal{G}$ 翻译为范畴框架，那么对于：<ul><li>单位元，可定义为态射 $e : 1 \to G$ 使得 $e(*) = 1$，其中 $1$ 表示为只有单元素集，即 $1 = \set{*}$.<li>逆元，可定义为态射 $i : G \to G$ 使得对于任意 $x \in G$ 有 $i(x) = x^{-1}$.</ul><p>而对于群公理，当然地可将它们定义为函数的形式：<ul><li>结合律：$\forall x \in G, \forall y \in G, \forall z \in G, m(m(x,y), z) = m(x, m(y, z))$,<li>单位元：$\forall x \in G, m(e(*), x) = m(x, e(*)) = x$,<li>逆元：$\forall x \in G, m(i(x), x) = m(x, i(x)) = e(*)$.</ul><p>而上述公理均可表示为下面的交换图： $$<br><br>\xymatrix{<br>G \times (G \times G) \ar@{->}[d]_{{(\text{Id}, m)}} \ar@{->}[rr]^{\cong} & & (G \times G) \times G \ar@{->}[d]^{{(m, \text{Id})}} & & 1 \times G \ar@{->}[rd]_{\cong} \ar@{->}[r]^{{(e,\text{Id})}} & G \times G \ar@{->}[d]|-{m} & G \times 1 \ar@{->}[ld]^{\cong} \ar@{->}[l]_{{(\text{Id}, e)}} & & G \ar@{->}[r]^{{(i, \text{Id})}} \ar@{-->}[d]_{!} & G \times G \ar@{->}[d]|-{m} & G \ar@{->}[l]_{{(\text{Id}, i)}} \ar@{-->}[d]^{!} \\<br>G \times G \ar@{->}[r]_{m} & G & G \times G \ar@{->}[l]^{m} & & & G & & & 1 \ar@{->}[r]_{e} & G & 1 \ar@{->}[l]^{e}<br>}<br><br>$$ 然后对于上述的三条态射 $e,i,m$，便可以使用余积将它们粘合起来，那么便有 $\alpha = e + i + m$： $$<br>\begin{alignat*}{2}<br>\alpha : 1 + G & + G \times G && \to G \\<br>& * && \mapsto 1, \\<br>& x && \mapsto x^{-1}, \\<br>(x & ,y) && \mapsto x \cdot y.<br>\end{alignat*}<br><br>$$ 而群 $\mathcal{G}$ 为 $F$-algebra 则是当 $F$ 为一函子 $F(G) = 1 + G + G \times G$.<h3 id=定义_1.3_(Initial_/_terminal_$F$-algebra)>定义 1.3 (Initial / terminal $F$-algebra)</h3><p>设有范畴 $\mathcal{C}$，自函子 $F : \mathcal{C \to C}$，<strong>initial algebra</strong> 是指在 $F\text{-alg}$ 范畴中的始对象，实质上作为了 inductive types 的范畴语义. 而该概念的对偶 <strong>terminal coalgebra</strong> 则指在 $F\text{-coalg}$ 范畴上的终对象，并且是 coinductive types 的范畴语义.<h3 id=注释_1.4>注释 1.4</h3><p>若设在 $F\text{-alg}$ 范畴上的 initial algebra 为 $(I, in)$，另一对象 $(A, \alpha)$ 以及同态 $h : (I, in) \to (A, \alpha)$，则该同态唯一，并且 unique up to (unique) isomorphism.<h3 id="定理_1.5_(Lambek's_theorem)">定理 1.5 (Lambek's theorem)</h3><p>设范畴 $\mathcal{C}$ 以及其上的自函子 $F$，若 $F\text{-alg}$ 范畴中存在 initial algebra $in : F(I) \to I$，那么 $I$ 将透过 $in$ 同构于 $F(I)$. 反之若 $F\text{-coalg}$ 范畴中有 terminal coalgebra $out : T \to F(T)$，那么 $T$ 将透过 $out$ 同构于 $F(T)$.<h5 id=证明>证明</h5><p>由于我们需要证的是在 $F\text{-}alg$ 范畴上 $F(I)$ 与 $I$ 之间同构，并且默认给出了 $in : F(I) \to I$ 是个 initial algebra，因此需要找到 $in$ 的逆态射 $out : I \to F(I)$，而逆态射则需要满足如下条件：<ol><li>$out$ 为唯一态射（由逆态射的特性给出）;<li>$out \circ in = \text{id}_{F(I)} : F(I) \to F(I)$ 以及 $in \circ out = \text{Id}_I : I \to I$（类似群中左右逆元结合对应的群元保证了单位元）.</ol><p>对于 (1)，由于 $in : F(I) \to I$​ 为始对象，而从始对象到其他对象的态射 $out$​ 必然唯一，因此满足了唯一性.<p>对于 (2)，由于在 $F\text{-alg}$ 上的对象应为 algebra，因此对于这个结合态射中协变位置的 $F(I)$，也必须为 algebra，即应有 $F(in) : F(F(I)) \to F(I)$，使得 $out \circ in = F(in) \circ F(out)$，即令下图交换： $$<br><br>\xymatrix{<br>F(I) \ar@{->}[d]_{in} \ar@{->}[r]^{F(out)} & F(F(I)) \ar@{->}[d]^{F(in)} \\<br>I \ar@{-->}[r]_{out} & F(I)<br>}<br><br>$$ 而对于 $in \circ out : I \to I$，可考虑拓展如上交换图，即增加一个 initial algebra $(I, in : F(I) \to I)$ 到最右侧使得 $in \circ out = \text{Id}_I$，并且 $in \circ F(in) = in \circ F(in) : F(F(I)) \to I$，即有以下交换图： $$<br><br>\xymatrix{<br>F(I) \ar@{->}[d]_{in} \ar@{->}[r]^{F(out)} & F(F(I)) \ar@{->}[d]|-{F(in)} \ar@{->}[r]^{F(in)} & F(I) \ar@{->}[d]^{in} \\<br>I \ar@{-->}[r]_{out} & F(I) \ar@{->}[r]_{in} & I<br>}<br><br>$$ 观察该图可得其外侧的长方形亦是交换图，即有 $in \circ F(in) \circ F(out) = in \circ out \circ in$​​​，并将其化简： $$<br>\begin{align}<br>in \circ F(in) \circ F(out) & = in \circ out \circ in \\<br>F(in) \circ F(out) & = out \circ in \\<br>F(in \circ out) & = \text{Id}_{F(I)} \\<br>in \circ out & = \text{Id}_{I}<br>\end{align}<br><br>$$ 证得 $in \circ out = \text{Id}_I$，最终使得 $out = in^{-1}$，因此有同构 $F(I) \cong I$​​​​​​​，至此证毕.<p>而对偶情况，即 terminal coalgebra，由于思路相近，因此证明略.<h3 id=注释_1.6>注释 1.6</h3><p>而透过不动点的方式进行解释，对于 $F\text{-alg}$​ 范畴上 initial algebra $(I, in)$​ 中的 $I \in \mathcal{C}$​，我们可设该 $I = \text{Fix}(F)$​，即变为 $(\text{Fix}(F), in)$​，那么便有态射 $in : F(\text{Fix}(F)) \to \text{Fix}(F)$​ 以及 $out : \text{Fix}(F) \to F(\text{Fix}(F))$​，那么 $I$​ 亦将被称为自函子 $F$​ 的 <strong>smallest fixed point（最小不动点）</strong>.<p>反之对于 terminal coalgebra $(T, out)$ 则设 $T \in \mathcal{C}$ 为 $T = \text{Fix}(F)$，并且 $T$ 被称为自函子 $F$ 的 <strong>largest fixed point（最大不动点）</strong>.<h3 id=定义_1.7_(Catamorphism_/_anamorphism)>定义 1.7 (Catamorphism / anamorphism)</h3><p>于 $F\text{-alg}$ 范畴中，对于 initial algebra $(I, in : F(\text{Fix}(F)) \to \text{Fix}(F))$ 到任意 $(A, \alpha : F(A) \to A)$ 的同态，态射 $cata(\alpha) : \text{Fix}(F) \to A$ 被称为 $\alpha$ 的 <strong>catamorphism</strong>，并且依据 <em>定理 1.5 (Lambek's theorem)</em>，由于 $F(\text{Fix}(F))$ 与 $\text{Fix}(F)$ 是同构的，便可将 $in$ 反转为其的逆态射 $out$，使得 $cata(\alpha) = \alpha \circ F(cata(\alpha)) \circ out$，令下图交换：<p>$$<br><br>\xymatrix{<br>F(\text{Fix}(F)) \ar@{->}[rr]^{F(cata(\alpha))} & & F(A) \ar@{->}[dd]^{\alpha} \\<br> & & \\<br>\text{Fix}(F) \ar@{->}[uu]^{out} \ar@{-->}[rr]_{cata(\alpha)} & & A<br>}<br><br>$$ 对偶地，于 $F\text{-coalg}$​ 范畴中，对于任意 $(A, \alpha : A \to F(A))$​ 到 terminal coalgebra $(T, out : \text{Fix}(F) \to F(\text{Fix}(F)))$​ 的同态，态射 $ana(\alpha) : A \to \text{Fix}(F)$​ 则被称为 $\alpha$​ 的 <strong>anamorphism</strong>，同样地依据 <em>定理 1.5 (Lambek's theorem)</em>，使得 $ana(\alpha) = in \circ F(ana(\alpha)) \circ \alpha$​（其中 $in$​ 为 $out$​ 的逆态射），令下图交换：<p>$$<br><br>\xymatrix{<br>F(A) \ar@{->}[rr]^{F(ana(\alpha))} & & F(\text{Fix}(F)) \ar@{->}[dd]^{in} \\<br> & & \\<br>A \ar@{-->}[rr]_{ana} \ar@{->}[uu]^{\alpha} & & \text{Fix}(F)<br>}<br><br>$$</article></main><aside class=blur><nav><ul><li><a class=toc-h2 href=#定义_1.1_($F$-algebra)>定义 1.1 ($F$-algebra)</a><li><a class=toc-h2 href=#例子_1.2>例子 1.2</a><li><a class=toc-h2 href=#定义_1.3_(Initial_/_terminal_$F$-algebra)>定义 1.3 (Initial / terminal $F$-algebra)</a><li><a class=toc-h2 href=#注释_1.4>注释 1.4</a><li><a href="#定理_1.5_(Lambek's_theorem)" class=toc-h2>定理 1.5 (Lambek's theorem)</a> <ul><li><a class=toc-h3 href=#证明>证明</a></ul><li><a class=toc-h2 href=#注释_1.6>注释 1.6</a><li><a class=toc-h2 href=#定义_1.7_(Catamorphism_/_anamorphism)>定义 1.7 (Catamorphism / anamorphism)</a></ul></nav><a aria-label="back to top" href=#top id=back-to-top><i class="ri-arrow-up-s-line ri-2x"></i></a></aside></div><footer><div class=copyright>Copyright © 2022 9032676. All rights reserved.</div><div class=credits><span>Powered by <a rel="noreferrer noopener" href=https://www.getzola.org/ target=_blank>Zola</a> and <a rel="noreferrer noopener" href=https://github.com/isunjn/serene target=_blank>Serene</a></span></div></footer><script defer src=/js/dark.js></script><script src=/js/toc.js></script><script src=/js/progress.js></script><script src=/js/lightense.min.js></script><script src=/js/img.js></script>

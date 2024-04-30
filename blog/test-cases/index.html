@@ -1,0 +1,192 @@
+<!doctype html><html lang=zh><head><meta charset=UTF-8><meta content="width=device-width,initial-scale=1.0" name=viewport><meta content="light dark" name=color-scheme><title>测试用例</title><meta name=description><link href=/img/favicon-32x32.png rel=icon sizes=32x32 type=image/png><link href=/img/favicon-16x16.png rel=icon sizes=16x16 type=image/png><link href=/img/apple-touch-icon.png rel=apple-touch-icon sizes=180x180><link href=https://fonts.googleapis.com rel=preconnect><link href=https://fonts.gstatic.com rel=preconnect><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Jost&display=swap" rel=stylesheet><link href=https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css rel=stylesheet><link href=/css/var.css rel=stylesheet><link href=/css/base.css rel=stylesheet><link href=/css/header.css rel=stylesheet><link href=/css/footer.css rel=stylesheet><link href=/css/post.css rel=stylesheet><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script>MathJax = {
+            loader: {
+                load: ['[custom]/xypic.js'],
+                paths: {custom: 'https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3@3.0.1/build/'}
+            },
+            tex: {
+                packages: {'[+]': ['xypic']},
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                processEscapes: true,
+				macros: {
+					/*
+						MathJax.startup.input[0].configuration.handlers.get("macro")._configuration.items
+					*/
+					// https://github.com/mathjax/MathJax/pull/1810/files
+					AA:"\u00c5",alef:"\\aleph",alefsym:"\\aleph",Alpha:"\\mathrm{A}",and:"\\land",ang:"\\angle",Bbb:"\\mathbb",Beta:"\\mathrm{B}",bold:"\\mathbf",bull:"\\bullet",C:"\\mathbb{C}",Chi:"\\mathrm{X}",clubs:"\\clubsuit",cnums:"\\mathbb{C}",Complex:"\\mathbb{C}",coppa:"\u03D9",Coppa:"\u03D8",Dagger:"\\ddagger",Digamma:"\u03DC",darr:"\\downarrow",dArr:"\\Downarrow",Darr:"\\Downarrow",diamonds:"\\diamondsuit",empty:"\\emptyset",Epsilon:"\\mathrm{E}",Eta:"\\mathrm{H}",euro:"\u20AC",exist:"\\exists",geneuro:"\u20AC",geneuronarrow:"\u20AC",geneurowide:"\u20AC",H:"\\mathbb{H}",hAar:"\\Leftrightarrow",harr:"\\leftrightarrow",Harr:"\\Leftrightarrow",hearts:"\\heartsuit",image:"\\Im",infin:"\\infty",Iota:"\\mathrm{I}",isin:"\\in",Kappa:"\\mathrm{K}",koppa:"\u03DF",Koppa:"\u03DE",lang:"\\langle",larr:"\\leftarrow",Larr:"\\Leftarrow",lArr:"\\Leftarrow",lrarr:"\\leftrightarrow",Lrarr:"\\Leftrightarrow",lrArr:"\\Leftrightarrow",Mu:"\\mathrm{M}",N:"\\mathbb{N}",natnums:"\\mathbb{N}",Nu:"\\mathrm{N}",O:"\\emptyset",officialeuro:"\u20AC",Omicron:"\\mathrm{O}",or:"\\lor",P:"\u00B6",pagecolor:["",1],part:"\\partial",plusmn:"\\pm",Q:"\\mathbb{Q}",R:"\\mathbb{R}",rang:"\\rangle",rarr:"\\rightarrow",Rarr:"\\Rightarrow",rArr:"\\Rightarrow",real:"\\Re",reals:"\\mathbb{R}",Reals:"\\mathbb{R}",Rho:"\\mathrm{P}",sdot:"\\cdot",sampi:"\u03E1",Sampi:"\u03E0",sect:"\\S",spades:"\\spadesuit",stigma:"\u03DB",Stigma:"\u03DA",sub:"\\subset",sube:"\\subseteq",supe:"\\supseteq",Tau:"\\mathrm{T}",textvisiblespace:"\u2423",thetasym:"\\vartheta",uarr:"\\uparrow",uArr:"\\Uparrow",Uarr:"\\Uparrow",varcoppa:"\u03D9",varstigma:"\u03DB",vline:"\\smash{\\large\\lvert}",weierp:"\\wp",Z:"\\mathbb{Z}",Zeta:"\\mathrm{Z}",
+					dashint: "\\unicodeInt{x2A0D}",
+					ddashint: "\\unicodeInt{x2A0E}",
+					oiint: "\\unicodeInt{x222F}",
+					oiiint: "\\unicodeInt{x2230}",
+					ointctrclockwise: "\\unicodeInt{x2233}",
+					varointclockwise: "\\unicodeInt{x2232}",
+					ds: "\\displaystyle",
+					unicodeInt: ["\\mathop{\\vcenter{\\mathchoice{\\huge\\unicode{#1}\\,}{\\unicode{#1}}{\\unicode{#1}}{\\unicode{#1}}}\\,}\\nolimits", 1],
+					underforall: ["\\underset{\\substack{#1}}{\\forall}\\,", 1], Forall: ["\\underforall{#1}", 1],
+					underexists: ["\\underset{\\substack{#1}}{\\exists}\\,", 1], Exists: ["\\underexists{#1}", 1], Exist: ["\\Exists{#1}", 1],
+					underexistsu: ["\\underset{\\substack{#1}}{\\exists!}\\,", 1], ExistsU: ["\\underexistsu{#1}", 1], ExistU: ["\\ExistsU{#1}", 1],
+					underbigcap: ["\\bigcap_{\\substack{#1}}", 1], Bigcap: ["\\underbigcap{#1}", 1],
+					underbigcup: ["\\bigcup_{\\substack{#1}}", 1], Bigcup: ["\\underbigcup{#1}", 1],
+					underbigsqcup: ["\\bigsqcup_{\\substack{#1}}", 1], Bigsqcup: ["\\underbigsqcup{#1}", 1],
+					To: "\\Rightarrow", tto: "\\rightrightarrows",
+                    from: "\\leftarrow", From: "\\Leftarrow", ffrom: "\\leftleftarrows",
+					lto: "\\longrightarrow", lTo: "\\Longrightarrow",
+                    lfrom: "\\longleftarrow", lFrom: "\\Longleftarrow",
+					overto: ["\\overset{#1}{\\to}", 1], overTo: ["\\overset{#1}{\\To}", 1],
+                    overtto: ["\\overset{#1}{\\tto}", 1], undertto: ["\\underset{#1}{\\tto}", 1], overundertto: ["\\overset{#1}{\\underset{#2}{\\tto}}", 2],
+                    overfrom: ["\\overset{#1}{\\from}", 1], overFrom: ["\\overset{#1}{\\From}", 1],
+                    overffrom: ["\\overset{#1}{\\ffrom}", 1], underffrom: ["\\underset{#1}{\\ffrom}", 1], overunderffrom: ["\\overset{#1}{\\underset{#2}{\\ffrom}}", 2],
+					overlto: ["\\overset{#1}{\\lto}", 1], overlTo: ["\\overset{#1}{\\lTo}", 1],
+                    overlfrom: ["\\overset{#1}{\\lfrom}", 1], overlFrom: ["\\overset{#1}{\\lFrom}", 1],
+					mapsfrom: "\\mathrel{\\style{display: inline-block; transform: rotateY(180deg);}{\\mapsto}}",
+					map: ["\\begin{align} #1 & \\to #2 \\\\ #3 & \\mapsto #4 \\end{align}", 4],
+					mmap: ["\\begin{align} #1 & \\to #2 \\\\ #3 & \\mapsto #4 \\\\ #5 & \\mapsto #6 \\end{align}", 6],
+					lrmap: ["\\begin{align} #1 & \\to #2 \\\\ #3 & \\mapsto #4 \\\\ #5 & \\mapsfrom #6 \\end{align}", 6],
+					Map: ["\\begin{align} #2 & \\overset{#1}{\\to} #3 \\\\ #4 & \\overset{\\hphantom{#1}}{\\mapsto} #5 \\end{align}", 5],
+					LMap: ["\\begin{align} #2 & \\overset{#1}{\\from} #3 \\\\ #4 & \\overset{\\hphantom{#1}}{\\mapsfrom} #5 \\end{align}", 5],
+					MMap: ["\\begin{align} #2 & \\overset{#1}{\\to} #3 \\\\ #4 & \\overset{\\hphantom{#1}}{\\mapsto} #5 \\\\ #6 & \\overset{\\hphantom{#1}}{\\mapsto} #7 \\end{align}", 7],
+					LRMap: ["\\begin{align} #2 & \\overset{#1}{\\to} #3 \\\\ #4 & \\overset{\\hphantom{#1}}{\\mapsto} #5 \\\\ #6 & \\overset{\\hphantom{#1}}{\\mapsfrom} #7 \\end{align}", 7],
+                    abs: ["\\left|#1\\right|", 1], Abs: ["\\abs{#1}", 1],
+                    floor: ["\\left\\lfloor #1 \\right\\rfloor", 1], Floor: ["\\floor{#1}", 1],
+                    ceil: ["\\left\\lceil #1 \\right\\rceil", 1], Ceil: ["\\ceil{#1}", 1],
+					b: ["\\left(#1\\right)", 1], bb: ["\\left[#1\\right]", 1], Bb: ["\\left\\{#1\\right\\}", 1],
+					kb: ["\\phantom{#1} \\mathclap{#1 \\phantom{#1}}{\\b{#2}}", 2],
+					kbb: ["\\phantom{#1} \\mathclap{#1 \\phantom{#1}}{\\bb{#2}}", 2],
+					kBb: ["\\phantom{#1} \\mathclap{#1 \\phantom{#1}}{\\Bb{#2}}", 2],
+                    opname: ["\\operatorname{#1}", 1], op: ["\\opname{#1}", 1],
+					// Some common categories notations
+					Sets: "\\mathrm{Set}", Mon: "\\mathrm{Mon}", Grp: "\\mathrm{Grp}", Ab: "\\mathrm{Ab}", Ring: "\\mathrm{Ring}", CRing: "\\mathrm{CRing}", Cat: "\\mathrm{Cat}",
+					Top: "\\mathrm{Top}", PTop: "\\Top^{*/}",
+					Abel: "\\mathrm{Abel}", Vect: "\\mathrm{Vect}", FinVect: "\\mathrm{FinVect}", Mat: "\\mathrm{Mat}",
+					Mod: "\\mathrm{Mod}", Frame: "\\mathrm{Frame}", Locale: "\\mathrm{Locale}",
+					Ch: "\\mathrm{Ch}", Grpd: "\\mathrm{Grpd}", InfGrpd: "\\infin\\Grpd", Core: "\\mathrm{Core}", Fct: "\\mathrm{Fct}",
+					PSh: ["\\kb{\\mathrm{PSh}}{#1}", 1], Psh: ["\\PSh{#1}", 1],
+					Ho: ["\\kb{\\mathrm{Ho}}{#1}", 1],
+					Ob: ["\\kb{\\mathrm{Ob}}{#1}", 1], Mor: ["\\kb{\\mathrm{Mor}}{#1}", 1],
+					Hom: ["\\kb{\\mathrm{Hom}_{#1}}{#2, #3}", 3], hom: ["\\kb{\\mathrm{Hom}}{#1, #2}", 2],
+                    End: ["\\mathrm{End}"], Iso: ["\\mathrm{Iso}"], Aut: ["\\mathrm{Aut}"],
+					compose: "\\circ", comp: "\\compose",
+					id: "\\mathrm{id}", const: "\\mathrm{const}", oppos: "\\mathrm{op}",
+					// Some algebra common notations
+					ker: "\\op{Ker}", Ker: ["\\kb{\\mathrm{Ker}}{#1}", 1],
+                    im: "\\op{Im}", Im: ["\\kb{\\mathrm{Im}}{#1}", 1],
+					Stab: "\\op{Stab}", Orb: "\\op{Orb}", Fix: "\\op{Fix}", Ad: "\\op{Ad}",
+                    // Some topological common notations
+                    disc: "\\op{Disc}", Disc: ["\\kb{\\mathrm{Disc}}{#1}", 1],
+                    codisc: "\\op{CoDisc}", CoDisc: ["\\kb{\\mathrm{CoDisc}}{#1}", 1],
+					cl: "\\op{Cl}", Cl: ["\\kb{\\mathrm{Cl}}{#1}", 1],
+					inter: "\\op{Int}", Inter: ["\\kb{\\mathrm{Int}}{#1}", 1]
+				}
+            },
+            startup: {
+                pageReady: () => {
+                    MathJax.startup.defaultPageReady().then(() => {
+                        toggleXypicTheme(localStorage.getItem('theme')=='dark');
+                    });
+                }
+            },
+			options: {
+				skipHtmlTags: ["script","noscript","style","textarea","pre","code", "span"],
+				processHtmlClass: "md-mathjax-preview|md-inline-math|inline-math-export-jax|math-in-toc",
+				ignoreHtmlClass: 'tex2jax_ignore',
+			}
+        };</script><script async id=MathJax-script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js></script><body><script>if(localStorage.getItem('theme')=='dark'){document.body.classList.add('dark-mode');}</script><header class=blur><div class=top><a class="header blog" href=/blog><i class="ri-quill-pen-line ri-2x"></i><span>Blog</span></a><a class=back href=/><i class="ri-arrow-left-s-line ri-1x"></i><span>Home</span></a><div class=icon><a aria-label=home href=/ id=go-home><i class="ri-user-6-line ri-xl"></i></a><a aria-label="rss feed" href=/blog/rss.xml><i class="ri-rss-line ri-xl"></i></a><button aria-label="dark light mode switch" id=color-toggle><i class="ri-moon-line ri-xl"></i></button><button aria-label="table of content" id=toc-toggle><i class="ri-menu-2-line ri-xl"></i></button></div></div><div id=progress-bar></div></header><div class=wrap><div class=blank></div><main><div id=top></div><article><script crossorigin=anonymous src=https://unpkg.com/wolfram-notebook-embedder@0.3/dist/wolfram-notebook-embedder.min.js></script><script>var embedNotebook = (url, containerID, width, maxHeight, showBorder) => WolframNotebookEmbedder.embed(url, document.getElementById(containerID), {
+                    width: width,
+                    maxHeight: maxHeight,
+                    showBorder: showBorder,
+                });</script><h1>测试用例</h1><div id=post-info><div class=date><span id=publish>2022-11-23</span></div><div class=tags><a class=tag href=https://9032676.com/tags/bo-ke-da-jian><i class="ri-hashtag ri-sm"></i><span>博客搭建</span></a></div></div><p>这里是关于博客的一些测试用例, 用作验证一些关于 Zola 的特性.<h2 id=1._Markdown_元素>1. Markdown 元素</h2><h3 id=1.1_标题>1.1 标题</h3><table><thead><tr><th style="text-align: center">Markdown<th style="text-align: center">渲染后输出<tbody><tr><td style="text-align: center"># 标题 1<td style="text-align: center"><h1>标题 1</h1><tr><td style="text-align: center"># 标题 2<td style="text-align: center"><h2>标题 2</h2><tr><td style="text-align: center"># 标题 3<td style="text-align: center"><h3>标题 3</h3><tr><td style="text-align: center"># 标题 4<td style="text-align: center"><h4>标题 4</h4><tr><td style="text-align: center"># 标题 5<td style="text-align: center"><h5>标题 5</h5><tr><td style="text-align: center"># 标题 6<td style="text-align: center"><h6>标题 6</h6></table><h3 id=1.2_文本段落与换行>1.2 文本段落与换行</h3><table><thead><tr><th style="text-align: center">Markdown<th style="text-align: center">渲染后输出<tbody><tr><td style="text-align: center">文本段落测试<td style="text-align: center"><p>文本段落测试<tr><td style="text-align: center">文本段落测试,<br>隔了一行.<td style="text-align: center"><p>文本第一段落测试,<br>隔了一行.</table><h3 id=1.3_字体强调>1.3 字体强调</h3><table><thead><tr><th style="text-align: center">Markdown<th style="text-align: center">渲染后输出<tbody><tr><td style="text-align: center">**加粗字体**<td style="text-align: center"><strong>加粗字体</strong><tr><td style="text-align: center">__加粗字体__<td style="text-align: center"><strong>加粗字体</strong><tr><td style="text-align: center">*斜体*<td style="text-align: center"><em>斜体</em><tr><td style="text-align: center">_斜体_<td style="text-align: center"><em>斜体</em><tr><td style="text-align: center">***斜体加粗***<td style="text-align: center"><em><strong>斜体加粗</strong></em><tr><td style="text-align: center">___斜体加粗___<td style="text-align: center"><em><strong>斜体加粗</strong></em><tr><td style="text-align: center">__*斜体加粗*__<td style="text-align: center"><strong><em>斜体加粗</em></strong><tr><td style="text-align: center">**_斜体加粗_**<td style="text-align: center"><strong><em>斜体加粗</em></strong></table><h3 id=1.4_块引用与段落>1.4 块引用与段落</h3><h4 id=1.4.1_块引用常规示例>1.4.1 块引用常规示例</h4><blockquote><p>这里是一段块引用的示例</blockquote><h5 id=输入为:>输入为:</h5><pre style=background-color:#2e3440;color:#d8dee9;><code><span>> 这里是一段块引用的示例
+</span></code></pre><h4 id=1.4.2_多段落的块引用>1.4.2 多段落的块引用</h4><blockquote><p>这里是块引用的第一个段落的第一行, 这里是第一段的第二行<p>而这里是第二个段落</blockquote><h5 id=输入为:-1>输入为:</h5><pre style=background-color:#2e3440;color:#d8dee9;><code><span>> 这里是块引用的第一个段落的第一行,
+</span><span>> 这里是第一段的第二行
+</span><span>> 
+</span><span>> 而这里是第二个段落
+</span></code></pre><h4 id=1.4.3_内嵌的块引用>1.4.3 内嵌的块引用</h4><blockquote><p>第一层<blockquote><p>第二层<blockquote><p>第三层</blockquote></blockquote></blockquote><h5 id=输入为:-2>输入为:</h5><pre style=background-color:#2e3440;color:#d8dee9;><code><span>> 第一层
+</span><span>>
+</span><span>>> 第二层
+</span><span>>>
+</span><span>>>> 第三层
+</span></code></pre><h4 id=1.4.4_块引用与其他元素>1.4.4 块引用与其他元素</h4><blockquote><h4 id=4_级标题>4 级标题</h4><p>我可以列举一些东西, 例如:<ul><li>第一项<li>第二项</ul><p>然后 <strong>加粗</strong> 又可以 <em>斜体化</em>.</blockquote><h5 id=输入为:-3>输入为:</h5><pre style=background-color:#2e3440;color:#d8dee9;><code><span>>#### 4 级标题
+</span><span>>
+</span><span>>我可以列举一些东西, 例如:
+</span><span>>
+</span><span>>- 第一项
+</span><span>>- 第二项
+</span><span>>
+</span><span>>然后 **加粗** 又可以 *斜体化*.
+</span></code></pre><h3 id=1.5_列表>1.5 列表</h3><h4 id=1.5.1_有序列表>1.5.1 有序列表</h4><table><thead><tr><th style="text-align: center">Markdown<th style="text-align: center">渲染后输出<tbody><tr><td style="text-align: center">1. 第一项<br>2. 第二项<br>3. 第三项<br>4. 第四项<td style="text-align: center"><ol><li>第一项<li>第二项<li>第三项<li>第四项</ol><tr><td style="text-align: center">1. 第一项<br>1. 第二项<br>1. 第三项<br>1. 第四项<td style="text-align: center"><ol><li>第一项<li>第二项<li>第三项<li>第四项</ol><tr><td style="text-align: center">1. 第一项<br>8. 第二项<br>3. 第三项<br>5. 第四项<td style="text-align: center"><ol><li>第一项<li>第二项<li>第三项<li>第四项</ol></table><h4 id=1.5.2_有序的内嵌列表>1.5.2 有序的内嵌列表</h4><ol><li>第一项<li>第二项<li>第三项 <ol><li>第三项内嵌第一项<li>第三项内嵌第二项</ol><li>第四项</ol><h5 id=输入为:-4>输入为:</h5><pre style=background-color:#2e3440;color:#d8dee9;><code><span>1. 第一项
+</span><span>2. 第二项
+</span><span>3. 第三项
+</span><span>   1. 第三项内嵌第一项
+</span><span>   2. 第三项内嵌第二项
+</span><span>4. 第四项
+</span></code></pre><h4 id=1.5.3_无序列表>1.5.3 无序列表</h4><table><thead><tr><th style="text-align: center">Markdown<th style="text-align: center">渲染后输出<tbody><tr><td style="text-align: center">- 第一项<br>- 第二项<br>- 第三项<br>- 第四项<td style="text-align: center"><ul><li>第一项<li>第二项<li>第三项<li>第四项</ul><tr><td style="text-align: center">* 第一项<br>* 第二项<br>* 第三项<br>* 第四项<td style="text-align: center"><ul><li>第一项<li>第二项<li>第三项<li>第四项</ul><tr><td style="text-align: center">+ 第一项<br>+ 第二项<br>+ 第三项<br>+ 第四项<td style="text-align: center"><ul><li>第一项<li>第二项<li>第三项<li>第四项</ul></table><h4 id=1.5.4_无序的内嵌列表>1.5.4 无序的内嵌列表</h4><ul><li>第一项<li>第二项<li>第三项 <ul><li>第三项内嵌第一项<li>第三项内嵌第二项</ul><li>第四项</ul><h5 id=输入为:-5>输入为:</h5><pre style=background-color:#2e3440;color:#d8dee9;><code><span>- 第一项
+</span><span>- 第二项
+</span><span>- 第三项
+</span><span>  - 第三项内嵌第一项
+</span><span>  - 第三项内嵌第二项
+</span><span>- 第四项
+</span></code></pre><h4 id=1.5.5_有序列表中内嵌无序列表>1.5.5 有序列表中内嵌无序列表</h4><ol><li>第一项<li>第二项<li>第三项 <ul><li>第三项内嵌第一项<li>第三项内嵌第二项</ul><li>第四项</ol><h5 id=输入为:-6>输入为:</h5><pre style=background-color:#2e3440;color:#d8dee9;><code><span>1. 第一项
+</span><span>2. 第二项
+</span><span>3. 第三项
+</span><span>   - 第三项内嵌第一项
+</span><span>   - 第三项内嵌第二项
+</span><span>4. 第四项
+</span></code></pre><h4 id=1.5.6_列表与其他元素混合>1.5.6 列表与其他元素混合</h4><ol><li>第一项<li>第二项的第一个段落 第二项的另二个段落<li>第三项 <ul><li>第三项内嵌第一项<li>第三项内嵌第二项</ul><li>第四项 <blockquote><p>第四项中的引用块</blockquote></ol><h5 id=输入为:-7>输入为:</h5><pre style=background-color:#2e3440;color:#d8dee9;><code><span>1. 第一项
+</span><span>2. 第二项的第一个段落
+</span><span>   第二项的另二个段落
+</span><span>3. 第三项
+</span><span>   - 第三项内嵌第一项
+</span><span>   - 第三项内嵌第二项
+</span><span>4. 第四项
+</span><span>   > 第四项中的引用块
+</span></code></pre><h3 id=1.6_代码块>1.6 代码块</h3><pre class=language-java data-lang=java style=background-color:#2e3440;color:#d8dee9;><code class=language-java data-lang=java><span style=color:#8fbcbb;>System</span><span style=color:#eceff4;>.</span><span>out</span><span style=color:#eceff4;>.</span><span style=color:#88c0d0;>println</span><span>(</span><span style=color:#a3be8c;>"Hello world"</span><span>)
+</span></code></pre><h5 id=输入为:-8>输入为:</h5><pre style=background-color:#2e3440;color:#d8dee9;><code><span>```
+</span><span>System.out.println("Hello world")
+</span><span>```
+</span></code></pre><h3 id=1.7_短语上的代码块>1.7 短语上的代码块</h3><table><thead><tr><th style="text-align: center">Markdown<th style="text-align: center">渲染后输出<tbody><tr><td style="text-align: center">`这里是短语上的代码块`<td style="text-align: center"><code>这里是短语上的代码块</code><tr><td style="text-align: center">``使用双引号禁止该块内的 `单引号` 被转义``<td style="text-align: center"><code>使用双引号禁止该块内的 `单引号` 被转义</code></table><h3 id=1.8_分割线>1.8 分割线</h3><p>第一行<hr><p>被分割了的第二行<hr><p>被分割了的第三行<hr><p>最后的一行<h5 id=输入为:-9>输入为:</h5><pre style=background-color:#2e3440;color:#d8dee9;><code><span>第一行
+</span><span>***
+</span><span>被分割了的第二行
+</span><span>
+</span><span>---
+</span><span>
+</span><span>被分割了的第三行
+</span><span>______________
+</span><span>最后的一行
+</span></code></pre><h3 id=1.10_链接>1.10 链接</h3><h4 id=1.10.1_内部链接>1.10.1 内部链接</h4><p><a href=https://9032676.com/blog/test-cases/#1._Markdown_%E5%85%83%E7%B4%A0>跳转到 Markdown 元素</a><p><a href=https://9032676.com/blog/test-cases/#2._$%5Ctext%7BMathJax%7D$>跳转到 $\text{MathJax}$</a><p><a href=https://9032676.com/blog/test-cases/#3._Shortcodes>跳转到 Shortcodes</a><h5 id=输入为:-10>输入为:</h5><pre style=background-color:#2e3440;color:#d8dee9;><code><span>[跳转到 Markdown 元素](#1._Markdown_元素)
+</span><span>
+</span><span>[跳转到 $\text{MathJax}$](#2._$\text{MathJax}$)
+</span><span>
+</span><span>[跳转到 Shortcodes](#3._Shortcodes)
+</span></code></pre><h4 id=1.10.2_外部链接>1.10.2 外部链接</h4><p><a rel="nofollow noreferrer" href=https://www.baidu.com>跳转到百度</a><p><a rel="nofollow noreferrer" title="赞美 Google" href=https://www.google.com>跳转到谷歌</a><p><a rel="nofollow noreferrer" href=https://github.com title=程序员的圣地>跳转到 Github</a><h5 id=输入为:-11>输入为:</h5><pre style=background-color:#2e3440;color:#d8dee9;><code><span>[跳转到百度](https://www.baidu.com)
+</span><span>
+</span><span>[跳转到谷歌](https://www.google.com "赞美 Google")
+</span><span>
+</span><span>[跳转到 Github](https://github.com "程序员的圣地")
+</span></code></pre><h4 id=1.10.3_URL_与_Email_地址>1.10.3 URL 与 Email 地址</h4><p><a rel="nofollow noreferrer" href=https://9032676.com>https://9032676.com</a><p><a href=mailto:9032676@gmail.com>9032676@gmail.com</a><h5 id=输入为:-12>输入为:</h5><pre style=background-color:#2e3440;color:#d8dee9;><code><span>&LThttps://9032676.com>
+</span><span>
+</span><span>&LT9032676@gmail.com>
+</span></code></pre><h4 id=1.10.4_强调链接>1.10.4 强调链接</h4><p><a rel="nofollow noreferrer" href=https://www.baidu.com>跳转到<em>百度</em></a><p><a rel="nofollow noreferrer" title="赞美 Google" href=https://www.google.com>跳转到<strong>谷歌</strong></a><p><a rel="nofollow noreferrer" href=https://github.com title=程序员的圣地><em><strong>跳转到 Github</strong></em></a><h5 id=输入为:-13>输入为:</h5><pre style=background-color:#2e3440;color:#d8dee9;><code><span>[跳转到*百度*](https://www.baidu.com)
+</span><span>
+</span><span>[跳转到**谷歌**](https://www.google.com "赞美 Google")
+</span><span>
+</span><span>[***跳转到 Github***](https://github.com "程序员的圣地")
+</span></code></pre><h4 id=1.10.5_类引用链接>1.10.5 类引用链接</h4><p><a rel="nofollow noreferrer" href=https://9032676.com title=点击回到博客首页>我的博客首页</a><p><a rel="nofollow noreferrer" title="点击跳转到 Zola 官网" href=https://www.zola.com/>Zola 官网</a><h5 id=输入为:-14>输入为:</h5><pre style=background-color:#2e3440;color:#d8dee9;><code><span>[我的博客首页][1]
+</span><span>
+</span><span>[Zola 官网][2]
+</span><span>
+</span><span>[1]: &LThttps://9032676.com> "点击回到博客首页"
+</span><span>[2]: https://www.zola.com/	"点击跳转到 Zola 官网"
+</span></code></pre><h3 id=1.11_图片>1.11 图片</h3><p><img alt=我是单纯猫 src=https://9032676.com/blog/test-cases/%E6%88%91%E6%98%AF%E5%8D%95%E7%BA%AF%E7%8C%AB.jpg><p><img alt=我是短正合猫 src=https://9032676.com/blog/test-cases/%E6%88%91%E6%98%AF%E7%9F%AD%E6%AD%A3%E5%90%88%E7%8C%AB.jpg><h5 id=输入为:-15>输入为:</h5><pre style=background-color:#2e3440;color:#d8dee9;><code><span>![我是单纯猫](我是单纯猫.jpg)
+</span><span>
+</span><span>![我是短正合猫](我是短正合猫.jpg)
+</span></code></pre><h2 id=2._$\text{MathJax}$>2. $\text{MathJax}$</h2><h3 id=2.1_常规示例>2.1 常规示例</h3><p>$$<br>f(x) = \int_{-\infty}^\infin \hat f(\xi) e^{2 \pi i \xi x}\ d\xi<br><br>$$<pre class=language-latex data-lang=latex style=background-color:#2e3440;color:#d8dee9;><code class=language-latex data-lang=latex><span>f(x) = </span><span style=color:#88c0d0;>\int</span><span>_{-</span><span style=color:#88c0d0;>\infty</span><span>}^</span><span style=color:#88c0d0;>\infin \hat</span><span> f(</span><span style=color:#88c0d0;>\xi</span><span>) e^{2 </span><span style=color:#88c0d0;>\pi</span><span> i </span><span style=color:#88c0d0;>\xi</span><span> x}</span><span style=color:#ebcb8b;>\ </span><span>d</span><span style=color:#88c0d0;>\xi
+</span></code></pre><h3 id=2.2_环境示例>2.2 环境示例</h3><table><thead><tr><th style="text-align: center">MathJax<th style="text-align: center">渲染后的公式<tbody><tr><td style="text-align: center"><code>\begin{matrix} a & b \\ c & d \end{matrix}</code><td style="text-align: center">$$\begin{matrix} a & b \\ c & d \end{matrix}<br>$$<tr><td style="text-align: center"><code>\begin{pmatrix} a & b \\ c & d \end{pmatrix}</code><td style="text-align: center">$$\begin{pmatrix} a & b \\ c & d \end{pmatrix}<br>$$<tr><td style="text-align: center"><code>\begin{vmatrix} a & b \\ c & d \end{vmatrix}</code><td style="text-align: center">$$\begin{vmatrix} a & b \\ c & d \end{vmatrix}<br>$$<tr><td style="text-align: center"><code>\begin{Bmatrix} a & b \\ c & d \end{Bmatrix}</code><td style="text-align: center">$$\begin{Bmatrix} a & b \\ c & d \end{Bmatrix}<br>$$<tr><td style="text-align: center"><code>\begin{array}{cc} a & b \\ c & d \end{array}</code><td style="text-align: center">$$\begin{array}{cc} a & b \\ c & d \end{array}<br>$$<tr><td style="text-align: center"><code>\begin{bmatrix} a & b \\ c & d \end{bmatrix}</code><td style="text-align: center">$$\begin{bmatrix} a & b \\ c & d \end{bmatrix}<br>$$<tr><td style="text-align: center"><code>\begin{Vmatrix} a & b \\ c & d \end{Vmatrix}</code><td style="text-align: center">$$\begin{Vmatrix} a & b \\ c & d \end{Vmatrix}<br>$$<tr><td style="text-align: center"><code>\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}</code><td style="text-align: center">$\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}$<tr><td style="text-align: center"><code>\def \arraystretch{1.5} \begin{array}{c:c:c} a & b & c \\</code> <br><code>\hline d & e & f \\ \hdashline g & h & i \end{array}</code><td style="text-align: center">$$\def \arraystretch{1.5} \begin{array}{c:c:c} a & b & c \\ \hline d & e & f \\ \hdashline g & h & i \end{array}<br>$$<tr><td style="text-align: center"><code>x = \begin{cases} a & \text{if $b$} \\</code><br><code>c & \text{if $d$} \end{cases}</code><td style="text-align: center">$$x = \begin{cases} a & \text{if $b$} \\ c & \text{if $d$} \end{cases}<br>$$<tr><td style="text-align: center"><code>\begin{rcases} a & \text{if $b$} \\</code><br><code>c & \text{if $d$} \end{rcases} \Rightarrow \dots</code><td style="text-align: center">$$\begin{rcases} a & \text{if $b$} \\ c & \text{if $d$} \end{rcases} \Rightarrow \dots<br>$$<tr><td style="text-align: center"><code>\sum_{\begin{subarray}{l} i \in \Lambda \\</code><br><code>0&LTj&LTn \end{subarray}}</code><td style="text-align: center">$$\sum_{\begin{subarray}{l} i \in \Lambda \\ 0&LTj&LTn \end{subarray}}<br>$$</table><h3 id=2.3_Xypic_拓展的交换图>2.3 Xypic 拓展的交换图</h3><p>$$<br>\xymatrix{<br>U \ar@/_/[ddr]_y \ar@/^/[drr]^x<br>\ar@{.>}[dr]|-{(x,y)} \\<br>& X \times_Z Y \ar[d]^q \ar[r]_p<br>& X \ar[d]_f \\<br>& Y \ar[r]^g & Z<br>}<br><br>$$<h5 id=输入为:-16>输入为:</h5><pre class=language-latex data-lang=latex style=background-color:#2e3440;color:#d8dee9;><code class=language-latex data-lang=latex><span style=color:#88c0d0;>\xymatrix</span><span>{
+</span><span>U </span><span style=color:#88c0d0;>\ar@</span><span>/_/[ddr]_y </span><span style=color:#88c0d0;>\ar@</span><span>/^/[drr]^x
+</span><span style=color:#88c0d0;>\ar@</span><span>{.>}[dr]|-{(x,y)} \\
+</span><span>& X </span><span style=color:#88c0d0;>\times</span><span>_Z Y </span><span style=color:#88c0d0;>\ar</span><span>[d]^q </span><span style=color:#88c0d0;>\ar</span><span>[r]_p
+</span><span>& X </span><span style=color:#88c0d0;>\ar</span><span>[d]_f \\
+</span><span>& Y </span><span style=color:#88c0d0;>\ar</span><span>[r]^g & Z
+</span><span>}
+</span></code></pre><h3 id=2.4_内联公式>2.4 内联公式</h3><p>这里是一段内联公式 $a + b = c$ 的测试案例.<p>于内联公式中使用 <code>\begin{pmatrix}...\end{pmatrix}</code> 环境, 例如矩阵 $\begin{pmatrix} a & b \\ c & d \end{pmatrix}$.<h3 id=2.5_禁止_Markdown_符号转义>2.5 禁止 Markdown 符号转义</h3><p><code>_</code> 禁止转义为 <em>斜体</em>, 例如: $x_{i} y_{j}$, 其中输入为: <code>x_{i} y_{j}</code>.<p><code>**</code> 禁止转义为 <strong>加粗</strong>, 例如: $**加粗**$, 其中输入为: <code>**加粗**</code>.<h3 id=2.6_忽略_MathJax_注释内容>2.6 忽略 MathJax 注释内容</h3><p>$$<br><br>\text{这一段存在注释的 MathJax}<br><br>$$<h5 id=输入为:-17>输入为:</h5><pre class=language-latex data-lang=latex style=background-color:#2e3440;color:#d8dee9;><code class=language-latex data-lang=latex><span style=color:#616e88;>% 这里是注释
+</span><span style=color:#88c0d0;>\text</span><span>{这一段存在注释的 MathJax}
+</span></code></pre><h3 id=2.7_自定义宏>2.7 自定义宏</h3><h4 id=2.7.1_常用符号>2.7.1 常用符号</h4><table><thead><tr><th style="text-align: center">MathJax<th style="text-align: center">渲染后公式<tbody><tr><td style="text-align: center"><code>\underforall{S \sub X \\ T \sub S}</code><br><code>\Forall{S \sub X \\ T \sub S}</code><td style="text-align: center">$$\Forall{S \sub X \\ T \sub S}<br>$$<tr><td style="text-align: center"><code>\underexists{S \sub X \\ T \sub S}</code><br><code>\Exists{S \sub X \\ T \sub S}</code><br><code>\Exist{S \sub X \\ T \sub S}</code><td style="text-align: center">$$\Exists{S \sub X \\ T \sub S}<br>$$<tr><td style="text-align: center"><code>\underbigcap{i \in I \\ j < i \leq k} S_i</code><br><code>\Bigcap{i \in I \\ j < i \leq k} S_i</code><td style="text-align: center">$$\Bigcap{i \in I \\ j < i \leq k} S_i<br>$$<tr><td style="text-align: center"><code>\underbigcup{i \in I \\ j < i \leq k} S_i</code><br><code>\Bigcup{i \in I \\ j < i \leq k} S_i</code><td style="text-align: center">$$\Bigcup{i \in I \\ j < i \leq k} S_i<br>$$<tr><td style="text-align: center"><code>\underbigsqcup{i \in I \\ j < i \leq k} S_i</code><br><code>\Bigsqcup{i \in I \\ j < i \leq k} S_i</code><td style="text-align: center">$$\Bigsqcup{i \in I \\ j < i \leq k} S_i<br>$$<tr><td style="text-align: center"><code>\map{X}{Y}{x}{f(x)}</code><td style="text-align: center">$$\map{X}{Y}{x}{f(x)}<br>$$<tr><td style="text-align: center"><code>\Map{\varphi}{X}{Y}{x}{f(x)}</code><td style="text-align: center">$$\Map{\varphi}{X}{Y}{x}{f(x)}<br>$$<tr><td style="text-align: center"><code>\opname{Ker} f</code><br><code>\op{Ker} f</code><td style="text-align: center">$$\op{Ker} f<br>$$</table><h2 id=3._Shortcodes>3. Shortcodes</h2><h3 id=3.1_原始文本>3.1 原始文本</h3> 这是一段原始文本<h5 id=输入为:-18>输入为:</h5><pre style=background-color:#2e3440;color:#d8dee9;><code><span>{% raw() %}这是一段原始文本{% end %}
+</span></code></pre></article></main><aside class=blur><nav><ul><li><a class=toc-h2 href=#1._Markdown_元素>1. Markdown 元素</a> <ul><li><a class=toc-h3 href=#1.1_标题>1.1 标题</a><li><a class=toc-h3 href=#1.2_文本段落与换行>1.2 文本段落与换行</a><li><a class=toc-h3 href=#1.3_字体强调>1.3 字体强调</a><li><a class=toc-h3 href=#1.4_块引用与段落>1.4 块引用与段落</a><li><a class=toc-h3 href=#1.5_列表>1.5 列表</a><li><a class=toc-h3 href=#1.6_代码块>1.6 代码块</a><li><a class=toc-h3 href=#1.7_短语上的代码块>1.7 短语上的代码块</a><li><a class=toc-h3 href=#1.8_分割线>1.8 分割线</a><li><a class=toc-h3 href=#1.10_链接>1.10 链接</a><li><a class=toc-h3 href=#1.11_图片>1.11 图片</a></ul><li><a class=toc-h2 href=#2._$\text{MathJax}$>2. $\text{MathJax}$</a> <ul><li><a class=toc-h3 href=#2.1_常规示例>2.1 常规示例</a><li><a class=toc-h3 href=#2.2_环境示例>2.2 环境示例</a><li><a class=toc-h3 href=#2.3_Xypic_拓展的交换图>2.3 Xypic 拓展的交换图</a><li><a class=toc-h3 href=#2.4_内联公式>2.4 内联公式</a><li><a class=toc-h3 href=#2.5_禁止_Markdown_符号转义>2.5 禁止 Markdown 符号转义</a><li><a class=toc-h3 href=#2.6_忽略_MathJax_注释内容>2.6 忽略 MathJax 注释内容</a><li><a class=toc-h3 href=#2.7_自定义宏>2.7 自定义宏</a></ul><li><a class=toc-h2 href=#3._Shortcodes>3. Shortcodes</a> <ul><li><a class=toc-h3 href=#3.1_原始文本>3.1 原始文本</a></ul></ul></nav><a aria-label="back to top" href=#top id=back-to-top><i class="ri-arrow-up-s-line ri-2x"></i></a></aside></div><footer><div class=copyright>Copyright © 2022 9032676. All rights reserved.</div><div class=credits><span>Powered by <a rel="noreferrer noopener" href=https://www.getzola.org/ target=_blank>Zola</a> and <a rel="noreferrer noopener" href=https://github.com/isunjn/serene target=_blank>Serene</a></span></div></footer><script defer src=/js/dark.js></script><script src=/js/toc.js></script><script src=/js/progress.js></script><script src=/js/lightense.min.js></script><script src=/js/img.js></script><script src=https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js></script><script>mermaid.initialize({ startOnLoad: true });</script>

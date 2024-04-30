@@ -1,0 +1,97 @@
+<!doctype html><html lang=zh><head><meta charset=UTF-8><meta content="width=device-width,initial-scale=1.0" name=viewport><meta content="light dark" name=color-scheme><title>何为至多有限多个例外</title><meta name=description><link href=/img/favicon-32x32.png rel=icon sizes=32x32 type=image/png><link href=/img/favicon-16x16.png rel=icon sizes=16x16 type=image/png><link href=/img/apple-touch-icon.png rel=apple-touch-icon sizes=180x180><link href=https://fonts.googleapis.com rel=preconnect><link href=https://fonts.gstatic.com rel=preconnect><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Jost&display=swap" rel=stylesheet><link href=https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css rel=stylesheet><link href=/css/var.css rel=stylesheet><link href=/css/base.css rel=stylesheet><link href=/css/header.css rel=stylesheet><link href=/css/footer.css rel=stylesheet><link href=/css/post.css rel=stylesheet><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script>MathJax = {
+            loader: {
+                load: ['[custom]/xypic.js'],
+                paths: {custom: 'https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3@3.0.1/build/'}
+            },
+            tex: {
+                packages: {'[+]': ['xypic']},
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                processEscapes: true,
+				macros: {
+					/*
+						MathJax.startup.input[0].configuration.handlers.get("macro")._configuration.items
+					*/
+					// https://github.com/mathjax/MathJax/pull/1810/files
+					AA:"\u00c5",alef:"\\aleph",alefsym:"\\aleph",Alpha:"\\mathrm{A}",and:"\\land",ang:"\\angle",Bbb:"\\mathbb",Beta:"\\mathrm{B}",bold:"\\mathbf",bull:"\\bullet",C:"\\mathbb{C}",Chi:"\\mathrm{X}",clubs:"\\clubsuit",cnums:"\\mathbb{C}",Complex:"\\mathbb{C}",coppa:"\u03D9",Coppa:"\u03D8",Dagger:"\\ddagger",Digamma:"\u03DC",darr:"\\downarrow",dArr:"\\Downarrow",Darr:"\\Downarrow",diamonds:"\\diamondsuit",empty:"\\emptyset",Epsilon:"\\mathrm{E}",Eta:"\\mathrm{H}",euro:"\u20AC",exist:"\\exists",geneuro:"\u20AC",geneuronarrow:"\u20AC",geneurowide:"\u20AC",H:"\\mathbb{H}",hAar:"\\Leftrightarrow",harr:"\\leftrightarrow",Harr:"\\Leftrightarrow",hearts:"\\heartsuit",image:"\\Im",infin:"\\infty",Iota:"\\mathrm{I}",isin:"\\in",Kappa:"\\mathrm{K}",koppa:"\u03DF",Koppa:"\u03DE",lang:"\\langle",larr:"\\leftarrow",Larr:"\\Leftarrow",lArr:"\\Leftarrow",lrarr:"\\leftrightarrow",Lrarr:"\\Leftrightarrow",lrArr:"\\Leftrightarrow",Mu:"\\mathrm{M}",N:"\\mathbb{N}",natnums:"\\mathbb{N}",Nu:"\\mathrm{N}",O:"\\emptyset",officialeuro:"\u20AC",Omicron:"\\mathrm{O}",or:"\\lor",P:"\u00B6",pagecolor:["",1],part:"\\partial",plusmn:"\\pm",Q:"\\mathbb{Q}",R:"\\mathbb{R}",rang:"\\rangle",rarr:"\\rightarrow",Rarr:"\\Rightarrow",rArr:"\\Rightarrow",real:"\\Re",reals:"\\mathbb{R}",Reals:"\\mathbb{R}",Rho:"\\mathrm{P}",sdot:"\\cdot",sampi:"\u03E1",Sampi:"\u03E0",sect:"\\S",spades:"\\spadesuit",stigma:"\u03DB",Stigma:"\u03DA",sub:"\\subset",sube:"\\subseteq",supe:"\\supseteq",Tau:"\\mathrm{T}",textvisiblespace:"\u2423",thetasym:"\\vartheta",uarr:"\\uparrow",uArr:"\\Uparrow",Uarr:"\\Uparrow",varcoppa:"\u03D9",varstigma:"\u03DB",vline:"\\smash{\\large\\lvert}",weierp:"\\wp",Z:"\\mathbb{Z}",Zeta:"\\mathrm{Z}",
+					dashint: "\\unicodeInt{x2A0D}",
+					ddashint: "\\unicodeInt{x2A0E}",
+					oiint: "\\unicodeInt{x222F}",
+					oiiint: "\\unicodeInt{x2230}",
+					ointctrclockwise: "\\unicodeInt{x2233}",
+					varointclockwise: "\\unicodeInt{x2232}",
+					ds: "\\displaystyle",
+					unicodeInt: ["\\mathop{\\vcenter{\\mathchoice{\\huge\\unicode{#1}\\,}{\\unicode{#1}}{\\unicode{#1}}{\\unicode{#1}}}\\,}\\nolimits", 1],
+					underforall: ["\\underset{\\substack{#1}}{\\forall}\\,", 1], Forall: ["\\underforall{#1}", 1],
+					underexists: ["\\underset{\\substack{#1}}{\\exists}\\,", 1], Exists: ["\\underexists{#1}", 1], Exist: ["\\Exists{#1}", 1],
+					underexistsu: ["\\underset{\\substack{#1}}{\\exists!}\\,", 1], ExistsU: ["\\underexistsu{#1}", 1], ExistU: ["\\ExistsU{#1}", 1],
+					underbigcap: ["\\bigcap_{\\substack{#1}}", 1], Bigcap: ["\\underbigcap{#1}", 1],
+					underbigcup: ["\\bigcup_{\\substack{#1}}", 1], Bigcup: ["\\underbigcup{#1}", 1],
+					underbigsqcup: ["\\bigsqcup_{\\substack{#1}}", 1], Bigsqcup: ["\\underbigsqcup{#1}", 1],
+					To: "\\Rightarrow", tto: "\\rightrightarrows",
+                    from: "\\leftarrow", From: "\\Leftarrow", ffrom: "\\leftleftarrows",
+					lto: "\\longrightarrow", lTo: "\\Longrightarrow",
+                    lfrom: "\\longleftarrow", lFrom: "\\Longleftarrow",
+					overto: ["\\overset{#1}{\\to}", 1], overTo: ["\\overset{#1}{\\To}", 1],
+                    overtto: ["\\overset{#1}{\\tto}", 1], undertto: ["\\underset{#1}{\\tto}", 1], overundertto: ["\\overset{#1}{\\underset{#2}{\\tto}}", 2],
+                    overfrom: ["\\overset{#1}{\\from}", 1], overFrom: ["\\overset{#1}{\\From}", 1],
+                    overffrom: ["\\overset{#1}{\\ffrom}", 1], underffrom: ["\\underset{#1}{\\ffrom}", 1], overunderffrom: ["\\overset{#1}{\\underset{#2}{\\ffrom}}", 2],
+					overlto: ["\\overset{#1}{\\lto}", 1], overlTo: ["\\overset{#1}{\\lTo}", 1],
+                    overlfrom: ["\\overset{#1}{\\lfrom}", 1], overlFrom: ["\\overset{#1}{\\lFrom}", 1],
+					mapsfrom: "\\mathrel{\\style{display: inline-block; transform: rotateY(180deg);}{\\mapsto}}",
+					map: ["\\begin{align} #1 & \\to #2 \\\\ #3 & \\mapsto #4 \\end{align}", 4],
+					mmap: ["\\begin{align} #1 & \\to #2 \\\\ #3 & \\mapsto #4 \\\\ #5 & \\mapsto #6 \\end{align}", 6],
+					lrmap: ["\\begin{align} #1 & \\to #2 \\\\ #3 & \\mapsto #4 \\\\ #5 & \\mapsfrom #6 \\end{align}", 6],
+					Map: ["\\begin{align} #2 & \\overset{#1}{\\to} #3 \\\\ #4 & \\overset{\\hphantom{#1}}{\\mapsto} #5 \\end{align}", 5],
+					LMap: ["\\begin{align} #2 & \\overset{#1}{\\from} #3 \\\\ #4 & \\overset{\\hphantom{#1}}{\\mapsfrom} #5 \\end{align}", 5],
+					MMap: ["\\begin{align} #2 & \\overset{#1}{\\to} #3 \\\\ #4 & \\overset{\\hphantom{#1}}{\\mapsto} #5 \\\\ #6 & \\overset{\\hphantom{#1}}{\\mapsto} #7 \\end{align}", 7],
+					LRMap: ["\\begin{align} #2 & \\overset{#1}{\\to} #3 \\\\ #4 & \\overset{\\hphantom{#1}}{\\mapsto} #5 \\\\ #6 & \\overset{\\hphantom{#1}}{\\mapsfrom} #7 \\end{align}", 7],
+                    abs: ["\\left|#1\\right|", 1], Abs: ["\\abs{#1}", 1],
+                    floor: ["\\left\\lfloor #1 \\right\\rfloor", 1], Floor: ["\\floor{#1}", 1],
+                    ceil: ["\\left\\lceil #1 \\right\\rceil", 1], Ceil: ["\\ceil{#1}", 1],
+					b: ["\\left(#1\\right)", 1], bb: ["\\left[#1\\right]", 1], Bb: ["\\left\\{#1\\right\\}", 1],
+					kb: ["\\phantom{#1} \\mathclap{#1 \\phantom{#1}}{\\b{#2}}", 2],
+					kbb: ["\\phantom{#1} \\mathclap{#1 \\phantom{#1}}{\\bb{#2}}", 2],
+					kBb: ["\\phantom{#1} \\mathclap{#1 \\phantom{#1}}{\\Bb{#2}}", 2],
+                    opname: ["\\operatorname{#1}", 1], op: ["\\opname{#1}", 1],
+					// Some common categories notations
+					Sets: "\\mathrm{Set}", Mon: "\\mathrm{Mon}", Grp: "\\mathrm{Grp}", Ab: "\\mathrm{Ab}", Ring: "\\mathrm{Ring}", CRing: "\\mathrm{CRing}", Cat: "\\mathrm{Cat}",
+					Top: "\\mathrm{Top}", PTop: "\\Top^{*/}",
+					Abel: "\\mathrm{Abel}", Vect: "\\mathrm{Vect}", FinVect: "\\mathrm{FinVect}", Mat: "\\mathrm{Mat}",
+					Mod: "\\mathrm{Mod}", Frame: "\\mathrm{Frame}", Locale: "\\mathrm{Locale}",
+					Ch: "\\mathrm{Ch}", Grpd: "\\mathrm{Grpd}", InfGrpd: "\\infin\\Grpd", Core: "\\mathrm{Core}", Fct: "\\mathrm{Fct}",
+					PSh: ["\\kb{\\mathrm{PSh}}{#1}", 1], Psh: ["\\PSh{#1}", 1],
+					Ho: ["\\kb{\\mathrm{Ho}}{#1}", 1],
+					Ob: ["\\kb{\\mathrm{Ob}}{#1}", 1], Mor: ["\\kb{\\mathrm{Mor}}{#1}", 1],
+					Hom: ["\\kb{\\mathrm{Hom}_{#1}}{#2, #3}", 3], hom: ["\\kb{\\mathrm{Hom}}{#1, #2}", 2],
+                    End: ["\\mathrm{End}"], Iso: ["\\mathrm{Iso}"], Aut: ["\\mathrm{Aut}"],
+					compose: "\\circ", comp: "\\compose",
+					id: "\\mathrm{id}", const: "\\mathrm{const}", oppos: "\\mathrm{op}",
+					// Some algebra common notations
+					ker: "\\op{Ker}", Ker: ["\\kb{\\mathrm{Ker}}{#1}", 1],
+                    im: "\\op{Im}", Im: ["\\kb{\\mathrm{Im}}{#1}", 1],
+					Stab: "\\op{Stab}", Orb: "\\op{Orb}", Fix: "\\op{Fix}", Ad: "\\op{Ad}",
+                    // Some topological common notations
+                    disc: "\\op{Disc}", Disc: ["\\kb{\\mathrm{Disc}}{#1}", 1],
+                    codisc: "\\op{CoDisc}", CoDisc: ["\\kb{\\mathrm{CoDisc}}{#1}", 1],
+					cl: "\\op{Cl}", Cl: ["\\kb{\\mathrm{Cl}}{#1}", 1],
+					inter: "\\op{Int}", Inter: ["\\kb{\\mathrm{Int}}{#1}", 1]
+				}
+            },
+            startup: {
+                pageReady: () => {
+                    MathJax.startup.defaultPageReady().then(() => {
+                        toggleXypicTheme(localStorage.getItem('theme')=='dark');
+                    });
+                }
+            },
+			options: {
+				skipHtmlTags: ["script","noscript","style","textarea","pre","code", "span"],
+				processHtmlClass: "md-mathjax-preview|md-inline-math|inline-math-export-jax|math-in-toc",
+				ignoreHtmlClass: 'tex2jax_ignore',
+			}
+        };</script><script async id=MathJax-script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js></script><body><script>if(localStorage.getItem('theme')=='dark'){document.body.classList.add('dark-mode');}</script><header class=blur><div class=top><a class="header blog" href=/blog><i class="ri-quill-pen-line ri-2x"></i><span>Blog</span></a><a class=back href=/><i class="ri-arrow-left-s-line ri-1x"></i><span>Home</span></a><div class=icon><a aria-label=home href=/ id=go-home><i class="ri-user-6-line ri-xl"></i></a><a aria-label="rss feed" href=/blog/rss.xml><i class="ri-rss-line ri-xl"></i></a><button aria-label="dark light mode switch" id=color-toggle><i class="ri-moon-line ri-xl"></i></button><button aria-label="table of content" id=toc-toggle><i class="ri-menu-2-line ri-xl"></i></button></div></div><div id=progress-bar></div></header><div class=wrap><div class=blank></div><main><div id=top></div><article><script crossorigin=anonymous src=https://unpkg.com/wolfram-notebook-embedder@0.3/dist/wolfram-notebook-embedder.min.js></script><script>var embedNotebook = (url, containerID, width, maxHeight, showBorder) => WolframNotebookEmbedder.embed(url, document.getElementById(containerID), {
+                    width: width,
+                    maxHeight: maxHeight,
+                    showBorder: showBorder,
+                });</script><h1>何为至多有限多个例外</h1><div id=post-info><div class=date><span id=publish>2024-02-24</span></div><div class=tags><a class=tag href=https://9032676.com/tags/za-tan><i class="ri-hashtag ri-sm"></i><span>杂谈</span></a><a class=tag href=https://9032676.com/tags/shu-xue-hei-hua><i class="ri-hashtag ri-sm"></i><span>数学黑话</span></a></div></div><blockquote class="note good"><i class="ri-thumb-up-line ri-lg"></i><div class=content><p>本文内容已完全施工完毕, 读者可放心阅读！</div></blockquote><h2 id=引言>引言</h2><p>在数学中, 设 $X$ 为任意集合 (有限或无限皆可), 我们经常会遇到以下一些 "黑话", 例如：<ol><li><strong>对任意但至多有限多个例外 (for all but up to finitely many exceptions)</strong> $x \in X$, 满足了性质 $P(x)$;<li><strong>对任意除了有限多个 (for all but finitely many)</strong> $x \in X$, 满足了性质 $P(x)$;<li><strong>几乎所有的 (for almost all)</strong> $x \in X$, 满足了性质 $P(x)$;<li><strong>对无限多个 (for infinitely many)</strong> $x \in X$, 满足了性质 $P(x)$.</ol><p>事实上, 上述 $(1),(2),(3)$ 的陈述是等价的, 皆是指 "尽管有无限种方式使 $x$ 满足了 $P(x)$, 但不满足性质 $P(x)$ 的元素 $x$ 仅有限多个", 用逻辑符号则可表示为： $$<br>\bigg( \Set{ x \in X : P(x) }\ \text{为无限集} \bigg) \and \bigg( \Set{ x \in X : \neg P(x) }\ \text{为有限集} \bigg)<br><br>$$ 而基于 $X$ 的选取不同, 存在不同的语境, 因此可以分类讨论：<ul><li>当 $X$ 为无限集时, 非正式地, 实际上是在指 "存在有限多个不满足 $P(x)$ 的元素, 不过对后续所有无穷多的元素皆满足了 $P(x)$" 这句话, 因此直观上可以体现出来是 "对近乎所有的 $x \in X$ 都满足了性质 $P(x)$, 除了那少得几乎可以忽略不计的有限个元素外", 即 $(3)$ 的陈述.<li>当 $X$ 为有限集时, 显然满足性质 $P(x)$ 的元素是有限多的, 同样地剩下不满足 $P(x)$ 的元素也是有限多的, 即 $\Set{ x \in X : \neg P(x) }$ 同为有限集, 因此只要 $X$ 有限, 就必定满足 $(1), (2), (3)$ 这些等价的陈述.</ul><p>而前三者恰好蕴含了 $(4)$, 它声称的是 "有无限种方式使 $x$ 满足了 $P(x)$", 具体地： $$<br>\Set{ x \in X : P(x) }\ \text{为无限集}<br><br>$$ 显然陈述 $(1), (2), (3)$ 蕴含了 $(4)$. 下面让我们观察一些例子.<h2 id=例子>例子</h2><h3 id=例子_1_(基本例子)>例子 1 (基本例子)</h3><ul><li>几乎所有的自然数都大于 $5$, 除了 $0,1,2,3,4,5 \in \set{ n \in \N : n \leq 5 }$.<li>几乎所有的素数都是奇数, 除了 $2 \in \set{ n \in \N^\times : \text{$n$ 为素数 $\and$ $n$ 为偶数} }$.<li>几乎所有的正偶数都可以被表示为两个素数之和 (同样除了 $2$).</ul><h3 id=例子_2_(数列极限的定义)>例子 2 (数列极限的定义)</h3><p>设 $(a_n)_{n \geq 1}$ 为实数列, 观察数列极限 $\ds \lim_{n \to \infin} a_n = L$ 的定义 $\Forall{\epsilon > 0} \Exists{N \in \N^\times} \Forall{n \geq N} | a_n - L | < \epsilon$, 我们对其中的 $n \in \N^\times$ 分类讨论：<ul><li>当 $n \geq N$ 时, 按定义这当然直接满足了 $|a_n - L| < \epsilon$, 即 $\Set{ n \in \N^\times : (n \geq N) \and (|a_n - L| < \epsilon) }$ 为无限集.<li>当 $n < N$ 时, 则至多仅有 $N - 1$ 个元素满足 $|a_n - L| \geq \epsilon$, 即 $\Set{ n \in \N^\times : (n < N) \and (|a_n - L| \geq \epsilon) }$ 为有限集.</ul><p>因此又可非正式地称为：<ul><li>对任意除了有限多项的 $n \in \N^\times$, 满足 $|a_n - L| < \epsilon$; 或<li>对 <strong>充分大 (sufficiently large)</strong> 的 $n \in \N^\times$, 满足 $|a_n - L| < \epsilon$.</ul><h3 id=例子_3_(可以忽略不计的集合)>例子 3 (可以忽略不计的集合)</h3><p>我们注意到少得几乎 <strong>可以忽略不计的集合 (negligible set)</strong> 满足了以下规律：<ul><li>空集对于整体来说几乎可以忽略不计;<li>这些可以忽略不计集合的子集, 仍是可以忽略不计的;<li>任意两个可以忽略不计的集合之并, 仍是可以忽略不计的.</ul><p>我们可以将上述这些抽象地定义为一个代数结构的实例, 例如在序理论中, 存在以下的代数结构：<blockquote><p>称资料 $(S, \or, \leq)$ 为一个 <strong>并联半格 (join semilattice)</strong>, 其中：<ul><li>$(S, \leq)$ 为有序集;<li>二元运算 $\Map{\or}{S \times S}{S}{(a, b)}{\sup\set{a, b}}$, 即取元素之上确界, 称该运算为 <strong>并联 (join)</strong>.</ul></blockquote><p>然后就可以定义其中的子结构：<blockquote><p>设 $(S, \or, \leq)$ 为一个并联半格, 且令 $I \sube S$ 为其中的非空子集, 称 $I$ 为 $S$ 的 <strong>理想 (ideal)</strong> 当同时满足：<ul><li><strong>$I$ 为 $S$ 的下截面</strong> $\Forall{x \in I} \Forall{y \in S} y \leq x \implies y \in I$;<li><strong>$I$ 为 $S$ 的子半格</strong>：$\Forall{x, y \in I} x \or y \in I$.</ul></blockquote><p>现在对任意集 $X$, 再令 $(\mathcal{P}(X), \cup, \sube)$ 为并联半格, 则可以定义上述可以忽略不计的集合为其中的理想 $I$ 了.<h3 id=例子_4_(形式线性组合)>例子 4 (形式线性组合)</h3><p>我们通常会用形式 (或有限多的) 线性组合去定义一些代数结构 (如自由阿贝尔群, 线性空间等) 中的元素, 而它的准确定义为：<blockquote><p>设 $S$ 为任意集, $S$ 中元素的 <strong>形式线性组合 (formal linear combination)</strong> 为一函数 $a_{(-)} : S \to \Z$, 使得同时满足：<ul><li>$S$ 中有限多个元素之和可以被写为 $\ds \sum_{s \in S} a_s \cdot s$, 其中 $a_s \in \Z$ 为系数;<li>其中仅 <strong>对有限多个 (for finitely many)</strong> $a_s$ 不为零.</ul></blockquote><p>其中的 "仅对有限多个 $a_s \neq 0$" 这个陈述等价于 "对任意除了有限多个 $a_s \in \Z$, 满足了 $a_s = 0$".</article></main><aside class=blur><nav><ul><li><a class=toc-h2 href=#引言>引言</a><li><a class=toc-h2 href=#例子>例子</a> <ul><li><a class=toc-h3 href=#例子_1_(基本例子)>例子 1 (基本例子)</a><li><a class=toc-h3 href=#例子_2_(数列极限的定义)>例子 2 (数列极限的定义)</a><li><a class=toc-h3 href=#例子_3_(可以忽略不计的集合)>例子 3 (可以忽略不计的集合)</a><li><a class=toc-h3 href=#例子_4_(形式线性组合)>例子 4 (形式线性组合)</a></ul></ul></nav><a aria-label="back to top" href=#top id=back-to-top><i class="ri-arrow-up-s-line ri-2x"></i></a></aside></div><footer><div class=copyright>Copyright © 2022 9032676. All rights reserved.</div><div class=credits><span>Powered by <a rel="noreferrer noopener" href=https://www.getzola.org/ target=_blank>Zola</a> and <a rel="noreferrer noopener" href=https://github.com/isunjn/serene target=_blank>Serene</a></span></div></footer><script defer src=/js/dark.js></script><script src=/js/toc.js></script><script src=/js/progress.js></script><script src=/js/lightense.min.js></script><script src=/js/img.js></script>

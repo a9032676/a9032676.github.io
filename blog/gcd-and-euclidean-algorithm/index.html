@@ -1,0 +1,99 @@
+<!doctype html><html lang=zh><head><meta charset=UTF-8><meta content="width=device-width,initial-scale=1.0" name=viewport><meta content="light dark" name=color-scheme><title>最大公因数与欧几里得算法</title><meta name=description><link href=/img/favicon-32x32.png rel=icon sizes=32x32 type=image/png><link href=/img/favicon-16x16.png rel=icon sizes=16x16 type=image/png><link href=/img/apple-touch-icon.png rel=apple-touch-icon sizes=180x180><link href=https://fonts.googleapis.com rel=preconnect><link href=https://fonts.gstatic.com rel=preconnect><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Jost&display=swap" rel=stylesheet><link href=https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css rel=stylesheet><link href=/css/var.css rel=stylesheet><link href=/css/base.css rel=stylesheet><link href=/css/header.css rel=stylesheet><link href=/css/footer.css rel=stylesheet><link href=/css/post.css rel=stylesheet><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script>MathJax = {
+            loader: {
+                load: ['[custom]/xypic.js'],
+                paths: {custom: 'https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3@3.0.1/build/'}
+            },
+            tex: {
+                packages: {'[+]': ['xypic']},
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                processEscapes: true,
+				macros: {
+					/*
+						MathJax.startup.input[0].configuration.handlers.get("macro")._configuration.items
+					*/
+					// https://github.com/mathjax/MathJax/pull/1810/files
+					AA:"\u00c5",alef:"\\aleph",alefsym:"\\aleph",Alpha:"\\mathrm{A}",and:"\\land",ang:"\\angle",Bbb:"\\mathbb",Beta:"\\mathrm{B}",bold:"\\mathbf",bull:"\\bullet",C:"\\mathbb{C}",Chi:"\\mathrm{X}",clubs:"\\clubsuit",cnums:"\\mathbb{C}",Complex:"\\mathbb{C}",coppa:"\u03D9",Coppa:"\u03D8",Dagger:"\\ddagger",Digamma:"\u03DC",darr:"\\downarrow",dArr:"\\Downarrow",Darr:"\\Downarrow",diamonds:"\\diamondsuit",empty:"\\emptyset",Epsilon:"\\mathrm{E}",Eta:"\\mathrm{H}",euro:"\u20AC",exist:"\\exists",geneuro:"\u20AC",geneuronarrow:"\u20AC",geneurowide:"\u20AC",H:"\\mathbb{H}",hAar:"\\Leftrightarrow",harr:"\\leftrightarrow",Harr:"\\Leftrightarrow",hearts:"\\heartsuit",image:"\\Im",infin:"\\infty",Iota:"\\mathrm{I}",isin:"\\in",Kappa:"\\mathrm{K}",koppa:"\u03DF",Koppa:"\u03DE",lang:"\\langle",larr:"\\leftarrow",Larr:"\\Leftarrow",lArr:"\\Leftarrow",lrarr:"\\leftrightarrow",Lrarr:"\\Leftrightarrow",lrArr:"\\Leftrightarrow",Mu:"\\mathrm{M}",N:"\\mathbb{N}",natnums:"\\mathbb{N}",Nu:"\\mathrm{N}",O:"\\emptyset",officialeuro:"\u20AC",Omicron:"\\mathrm{O}",or:"\\lor",P:"\u00B6",pagecolor:["",1],part:"\\partial",plusmn:"\\pm",Q:"\\mathbb{Q}",R:"\\mathbb{R}",rang:"\\rangle",rarr:"\\rightarrow",Rarr:"\\Rightarrow",rArr:"\\Rightarrow",real:"\\Re",reals:"\\mathbb{R}",Reals:"\\mathbb{R}",Rho:"\\mathrm{P}",sdot:"\\cdot",sampi:"\u03E1",Sampi:"\u03E0",sect:"\\S",spades:"\\spadesuit",stigma:"\u03DB",Stigma:"\u03DA",sub:"\\subset",sube:"\\subseteq",supe:"\\supseteq",Tau:"\\mathrm{T}",textvisiblespace:"\u2423",thetasym:"\\vartheta",uarr:"\\uparrow",uArr:"\\Uparrow",Uarr:"\\Uparrow",varcoppa:"\u03D9",varstigma:"\u03DB",vline:"\\smash{\\large\\lvert}",weierp:"\\wp",Z:"\\mathbb{Z}",Zeta:"\\mathrm{Z}",
+					dashint: "\\unicodeInt{x2A0D}",
+					ddashint: "\\unicodeInt{x2A0E}",
+					oiint: "\\unicodeInt{x222F}",
+					oiiint: "\\unicodeInt{x2230}",
+					ointctrclockwise: "\\unicodeInt{x2233}",
+					varointclockwise: "\\unicodeInt{x2232}",
+					ds: "\\displaystyle",
+					unicodeInt: ["\\mathop{\\vcenter{\\mathchoice{\\huge\\unicode{#1}\\,}{\\unicode{#1}}{\\unicode{#1}}{\\unicode{#1}}}\\,}\\nolimits", 1],
+					underforall: ["\\underset{\\substack{#1}}{\\forall}\\,", 1], Forall: ["\\underforall{#1}", 1],
+					underexists: ["\\underset{\\substack{#1}}{\\exists}\\,", 1], Exists: ["\\underexists{#1}", 1], Exist: ["\\Exists{#1}", 1],
+					underexistsu: ["\\underset{\\substack{#1}}{\\exists!}\\,", 1], ExistsU: ["\\underexistsu{#1}", 1], ExistU: ["\\ExistsU{#1}", 1],
+					underbigcap: ["\\bigcap_{\\substack{#1}}", 1], Bigcap: ["\\underbigcap{#1}", 1],
+					underbigcup: ["\\bigcup_{\\substack{#1}}", 1], Bigcup: ["\\underbigcup{#1}", 1],
+					underbigsqcup: ["\\bigsqcup_{\\substack{#1}}", 1], Bigsqcup: ["\\underbigsqcup{#1}", 1],
+					To: "\\Rightarrow", tto: "\\rightrightarrows",
+                    from: "\\leftarrow", From: "\\Leftarrow", ffrom: "\\leftleftarrows",
+					lto: "\\longrightarrow", lTo: "\\Longrightarrow",
+                    lfrom: "\\longleftarrow", lFrom: "\\Longleftarrow",
+					overto: ["\\overset{#1}{\\to}", 1], overTo: ["\\overset{#1}{\\To}", 1],
+                    overtto: ["\\overset{#1}{\\tto}", 1], undertto: ["\\underset{#1}{\\tto}", 1], overundertto: ["\\overset{#1}{\\underset{#2}{\\tto}}", 2],
+                    overfrom: ["\\overset{#1}{\\from}", 1], overFrom: ["\\overset{#1}{\\From}", 1],
+                    overffrom: ["\\overset{#1}{\\ffrom}", 1], underffrom: ["\\underset{#1}{\\ffrom}", 1], overunderffrom: ["\\overset{#1}{\\underset{#2}{\\ffrom}}", 2],
+					overlto: ["\\overset{#1}{\\lto}", 1], overlTo: ["\\overset{#1}{\\lTo}", 1],
+                    overlfrom: ["\\overset{#1}{\\lfrom}", 1], overlFrom: ["\\overset{#1}{\\lFrom}", 1],
+					mapsfrom: "\\mathrel{\\style{display: inline-block; transform: rotateY(180deg);}{\\mapsto}}",
+					map: ["\\begin{align} #1 & \\to #2 \\\\ #3 & \\mapsto #4 \\end{align}", 4],
+					mmap: ["\\begin{align} #1 & \\to #2 \\\\ #3 & \\mapsto #4 \\\\ #5 & \\mapsto #6 \\end{align}", 6],
+					lrmap: ["\\begin{align} #1 & \\to #2 \\\\ #3 & \\mapsto #4 \\\\ #5 & \\mapsfrom #6 \\end{align}", 6],
+					Map: ["\\begin{align} #2 & \\overset{#1}{\\to} #3 \\\\ #4 & \\overset{\\hphantom{#1}}{\\mapsto} #5 \\end{align}", 5],
+					LMap: ["\\begin{align} #2 & \\overset{#1}{\\from} #3 \\\\ #4 & \\overset{\\hphantom{#1}}{\\mapsfrom} #5 \\end{align}", 5],
+					MMap: ["\\begin{align} #2 & \\overset{#1}{\\to} #3 \\\\ #4 & \\overset{\\hphantom{#1}}{\\mapsto} #5 \\\\ #6 & \\overset{\\hphantom{#1}}{\\mapsto} #7 \\end{align}", 7],
+					LRMap: ["\\begin{align} #2 & \\overset{#1}{\\to} #3 \\\\ #4 & \\overset{\\hphantom{#1}}{\\mapsto} #5 \\\\ #6 & \\overset{\\hphantom{#1}}{\\mapsfrom} #7 \\end{align}", 7],
+                    abs: ["\\left|#1\\right|", 1], Abs: ["\\abs{#1}", 1],
+                    floor: ["\\left\\lfloor #1 \\right\\rfloor", 1], Floor: ["\\floor{#1}", 1],
+                    ceil: ["\\left\\lceil #1 \\right\\rceil", 1], Ceil: ["\\ceil{#1}", 1],
+					b: ["\\left(#1\\right)", 1], bb: ["\\left[#1\\right]", 1], Bb: ["\\left\\{#1\\right\\}", 1],
+					kb: ["\\phantom{#1} \\mathclap{#1 \\phantom{#1}}{\\b{#2}}", 2],
+					kbb: ["\\phantom{#1} \\mathclap{#1 \\phantom{#1}}{\\bb{#2}}", 2],
+					kBb: ["\\phantom{#1} \\mathclap{#1 \\phantom{#1}}{\\Bb{#2}}", 2],
+                    opname: ["\\operatorname{#1}", 1], op: ["\\opname{#1}", 1],
+					// Some common categories notations
+					Sets: "\\mathrm{Set}", Mon: "\\mathrm{Mon}", Grp: "\\mathrm{Grp}", Ab: "\\mathrm{Ab}", Ring: "\\mathrm{Ring}", CRing: "\\mathrm{CRing}", Cat: "\\mathrm{Cat}",
+					Top: "\\mathrm{Top}", PTop: "\\Top^{*/}",
+					Abel: "\\mathrm{Abel}", Vect: "\\mathrm{Vect}", FinVect: "\\mathrm{FinVect}", Mat: "\\mathrm{Mat}",
+					Mod: "\\mathrm{Mod}", Frame: "\\mathrm{Frame}", Locale: "\\mathrm{Locale}",
+					Ch: "\\mathrm{Ch}", Grpd: "\\mathrm{Grpd}", InfGrpd: "\\infin\\Grpd", Core: "\\mathrm{Core}", Fct: "\\mathrm{Fct}",
+					PSh: ["\\kb{\\mathrm{PSh}}{#1}", 1], Psh: ["\\PSh{#1}", 1],
+					Ho: ["\\kb{\\mathrm{Ho}}{#1}", 1],
+					Ob: ["\\kb{\\mathrm{Ob}}{#1}", 1], Mor: ["\\kb{\\mathrm{Mor}}{#1}", 1],
+					Hom: ["\\kb{\\mathrm{Hom}_{#1}}{#2, #3}", 3], hom: ["\\kb{\\mathrm{Hom}}{#1, #2}", 2],
+                    End: ["\\mathrm{End}"], Iso: ["\\mathrm{Iso}"], Aut: ["\\mathrm{Aut}"],
+					compose: "\\circ", comp: "\\compose",
+					id: "\\mathrm{id}", const: "\\mathrm{const}", oppos: "\\mathrm{op}",
+					// Some algebra common notations
+					ker: "\\op{Ker}", Ker: ["\\kb{\\mathrm{Ker}}{#1}", 1],
+                    im: "\\op{Im}", Im: ["\\kb{\\mathrm{Im}}{#1}", 1],
+					Stab: "\\op{Stab}", Orb: "\\op{Orb}", Fix: "\\op{Fix}", Ad: "\\op{Ad}",
+                    // Some topological common notations
+                    disc: "\\op{Disc}", Disc: ["\\kb{\\mathrm{Disc}}{#1}", 1],
+                    codisc: "\\op{CoDisc}", CoDisc: ["\\kb{\\mathrm{CoDisc}}{#1}", 1],
+					cl: "\\op{Cl}", Cl: ["\\kb{\\mathrm{Cl}}{#1}", 1],
+					inter: "\\op{Int}", Inter: ["\\kb{\\mathrm{Int}}{#1}", 1]
+				}
+            },
+            startup: {
+                pageReady: () => {
+                    MathJax.startup.defaultPageReady().then(() => {
+                        toggleXypicTheme(localStorage.getItem('theme')=='dark');
+                    });
+                }
+            },
+			options: {
+				skipHtmlTags: ["script","noscript","style","textarea","pre","code", "span"],
+				processHtmlClass: "md-mathjax-preview|md-inline-math|inline-math-export-jax|math-in-toc",
+				ignoreHtmlClass: 'tex2jax_ignore',
+			}
+        };</script><script async id=MathJax-script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js></script><body><script>if(localStorage.getItem('theme')=='dark'){document.body.classList.add('dark-mode');}</script><header class=blur><div class=top><a class="header blog" href=/blog><i class="ri-quill-pen-line ri-2x"></i><span>Blog</span></a><a class=back href=/><i class="ri-arrow-left-s-line ri-1x"></i><span>Home</span></a><div class=icon><a aria-label=home href=/ id=go-home><i class="ri-user-6-line ri-xl"></i></a><a aria-label="rss feed" href=/blog/rss.xml><i class="ri-rss-line ri-xl"></i></a><button aria-label="dark light mode switch" id=color-toggle><i class="ri-moon-line ri-xl"></i></button><button aria-label="table of content" id=toc-toggle><i class="ri-menu-2-line ri-xl"></i></button></div></div><div id=progress-bar></div></header><div class=wrap><div class=blank></div><main><div id=top></div><article><script crossorigin=anonymous src=https://unpkg.com/wolfram-notebook-embedder@0.3/dist/wolfram-notebook-embedder.min.js></script><script>var embedNotebook = (url, containerID, width, maxHeight, showBorder) => WolframNotebookEmbedder.embed(url, document.getElementById(containerID), {
+                    width: width,
+                    maxHeight: maxHeight,
+                    showBorder: showBorder,
+                });</script><h1>最大公因数与欧几里得算法</h1><div id=post-info><div class=date><span id=publish>2024-04-19</span></div><div class=tags><a class=tag href=https://9032676.com/tags/shu-xue><i class="ri-hashtag ri-sm"></i><span>数学</span></a><a class=tag href=https://9032676.com/tags/shu-lun><i class="ri-hashtag ri-sm"></i><span>数论</span></a><a class=tag href=https://9032676.com/tags/dai-shu-xue><i class="ri-hashtag ri-sm"></i><span>代数学</span></a><a class=tag href=https://9032676.com/tags/chou-xiang-dai-shu><i class="ri-hashtag ri-sm"></i><span>抽象代数</span></a><a class=tag href=https://9032676.com/tags/huan-lun><i class="ri-hashtag ri-sm"></i><span>环论</span></a></div></div><blockquote class="note good"><i class="ri-thumb-up-line ri-lg"></i><div class=content><p>本文内容已完全施工完毕, 读者可放心阅读！</div></blockquote><h2 id=引言>引言</h2><p>在许多关于数论的问题中, 会涉及到找出 <strong>最大公因数</strong> 的命题不在少数, 例如使用中国剩余定理前也需要事先验证两个数之间是否互素, 而欧几里得算法则是一种寻找最大公因数极佳的方式, 因此该章节会讨论关于它的一些内容.<h2 id=1._整数上的贝祖定理与欧几里得算法>1. 整数上的贝祖定理与欧几里得算法</h2><p>以下的命题给出了关于最大公因数与 (线性) 丢番图方程 (未知量只能为整数的整系数多项式等式) 的联系：<blockquote><p>$$<br> \Forall{a, b, m \in \Z} \b{ \gcd(a, b) = m \iff \b{\Exists{x, y \in \Z} ax + by = m} } \tag{1} $$</blockquote><p>而往更宽泛的说, 若 $m$ 是 $\gcd(a, b)$ 的整数倍时, 当且仅当线性和 $ax + by = m$ 有整数解 $(x, y)$, 那么我们就称该公式为 <strong>贝祖等式 (Bézout's identity)</strong>. 特别地我们可以将 $m$ 限制为 $1$, 则可得到以下特例：<blockquote><p>$$<br> \Forall{a, b \in \Z} \b{ \text{$a, b$ 互素} \iff \b{\Exists{x, y \in \Z} ax + by = 1} } \tag{2} $$</blockquote><p>而为了证明 $(1)$ 中这样的 $x, y$ 的确存在, 可利用以下的 <strong>欧几里得算法 (Euclidean algorithm)</strong> 进行计算：<blockquote><p>对任意 $a, b \in \Z$, 其中 $b \neq 0$, 如欲找出它们的最大公因数 $\gcd(a, b)$, 首先做一些预处理：<ul><li>若 $b > a$, 由于 $\gcd(a, b) = \gcd(b, a)$, 交换输入 $b, a$;<li>若 $a < 0$ 或 $b < 0$, 由于 $\gcd(a, b) = \gcd(|a|, b) = \gcd(a, |b|) = \gcd(|a|, |b|)$, 直接对 $a$ 或 $b$​​ 取绝对值;<li>设初始值为 $r_{-1} = a$ 以及 $r_0 = b$​;</ul><p>然后可通过以下有限多步 $(1 \leq k \leq n)$ 递归地求出： $$<br> \begin{array}{c|c} & \text{算式} \\ \hline \text{第 $1$ 步} & r_{-1} = r_0 \cdot q_1 + r_1 \\ \text{第 $2$ 步} & r_0 = r_1 \cdot q_2 + r_2 \\ \text{第 $3$ 步} & r_1 = r_2 \cdot q_3 + r_3 \\ \vdots & \vdots \\ \text{第 $k$ 步} & r_{k - 2} = r_{k - 1} \cdot q_k + r_k \\ \vdots & \vdots \\ \text{第 $n$ 步} & r_{n - 2} = r_{n - 1} \cdot q_n + r_n \end{array} $$ 即是说逐步应用带余除法, 其中：<ul><li>$q_k, r_k$ 分别为第 $k$ 步的商与余数;<li>对任意的第 $k$ 步都满足 $0 \leq r_k < r_{k - 1}$;<li>$r_n = 0$ 时算法终止 (存在最小正整数 $n$ 使得 $r_n = 0$), 此时 $\gcd(a, b) = r_{n - 1}$.</ul></blockquote><p>例如我们可以通过以下计算得出 $a = 1919810$ 与 $b = 114514$ 的最大公因数为 $r_{11 - 1} = r_{10} = 2$：<div id=Euclid-Algorithm></div><p>观察到其中的输入分别为前两步的余数 $r_{k - 2}$ 以及 $r_{k - 1}$, 而最大公因数则为最后一步的被除数 $r_{n - 1}$. 可见该算法的核心在于将第 $k - 2$ 步余数辗转到第 $k - 1$ 步的除数以及第 $k$​​ 步的被除数位置上, 因此又称之为 <strong>辗转相除法</strong>. 而带余除法保证了商和余数的取法是唯一的, 虽然这里并没有用到唯一性的条件.<p>现在让我们回到 $(1)$ 的证明, 由于初始值为 $r_{-1} = a$ 而 $r_0 = b$, 那么： $$<br>\gcd(a, b) = \gcd(b, r_1) = \gcd(r_1, r_2) = \gcd(r_2, r_3) = \cdots = \gcd(r_{n - 2}, r_{n - 1}) = r_{n - 1}<br><br>$$ 设 $k = n - 1$, 则有 $r_{n - 3} = r_{n - 2} \cdot q_{n - 1} + r_{n - 1}$, 因此 $r_{n - 1}$ 可被表示为： $$<br>r_{n - 1} = r_{n - 3} - r_{n - 2} \cdot q_{n - 1} \tag{3}<br><br>$$ 同样的, 对 $r_{n - 2}, r_{n - 3}, \cdots, r_2, r_1$ 分别有： $$<br>\begin{align}<br>r_{n - 2} & = r_{n - 4} - r_{n - 3} \cdot q_{n - 2} \\<br>r_{n - 3} & = r_{n - 5} - r_{n - 4} \cdot q_{n - 3} \\<br>& \phantom{w} \vdots \\<br>r_3 & = r_1 - r_2 \cdot q_3 \\<br>r_2 & = b - r_1 \cdot q_2 \\<br>r_1 & = a - r_0 \cdot q_1<br>\end{align}<br><br>$$ 分别将它们代入回到 $(3)$​, 则可将 $r_{n - 1}$ 表示为 $r_{n - 4}$ 与 $r_{n - 5}$ 的线性和, 不断重复这个过程就得到： $$<br>\gcd(a, b) = r_{n - 1} = r_{n - 3} - r_{n - 2} \cdot q_{n - 1} = r_{n - 3} - \b{r_{n - 4} - r_{n - 3} \cdot q_{n - 2}} \cdot q_{n - 1} = \cdots = ax + by<br><br>$$<h2 id=2._整数上的拓展欧几里得算法>2. 整数上的拓展欧几里得算法</h2><p>由于上述的证明不涉及找出贝祖等式中 $x, y$ 具体数值的 (只是证明了它们的存在性), 而我们可以通过 <strong>拓展欧几里得算法 (Extended Euclidean algorithm)</strong> 求得它们, 具体的说, 在欧几里得算法的基础上, 当我们正在进行第 $k$ 步演算时, 同时额外计算并维护有关 $x, y$ 的序列： $$<br>\begin{array}{c|cc|ccc|cc}<br>& \text{$r_k$ 的序列} &&& \text{$x$ 的序列} &&& \text{$y$ 的序列} \\<br>\hline<br>\text{算式} & r_{k - 2} = r_{k - 1} \cdot q_k + r_k &&& x_{k - 2} = x_{k - 1} \cdot q_k + x_k &&& y_{k - 2} = y_{k - 1} \cdot q_k + y_k \\<br>\text{初始值} & r_{-1} = a, \quad r_0 = b &&& x_{-1} = 1, \quad x_0 = 0 &&& y_{-1} = 0, \quad y_0 = 1 \\<br>\text{最终值} & r_{n - 1} = \gcd(a, b) &&& x_{n - 1} = x &&& y_{n - 1} = y \\<br>\end{array}<br><br>$$ 该拓展算法的结束条件与欧几里得算法一致, 皆为 $r_k = 0$. 现在让我们观察与上面同样的例子：<div id=Extened-Euclid-Algorithm></div><p>可见 $\gcd(a, b) = \gcd(1919810, 114514) = r_{11 - 1} = r_{10} = 2$, 而 $x = x_{11 - 1} = x_{10} = -16768$ 并且 $y = y_{11 - 1} = y_{10} = 281113$, 此时代入贝祖等式立得： $$<br>ax + by = 1919810 \cdot (-16768) + 114514 \cdot 281113 = 2 = \gcd(a, b)<br><br>$$<h2 id=3._推广至主理想整环与欧几里得整环>3. 推广至主理想整环与欧几里得整环</h2><p>我们可以在一个更宽泛的数学结构, 例如环中定义整除性, 以及最大公因数等的概念：<blockquote><p>设 $R$ 为环以及 $a, b \in R$：<ul><li>称 $a$ <strong>整除 (divides)</strong> $b$, 或称 $b$ 是 $a$ 的 <strong>倍数 (multiple)</strong>, 当 $\Exists{c \in R} b = ac$, 并记为 $a \mid b$;<li>若 $a \mid b$ 且 $b \mid a$, 则称 $a$ 与 $b$ 是 <strong>结合 (associates)</strong>, 记为 $a \sim b$;<li>称 $d \in R$ 为 $a, b$ 的 <strong>公因数 (common divisor)</strong>, 当 $(d \mid a) \and (d \mid b)$;<li>称 $d \in R$ 为 $a, b$ 的 <strong>最大公因数 (greatest common divisor, GCD)</strong>, 当 $\Forall{\text{$a, b$ 的公因数 $c \in R$}} c \mid d$, 并记为 $\gcd(a, b) = d$.</ul></blockquote><p>现在可以将环 $\Z$ 中的贝祖等式推广至主理想整环 $R$. 由于 $R$ 中所有的理想都可以被单个生成元有限生成, 因此 $(a, b)$ 也是主理想, 它是由 $a, b$ 的最大公因数所生成, 其中的元素形如 $ax + by$ 这样的线性和, 具体的说：<blockquote><p>设 $R$ 为主理想整环, 考虑 $a, b, d, \in R$, 以下命题等价：<ol><li>$\gcd(a, b) = d$;<li>理想之间的等价 $(d) = (a, b)$;<li>满足 $\Exists{x, y \in R} d = ax + by$ 以及 $\Forall{s, t \in R} d \mid (as + bt)$;<li>满足 $\Exists{x, y \in R} d = ax + by$ 以及 $d$ 是 $a, b$ 的公因数.</ol></blockquote><p>再将上述 $\Z$ 中的带余除法抽象出来并定义：<blockquote><p>称整环 $R$ 为一个 <strong>欧几里得整环 (Euclidean domain)</strong>, 当其存在一个映射 $\delta : R \backslash \set{0} \to \N$ 使得以下带余除法于 $R$ 中成立： $$<br> \Forall{f, g \in R \\ g \neq 0} \Exists{q, r \in R } (f = gq + r) \and \bigg[(r = 0) \or (\delta(r) < \delta(g)) \bigg] $$ 其中的 $\delta$ 又被称为 $R$ 的 <strong>欧几里得函数 (Euclidean function)</strong>.</blockquote><p>通俗的说, 所谓的欧几里得整环就是能做带余除法的整环, 可以证明它也是个主理想整环. 例如整数环 $\Z$ 或域 $\mathbb{F}$ 上的多项式环 $\mathbb{F}[x]$ 皆是欧几里得整环, 只要取定： $$<br>\begin{alignat}{3}<br>\Z \backslash \Set{0} & \overto{\delta} \N \qquad \qquad &<br>\mathbb{F}[x] \backslash \Set{0} & \overto{\delta} \N \\<br>x & \mapsto |x| &<br>f & \mapsto \deg f<br>\end{alignat}<br><br>$$ 即是说 $\Z$ 或 $\mathbb{F}[x]$ 中我们将 "较大的元素" 通过带余除法分解为 "较小的元素", 而度量 "大小" 是由 $\delta$ 所决定的. 从而可以将 $\Z$ 上的欧几里得算法推广为：<blockquote><p>设 $R$ 为欧几里得整环及映射 $\delta : R \backslash \set{0} \to \N$, 若 $a, b \in R$ 且 $b \neq 0$​, 可通过以下有限多步 $(1 \leq k \leq n)$ 递归地求出 $a, b$ 的最大公因数： $$<br> \begin{array}{c|c} & \text{算式} \\ \hline \text{第 $1$ 步} & a = b \cdot q_1 + r_1 \\ \text{第 $2$ 步} & b = r_1 \cdot q_2 + r_2 \\ \text{第 $3$ 步} & r_1 = r_2 \cdot q_3 + r_3 \\ \vdots & \vdots \\ \text{第 $k$ 步} & r_{k - 2} = r_{k - 1} \cdot q_k + r_k \\ \vdots & \vdots \\ \text{第 $n$ 步} & r_{n - 2} = r_{n - 1} \cdot q_n + r_n \end{array} $$ 即是说逐步应用带余除法, 其中：<ul><li>$q_k, r_k$ 分别为第 $k$ 步的商与余数;<li>对任意的第 $k$ 步都满足 $(r = 0) \or (\delta(r_k) < \delta(r_{k - 1}))$;<li>$r_n = 0$ 时算法终止 (存在最小正整数 $n$ 使得 $r_n = 0$), 此时 $\gcd(a, b) = r_{n - 1}$​.</ul></blockquote><h2 id=4._多项式环上的欧几里得算法>4. 多项式环上的欧几里得算法</h2><p>从先前的例子我们得知有理数域 $\Q$ 上的 $\Q[x]$ 亦是欧几里得环, 因此不仅仅可以定义任意两个多项式 $f, g \in \Q[x]$ 的最大公因数 $\gcd(f, g)$​, 还可以通过欧几里得算法得到它, 例如设： $$<br>\begin{align}<br>f(x) & = x^3 + x^2 - x - 1 \\<br>g(x) & = x^2 + 3x + 2<br>\end{align}<br><br>$$ 通过以下计算机可得到 $\gcd(f, g) = 3x + 3$：<div id=Polynomial-Euclid-Algorithm></div><p>然而只要当 $(3x + 3) \mid (x^2 + 3x + 2)$, 根据以下事实：<blockquote><p>对任意 $f, g \in \mathbb{F}[x]$ 若 $g \mid f$, 那么 $\Forall{c \neq 0} cg \mid f$.</blockquote><p>也就是说只要给 $3x + 3$ 乘以任意一个标量 $c$ 它都可以整除 $x^2 + 3x + 2$, 这告诉我们事实上 $\gcd(f, g)$ 有无数多个, 为了避免这种情况, 我们可以取一种最标准的形式, 例如将 $3x + 3$ 首一化, 即是将 $x$ 的最高次项的系数化为 $1$, 也就是将 $3x + 3$ 逐项除以 $3$, 便得到了 $\gcd(f, g) = x + 1$.</p><script>embedNotebook('https://www.wolframcloud.com/obj/b4bf9911-bb15-43f3-bc35-1c2ec1bbf798', 'Euclid-Algorithm', null, Infinity, false);
+    embedNotebook('https://www.wolframcloud.com/obj/318bd064-0a54-40af-9fcc-8ac6482003e0', 'Extened-Euclid-Algorithm', null, Infinity, false);
+    embedNotebook('https://www.wolframcloud.com/obj/098cd993-cd13-446c-a49e-885324ec499a', 'Polynomial-Euclid-Algorithm', null, Infinity, false);</script></article></main><aside class=blur><nav><ul><li><a class=toc-h2 href=#引言>引言</a><li><a class=toc-h2 href=#1._整数上的贝祖定理与欧几里得算法>1. 整数上的贝祖定理与欧几里得算法</a><li><a class=toc-h2 href=#2._整数上的拓展欧几里得算法>2. 整数上的拓展欧几里得算法</a><li><a class=toc-h2 href=#3._推广至主理想整环与欧几里得整环>3. 推广至主理想整环与欧几里得整环</a><li><a class=toc-h2 href=#4._多项式环上的欧几里得算法>4. 多项式环上的欧几里得算法</a></ul></nav><a aria-label="back to top" href=#top id=back-to-top><i class="ri-arrow-up-s-line ri-2x"></i></a></aside></div><footer><div class=copyright>Copyright © 2022 9032676. All rights reserved.</div><div class=credits><span>Powered by <a rel="noreferrer noopener" href=https://www.getzola.org/ target=_blank>Zola</a> and <a rel="noreferrer noopener" href=https://github.com/isunjn/serene target=_blank>Serene</a></span></div></footer><script defer src=/js/dark.js></script><script src=/js/toc.js></script><script src=/js/progress.js></script><script src=/js/lightense.min.js></script><script src=/js/img.js></script>

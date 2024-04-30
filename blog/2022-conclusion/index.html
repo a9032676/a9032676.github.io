@@ -1,0 +1,97 @@
+<!doctype html><html lang=zh><head><meta charset=UTF-8><meta content="width=device-width,initial-scale=1.0" name=viewport><meta content="light dark" name=color-scheme><title>2022 年度总结</title><meta name=description><link href=/img/favicon-32x32.png rel=icon sizes=32x32 type=image/png><link href=/img/favicon-16x16.png rel=icon sizes=16x16 type=image/png><link href=/img/apple-touch-icon.png rel=apple-touch-icon sizes=180x180><link href=https://fonts.googleapis.com rel=preconnect><link href=https://fonts.gstatic.com rel=preconnect><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Jost&display=swap" rel=stylesheet><link href=https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css rel=stylesheet><link href=/css/var.css rel=stylesheet><link href=/css/base.css rel=stylesheet><link href=/css/header.css rel=stylesheet><link href=/css/footer.css rel=stylesheet><link href=/css/post.css rel=stylesheet><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script>MathJax = {
+            loader: {
+                load: ['[custom]/xypic.js'],
+                paths: {custom: 'https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3@3.0.1/build/'}
+            },
+            tex: {
+                packages: {'[+]': ['xypic']},
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                processEscapes: true,
+				macros: {
+					/*
+						MathJax.startup.input[0].configuration.handlers.get("macro")._configuration.items
+					*/
+					// https://github.com/mathjax/MathJax/pull/1810/files
+					AA:"\u00c5",alef:"\\aleph",alefsym:"\\aleph",Alpha:"\\mathrm{A}",and:"\\land",ang:"\\angle",Bbb:"\\mathbb",Beta:"\\mathrm{B}",bold:"\\mathbf",bull:"\\bullet",C:"\\mathbb{C}",Chi:"\\mathrm{X}",clubs:"\\clubsuit",cnums:"\\mathbb{C}",Complex:"\\mathbb{C}",coppa:"\u03D9",Coppa:"\u03D8",Dagger:"\\ddagger",Digamma:"\u03DC",darr:"\\downarrow",dArr:"\\Downarrow",Darr:"\\Downarrow",diamonds:"\\diamondsuit",empty:"\\emptyset",Epsilon:"\\mathrm{E}",Eta:"\\mathrm{H}",euro:"\u20AC",exist:"\\exists",geneuro:"\u20AC",geneuronarrow:"\u20AC",geneurowide:"\u20AC",H:"\\mathbb{H}",hAar:"\\Leftrightarrow",harr:"\\leftrightarrow",Harr:"\\Leftrightarrow",hearts:"\\heartsuit",image:"\\Im",infin:"\\infty",Iota:"\\mathrm{I}",isin:"\\in",Kappa:"\\mathrm{K}",koppa:"\u03DF",Koppa:"\u03DE",lang:"\\langle",larr:"\\leftarrow",Larr:"\\Leftarrow",lArr:"\\Leftarrow",lrarr:"\\leftrightarrow",Lrarr:"\\Leftrightarrow",lrArr:"\\Leftrightarrow",Mu:"\\mathrm{M}",N:"\\mathbb{N}",natnums:"\\mathbb{N}",Nu:"\\mathrm{N}",O:"\\emptyset",officialeuro:"\u20AC",Omicron:"\\mathrm{O}",or:"\\lor",P:"\u00B6",pagecolor:["",1],part:"\\partial",plusmn:"\\pm",Q:"\\mathbb{Q}",R:"\\mathbb{R}",rang:"\\rangle",rarr:"\\rightarrow",Rarr:"\\Rightarrow",rArr:"\\Rightarrow",real:"\\Re",reals:"\\mathbb{R}",Reals:"\\mathbb{R}",Rho:"\\mathrm{P}",sdot:"\\cdot",sampi:"\u03E1",Sampi:"\u03E0",sect:"\\S",spades:"\\spadesuit",stigma:"\u03DB",Stigma:"\u03DA",sub:"\\subset",sube:"\\subseteq",supe:"\\supseteq",Tau:"\\mathrm{T}",textvisiblespace:"\u2423",thetasym:"\\vartheta",uarr:"\\uparrow",uArr:"\\Uparrow",Uarr:"\\Uparrow",varcoppa:"\u03D9",varstigma:"\u03DB",vline:"\\smash{\\large\\lvert}",weierp:"\\wp",Z:"\\mathbb{Z}",Zeta:"\\mathrm{Z}",
+					dashint: "\\unicodeInt{x2A0D}",
+					ddashint: "\\unicodeInt{x2A0E}",
+					oiint: "\\unicodeInt{x222F}",
+					oiiint: "\\unicodeInt{x2230}",
+					ointctrclockwise: "\\unicodeInt{x2233}",
+					varointclockwise: "\\unicodeInt{x2232}",
+					ds: "\\displaystyle",
+					unicodeInt: ["\\mathop{\\vcenter{\\mathchoice{\\huge\\unicode{#1}\\,}{\\unicode{#1}}{\\unicode{#1}}{\\unicode{#1}}}\\,}\\nolimits", 1],
+					underforall: ["\\underset{\\substack{#1}}{\\forall}\\,", 1], Forall: ["\\underforall{#1}", 1],
+					underexists: ["\\underset{\\substack{#1}}{\\exists}\\,", 1], Exists: ["\\underexists{#1}", 1], Exist: ["\\Exists{#1}", 1],
+					underexistsu: ["\\underset{\\substack{#1}}{\\exists!}\\,", 1], ExistsU: ["\\underexistsu{#1}", 1], ExistU: ["\\ExistsU{#1}", 1],
+					underbigcap: ["\\bigcap_{\\substack{#1}}", 1], Bigcap: ["\\underbigcap{#1}", 1],
+					underbigcup: ["\\bigcup_{\\substack{#1}}", 1], Bigcup: ["\\underbigcup{#1}", 1],
+					underbigsqcup: ["\\bigsqcup_{\\substack{#1}}", 1], Bigsqcup: ["\\underbigsqcup{#1}", 1],
+					To: "\\Rightarrow", tto: "\\rightrightarrows",
+                    from: "\\leftarrow", From: "\\Leftarrow", ffrom: "\\leftleftarrows",
+					lto: "\\longrightarrow", lTo: "\\Longrightarrow",
+                    lfrom: "\\longleftarrow", lFrom: "\\Longleftarrow",
+					overto: ["\\overset{#1}{\\to}", 1], overTo: ["\\overset{#1}{\\To}", 1],
+                    overtto: ["\\overset{#1}{\\tto}", 1], undertto: ["\\underset{#1}{\\tto}", 1], overundertto: ["\\overset{#1}{\\underset{#2}{\\tto}}", 2],
+                    overfrom: ["\\overset{#1}{\\from}", 1], overFrom: ["\\overset{#1}{\\From}", 1],
+                    overffrom: ["\\overset{#1}{\\ffrom}", 1], underffrom: ["\\underset{#1}{\\ffrom}", 1], overunderffrom: ["\\overset{#1}{\\underset{#2}{\\ffrom}}", 2],
+					overlto: ["\\overset{#1}{\\lto}", 1], overlTo: ["\\overset{#1}{\\lTo}", 1],
+                    overlfrom: ["\\overset{#1}{\\lfrom}", 1], overlFrom: ["\\overset{#1}{\\lFrom}", 1],
+					mapsfrom: "\\mathrel{\\style{display: inline-block; transform: rotateY(180deg);}{\\mapsto}}",
+					map: ["\\begin{align} #1 & \\to #2 \\\\ #3 & \\mapsto #4 \\end{align}", 4],
+					mmap: ["\\begin{align} #1 & \\to #2 \\\\ #3 & \\mapsto #4 \\\\ #5 & \\mapsto #6 \\end{align}", 6],
+					lrmap: ["\\begin{align} #1 & \\to #2 \\\\ #3 & \\mapsto #4 \\\\ #5 & \\mapsfrom #6 \\end{align}", 6],
+					Map: ["\\begin{align} #2 & \\overset{#1}{\\to} #3 \\\\ #4 & \\overset{\\hphantom{#1}}{\\mapsto} #5 \\end{align}", 5],
+					LMap: ["\\begin{align} #2 & \\overset{#1}{\\from} #3 \\\\ #4 & \\overset{\\hphantom{#1}}{\\mapsfrom} #5 \\end{align}", 5],
+					MMap: ["\\begin{align} #2 & \\overset{#1}{\\to} #3 \\\\ #4 & \\overset{\\hphantom{#1}}{\\mapsto} #5 \\\\ #6 & \\overset{\\hphantom{#1}}{\\mapsto} #7 \\end{align}", 7],
+					LRMap: ["\\begin{align} #2 & \\overset{#1}{\\to} #3 \\\\ #4 & \\overset{\\hphantom{#1}}{\\mapsto} #5 \\\\ #6 & \\overset{\\hphantom{#1}}{\\mapsfrom} #7 \\end{align}", 7],
+                    abs: ["\\left|#1\\right|", 1], Abs: ["\\abs{#1}", 1],
+                    floor: ["\\left\\lfloor #1 \\right\\rfloor", 1], Floor: ["\\floor{#1}", 1],
+                    ceil: ["\\left\\lceil #1 \\right\\rceil", 1], Ceil: ["\\ceil{#1}", 1],
+					b: ["\\left(#1\\right)", 1], bb: ["\\left[#1\\right]", 1], Bb: ["\\left\\{#1\\right\\}", 1],
+					kb: ["\\phantom{#1} \\mathclap{#1 \\phantom{#1}}{\\b{#2}}", 2],
+					kbb: ["\\phantom{#1} \\mathclap{#1 \\phantom{#1}}{\\bb{#2}}", 2],
+					kBb: ["\\phantom{#1} \\mathclap{#1 \\phantom{#1}}{\\Bb{#2}}", 2],
+                    opname: ["\\operatorname{#1}", 1], op: ["\\opname{#1}", 1],
+					// Some common categories notations
+					Sets: "\\mathrm{Set}", Mon: "\\mathrm{Mon}", Grp: "\\mathrm{Grp}", Ab: "\\mathrm{Ab}", Ring: "\\mathrm{Ring}", CRing: "\\mathrm{CRing}", Cat: "\\mathrm{Cat}",
+					Top: "\\mathrm{Top}", PTop: "\\Top^{*/}",
+					Abel: "\\mathrm{Abel}", Vect: "\\mathrm{Vect}", FinVect: "\\mathrm{FinVect}", Mat: "\\mathrm{Mat}",
+					Mod: "\\mathrm{Mod}", Frame: "\\mathrm{Frame}", Locale: "\\mathrm{Locale}",
+					Ch: "\\mathrm{Ch}", Grpd: "\\mathrm{Grpd}", InfGrpd: "\\infin\\Grpd", Core: "\\mathrm{Core}", Fct: "\\mathrm{Fct}",
+					PSh: ["\\kb{\\mathrm{PSh}}{#1}", 1], Psh: ["\\PSh{#1}", 1],
+					Ho: ["\\kb{\\mathrm{Ho}}{#1}", 1],
+					Ob: ["\\kb{\\mathrm{Ob}}{#1}", 1], Mor: ["\\kb{\\mathrm{Mor}}{#1}", 1],
+					Hom: ["\\kb{\\mathrm{Hom}_{#1}}{#2, #3}", 3], hom: ["\\kb{\\mathrm{Hom}}{#1, #2}", 2],
+                    End: ["\\mathrm{End}"], Iso: ["\\mathrm{Iso}"], Aut: ["\\mathrm{Aut}"],
+					compose: "\\circ", comp: "\\compose",
+					id: "\\mathrm{id}", const: "\\mathrm{const}", oppos: "\\mathrm{op}",
+					// Some algebra common notations
+					ker: "\\op{Ker}", Ker: ["\\kb{\\mathrm{Ker}}{#1}", 1],
+                    im: "\\op{Im}", Im: ["\\kb{\\mathrm{Im}}{#1}", 1],
+					Stab: "\\op{Stab}", Orb: "\\op{Orb}", Fix: "\\op{Fix}", Ad: "\\op{Ad}",
+                    // Some topological common notations
+                    disc: "\\op{Disc}", Disc: ["\\kb{\\mathrm{Disc}}{#1}", 1],
+                    codisc: "\\op{CoDisc}", CoDisc: ["\\kb{\\mathrm{CoDisc}}{#1}", 1],
+					cl: "\\op{Cl}", Cl: ["\\kb{\\mathrm{Cl}}{#1}", 1],
+					inter: "\\op{Int}", Inter: ["\\kb{\\mathrm{Int}}{#1}", 1]
+				}
+            },
+            startup: {
+                pageReady: () => {
+                    MathJax.startup.defaultPageReady().then(() => {
+                        toggleXypicTheme(localStorage.getItem('theme')=='dark');
+                    });
+                }
+            },
+			options: {
+				skipHtmlTags: ["script","noscript","style","textarea","pre","code", "span"],
+				processHtmlClass: "md-mathjax-preview|md-inline-math|inline-math-export-jax|math-in-toc",
+				ignoreHtmlClass: 'tex2jax_ignore',
+			}
+        };</script><script async id=MathJax-script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js></script><body><script>if(localStorage.getItem('theme')=='dark'){document.body.classList.add('dark-mode');}</script><header class=blur><div class=top><a class="header blog" href=/blog><i class="ri-quill-pen-line ri-2x"></i><span>Blog</span></a><a class=back href=/><i class="ri-arrow-left-s-line ri-1x"></i><span>Home</span></a><div class=icon><a aria-label=home href=/ id=go-home><i class="ri-user-6-line ri-xl"></i></a><a aria-label="rss feed" href=/blog/rss.xml><i class="ri-rss-line ri-xl"></i></a><button aria-label="dark light mode switch" id=color-toggle><i class="ri-moon-line ri-xl"></i></button><button aria-label="table of content" id=toc-toggle><i class="ri-menu-2-line ri-xl"></i></button></div></div><div id=progress-bar></div></header><div class=wrap><div class=blank></div><main><div id=top></div><article><script crossorigin=anonymous src=https://unpkg.com/wolfram-notebook-embedder@0.3/dist/wolfram-notebook-embedder.min.js></script><script>var embedNotebook = (url, containerID, width, maxHeight, showBorder) => WolframNotebookEmbedder.embed(url, document.getElementById(containerID), {
+                    width: width,
+                    maxHeight: maxHeight,
+                    showBorder: showBorder,
+                });</script><h1>2022 年度总结</h1><div id=post-info><div class=date><span id=publish>2022-12-25</span></div><div class=tags><a class=tag href=https://9032676.com/tags/za-tan><i class="ri-hashtag ri-sm"></i><span>杂谈</span></a><a class=tag href=https://9032676.com/tags/nian-du-zong-jie><i class="ri-hashtag ri-sm"></i><span>年度总结</span></a></div></div><h2 id=1._前言>1. 前言</h2><p>又到了即将辞旧迎新的 2022 年尾了, 首先祝大家圣诞节快乐~！<p>而今年个人的兴趣由于种种原因而从 <strong>编程语言理论 (Programming Language Theory, PLT)</strong>, <strong>函数式编程 (Functional Programming)</strong> 相关转移至数学上了, 因此今年以来好像几乎都没写什么代码, 而是在打数学系本科的基础, 那么以下来总结一下个人的一些自学进度吧！<h2 id=2._具体学科心得及进度>2. 具体学科心得及进度</h2><h3 id=2.1_数学分析>2.1 数学分析</h3><h4 id=进度>进度</h4><p>完成集合论, 实数理论部分, 数列极限部分推进至 Stolz 定理 与 Bolzano-Weierstrass 定理.<h4 id=感言>感言</h4><p>虽然数学分析对于整个数学系来说是基础中的基础, 但由于自身分析基础较为薄弱, 并且之前已经好几年几乎未曾接触过数学方面的内容了, 推进的时候其实遇到蛮多困难的, 尤其例如说利用 $\epsilon-N$ 证明数列极限的命题中, 利用不等式进行各种技巧性的缩放, 凑项等, 大量的技巧性方法在一开始的时候几乎是浑然不知的, 现在算是大致有点掌握这方面的技巧了, 数分目前算是开了个头吧 (至少不至于看书的时候连几页都看不懂的那种), 希望明年上半年能彻底完成数学分析1 (一元微分与积分学) 的课程吧！<h3 id=2.2_抽象代数>2.2 抽象代数</h3><h4 id=进度-1>进度</h4><p>跟读 <strong>Algebra - Hungerford (GTM 73)</strong>, 完成群论基础, 有限群, 循环群, 陪集与商群及群同构定理的相关笔记, 并初步开坑了群作用, 环与理想的章节.<h4 id=感言-1>感言</h4><p>抽象代数这门学科笔者在几年前写 Haskell (一门函数式编程) 的时候就已经听说过, 就是上面的 <code>Semigroup</code>, <code>Monoid</code> 这些 typeclass, 但一直都是处于一种开了个坑又摆了的状态, 对抽代的真面目并不真的了解. 为了改变现状, 今年做了大量笔记与习题, 并且重新补了一些初等数论的内容, 目标就是为了扎实抽象代数的基础, 希望明年下半年进度可以推进至振奋人心的 Galois 理论.<h3 id=2.3_高等代数_(线性代数)>2.3 高等代数 (线性代数)</h3><h4 id=进度-2>进度</h4><p>观看 <strong>丘维声教授</strong> 主讲的 <strong>清华大学高等代数公开课</strong>, 推进至 $n$ 阶行列式的性质以及线性空间的各种性质.<h4 id=感言-2>感言</h4><p>最开初的时候跟读的是 <strong>Linear Algebra Done Right - Sheldon Axler</strong>, 但发现该书并不是特别侧重于计算, 导致其实我在计算一些具体实例时会感到有些吃力, 因此后来我改而跟随了国内声誉很好的网课, 就是丘教授的高等代数公开课进行学习, 目前笔记大致是记到行列式部分的性质了. 说实话丘的网课质量是真的名不虚传, 每个概念都过渡得非常的丝滑, 衔接得很好, 并且都给予了足够的动机, 讲课风格十分幽默, 是国内为数不多的好课之一了.<h3 id=2.4_点集拓扑>2.4 点集拓扑</h3><h4 id=进度-3>进度</h4><p>跟读 <strong>点集拓扑讲义 - 熊金城</strong>, 而笔记大概做到 子/积/商空间 以及 连通性 部分.<h4 id=感言-3>感言</h4><p>虽然点集拓扑上带有 "拓扑" 二字, 但其实它并不是特别的 "拓扑", 因为这门学科的研究对象并不是拓扑图形那类的数学对象, 而是对 "点集" 的研究. 而它的具体实例还是常见于数学上各种分析学科中, 因此点集拓扑必须配合好数学分析的具体实例去理解, 反之数学分析中的很多内容都可以被对应到点集拓扑上进行延伸, 例如将某些数分上的定理推广至多元微积分便是利用了点集拓扑的观念.<p>虽然个人不太感兴趣但还是能从中了解了许多拓扑中的基本定义以及概念, 这对代数拓扑的学习的确起到奠定基础的一些帮助.<h3 id=2.5_代数拓扑与同调代数>2.5 代数拓扑与同调代数</h3><h4 id=进度-4>进度</h4><p>观看 <strong>齐震宇教授</strong> 主讲的 <strong>台大代数拓扑公开课</strong>, 且配合 <strong>nLab</strong> 上的代数拓扑与同调代数教程, 从奇异同调群入坑, 目前初步了解到, 奇异同调群, 链复形, 链同伦与同伦的部分.<h4 id=感言-4>感言</h4><p>之前还在码 Agda (带有依赖类型的定理证明器) 以及学习 <strong>同伦类型论 (homotopy type theory, HoTT)</strong> 的时候就一直听到隔壁某群的群友一直在抛出一些高端的代拓词汇, 感觉像是看天书一样. 而由于代数拓扑算是数学领域里使用范畴论较多的其中一门分支了, 所以我对代数拓扑也比较感兴趣, 而我同时亦多了解一些范畴论于数学中的例子, 而有了抽代的基础, 因此今年年尾下定决心开坑了代数拓扑, 经过一小部分的入门现在大致对代数拓扑这门学科有了个初步了解了, 也不再恐惧了吧.<p>而课程本身, 齐教授的功力深厚, 内容多是以同调代数与范畴论来讲述代数拓扑的概念, 他本身在哈佛攻读博士时亦是丘成桐的弟子, 也是为数不多个人非常推荐的网课之一了.<h2 id=3._学习心得及总结>3. 学习心得及总结</h2><h3 id='3.1_任何学科都是_"加点游戏"'>3.1 任何学科都是 "加点游戏"</h3><p>在从 PLT 方面转入数学巨坑前, 我一直认为在 Agda 搭了一整套范畴论框架那么抽象代数 (群, 环, 域) 的内容后就可以一路平推, 当然事后把自己脸都给打肿了, 虽然这确实提供了一定程度的帮助, 例如建立全局性的思维, 但这仍然不可能让你很轻松地拿下抽代, 因为抽象代数完完全全可以脱离范畴论建立起来的, 只不过用范畴论来解释时观点会更高也更为现代, 但在证明抽象代数的命题时往往都需要很大量的代数变形的技巧以及对具体数学对象的理解, 例如利用两个数域上的不同性质找出 $(\R^\times, \cdot)$ 与 $(\C^\times, \cdot)$ 为什么会不同构, 利用循环群 $C_n$ 到另一任意群 $G$ 的同态 $f$, 它的同态像 $f(C_n)$ 必为循环群才可以解释为什么任意循环群的自同构群 $\operatorname{Aut}(C_n)$ 中的元素必定由循环群的生成元集所确定. 因此更多的是集合论, 数论, 抽象代数本身的而非范畴论的思路, 因此单纯使用范畴论的方式来学习抽象代数会很快落入名词党的窘境, 即只知道某个概念但说不出来该概念是什么, 它又有什么具体性质, 关于这个概念的具体证明方式又是怎样的. 所以跳掉的知识 (例如上面就是跳过了抽象代数去学习范畴论) 终究还得再补回来, 这并不是什么报应, 而是之前一直遗漏掉的内容.<p>事实上按照正常的数学专业学习路线来说应该是从具体到抽象的, 例如我不了解更具体一些的抽象代数 (这门学科相对于范畴论来说就是较为具体的, 而它对比起线性代数就是更为抽象的), 那么例如在范畴论中谈及到 <strong>商对象 (quotient object)</strong> 时又会缺了一些重要实例, 例如在群/环范畴下的 <strong>商群 (quotient group)</strong>, <strong>商环 (quotient ring)</strong> 等, 那么就无法形成对某一个概念的深刻了解.<p>对于 PLT 亦是如此, 例如我在学习依赖类型论, 那么我总得先学会 <strong>简单类型的 λ 演算 (simply typed lambda calculus, STLC)</strong> 吧, 也总得先学会最基础的 λ 演算, 又例如在 HoTT 中可能遇到一些某个 <strong>球面 (sphere)</strong> 的 <strong>同伦群 (homotopy group)</strong>, <strong>纤维化 (fibration)</strong> 等等这些具有 <strong>同伦论 (homotopy theory)</strong> 背景的概念, 如果我不单只想从类型论的角度去理解这些词汇, 那么就必须学习同伦论, 而同伦论又是代数拓扑里的一个环节, 那么好了现在代数拓扑实际上就是数学上的一门分支了, 它的前置要求又囊括了抽象代数和一些基本的拓扑概念, 那么抽象代数的许多例子又都能从线性代数以及初等数论中找到, 而基本的一些拓扑概念又能在点集拓扑中学到, 并且点集拓扑中的具体实例又会联系上数学分析, 那么我就必须从头打好基础, 从最简单的数分高代学起 (像打游戏一样从科技树的根基开始加点), 虽然学习的过程可能以年为单位且在得出成果之前会非常枯燥, 但要牢固地逐步竖立起这些概念, 坚持与坚定的信念是必不可少的.<h3 id=3.2_学习的难度应当适中>3.2 学习的难度应当适中</h3><p>学习路上一定是布满荆棘的, 举出这一点就是专门为了打我以前的脸的, 因为我之前一直认为学习应该是件很容易的事情, 事实上学习应该是充满困难与挑战的, 但如果说真遇不到, 那就不应该继续学下去了, 而应去学一些更难更深入的知识, 再在基础上折腾就是浪费时间. 而当我们真的彻底地理解透彻这些难点后, 思维上几乎必然会得到一定程度的提升, 这是在舒适区的范围外学习知识时才能带来的一种精神层面上的升华.<p>那么应该如何判断自身是否处于舒适区中呢？当发现某个学科中的内容大多都是之前从未曾接触过的陌生知识且自身在理解上每走一步都能遇到一定量的难点, 这些都算是位于舒适区外的内容, 但请注意这里我使用了 "一定量的难点", 是因为该处并非是指一步登天的情况, 就好比我连群论, 范畴论都没开始学就学代数拓扑, 那纯粹就是玩火自焚. 因此学习这些知识点还是应该循序渐进地逐个技能点解锁, 即中间的步骤不能一下子跨越太多 (尽可能一个个知识点啃下去而不跳步是最系统化的), 即学习的难度应当适中.<h3 id=3.3_日拱一卒地推进学习进度>3.3 日拱一卒地推进学习进度</h3><p>在数学的学习上可能会遇到许多难点或者瓶颈位, 例如经常可能有某道题目会想半天没想出来应该如何证明, 这个问题不解决掉 (一些值得仔细思考的问题除外) 我就不往后推进了. 这是一个很错误的想法, 在学习数学的路上千万不能死钻牛角尖, 花上一天甚至更长的时间去细想, 应该及时于网上直接查找相关的答案或者证明方式, 不然将会浪费大量时间和精力在一个位置上, 到最后可能都没有找到一个合适的思路, 导致后续海量的内容还没学完而心理防线就先崩溃了, 那么等待着你的只会是摆烂的心态, 那么接下来的课程就都不用学了. 事实上今年以来我有无数遍这样子的经历, 太过于执着, 才导致数学的学习进度不如理想.<p>广义地, 不仅仅针对数学这一门学科的解决方式, 我认为是应该采取打游击战, 围点打援的方式, 对于一些困难的概念实在理解不能, 那么可以稍微放一放, 只留个印象, 先继续学习后续的内容, 因为后续的内容往往可以给予你更多的角度与方法去思考或解决当前的问题, 然后过段时间再回头一看或许问题就会迎刃而解, 例如对于数学分析我觉得某一个定理的证明理解起来实在太过困难了, 那么把这些难点比喻为解放战争中的重要城市, 在敌人多势众时 (即难度过高时) 你是无法撼动它们的, 你只能够在先逐一攻破小据点, 小城市 (相对较为容易的知识点), 累积起来得到足够的群众基础 (就是把后续以及以前知识点都学过一遍后), 此时再攻打这些大城市才时有足够的力量去一举拿下, 正所谓日拱一卒, 积小成多便是如此.<h3 id=3.4_对未来学习方式的改进>3.4 对未来学习方式的改进</h3><ul><li><strong>学习如何学习</strong>：反思并总结当前的学习方式对某学科来说是否正确, 有针对性及高效的. 例如学编程适用的方式, 在学数学时或许并不适用 (或不高效), 那么就必须及时舍弃并重新建立一套新的方法, 一定不要沉浸在过去的舒适圈当中;<li><strong>做电子笔记的方式</strong>：要调整做笔记时的顺序, 应该用手写将某一节的内容推导过一遍后, 再记到电子笔记上, 而非一边看书一边记电子笔记, 这样子很容易导致失去思路, 又或者只是一种纯抄书的做法, 是低效的;<li><strong>想方设法激励自己</strong>：可以将某本书上的每个即将要学习的每个知识点拆分为非常细节的总览, 例如可以用 Excel 建个表格, 将书上每一章中每一小节的某条定理, 命题的证明, 又或者习题的序号写上, 并在完成时可以在该方格内打上勾, 那么即使很微小的进度亦可以很可观地被看见, 而非感觉今天又没多少进度, 那么就可以像打游戏般激励自己早日将所有表格上的方格都勾上, 这样做便可以建立学习时的成就感.</ul></article></main><aside class=blur><nav><ul><li><a class=toc-h2 href=#1._前言>1. 前言</a><li><a class=toc-h2 href=#2._具体学科心得及进度>2. 具体学科心得及进度</a> <ul><li><a class=toc-h3 href=#2.1_数学分析>2.1 数学分析</a><li><a class=toc-h3 href=#2.2_抽象代数>2.2 抽象代数</a><li><a class=toc-h3 href=#2.3_高等代数_(线性代数)>2.3 高等代数 (线性代数)</a><li><a class=toc-h3 href=#2.4_点集拓扑>2.4 点集拓扑</a><li><a class=toc-h3 href=#2.5_代数拓扑与同调代数>2.5 代数拓扑与同调代数</a></ul><li><a class=toc-h2 href=#3._学习心得及总结>3. 学习心得及总结</a> <ul><li><a class=toc-h3 href=#3.1_任何学科都是_ 加点游戏"">3.1 任何学科都是 "加点游戏"</a><li><a class=toc-h3 href=#3.2_学习的难度应当适中>3.2 学习的难度应当适中</a><li><a class=toc-h3 href=#3.3_日拱一卒地推进学习进度>3.3 日拱一卒地推进学习进度</a><li><a class=toc-h3 href=#3.4_对未来学习方式的改进>3.4 对未来学习方式的改进</a></ul></ul></nav><a aria-label="back to top" href=#top id=back-to-top><i class="ri-arrow-up-s-line ri-2x"></i></a></aside></div><footer><div class=copyright>Copyright © 2022 9032676. All rights reserved.</div><div class=credits><span>Powered by <a rel="noreferrer noopener" href=https://www.getzola.org/ target=_blank>Zola</a> and <a rel="noreferrer noopener" href=https://github.com/isunjn/serene target=_blank>Serene</a></span></div></footer><script defer src=/js/dark.js></script><script src=/js/toc.js></script><script src=/js/progress.js></script><script src=/js/lightense.min.js></script><script src=/js/img.js></script>
