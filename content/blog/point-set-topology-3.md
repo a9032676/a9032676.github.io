@@ -17,7 +17,7 @@ mathjax = true
 
 {% good() %}本文内容已完全施工完毕, 读者可放心阅读！{% end %}
 
-{% important() %}本文最后更新日期：2024-04-27{% end %}
+{% important() %}本文最后更新日期：2024-05-01{% end %}
 
 {% mathjax_escape() %}
 
@@ -318,7 +318,7 @@ $$
 
 - $\phi$ 的良定性, 即需证明 $\Forall{U_1, U_2 \in \tau_X} (U_1 = U_2) \implies (\phi(U_1) = \phi(U_2))$：
 
-  显然由于从 [命题 3.3.6](#命题_3.3.6_(Frame 同态保有集合包含关系)) 得知 $U_1 = U_2$ 可拆为 $U_1 \sub U_2$ 以及 $U_2 \sub U_1$, 因此显然 $\phi(U_1) \sub \phi(U_2)$ 以及 $\phi(U_2) \sub \phi(U_1)$ 使得命题成立.
+  显然由于从 [命题 3.3.6](#命题_3.3.6_(Frame_同态保有集合包含关系)) 得知 $U_1 = U_2$ 可拆为 $U_1 \sub U_2$ 以及 $U_2 \sub U_1$, 因此显然 $\phi(U_1) \sub \phi(U_2)$ 以及 $\phi(U_2) \sub \phi(U_1)$ 使得命题成立.
 
 - $\phi$ 构成 frame 同态, 假设有不可约闭集 $X \backslash U_0$, 定义 $\phi : U \mapsto \cases{\empty & 若 $U \sub U_0$ \\ \set{1} & 其他}$, 即分别需证明：
 

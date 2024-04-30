@@ -239,11 +239,11 @@ $$
 
 ### 定理 2.3.2 (素理想测试)
 
-若环 $R$ 中的任意理想 $P$ 为素理想, 当满足了 $P \neq R$ 及以下条件：
+若环 $R$ 中的任意理想 $P$ 为素理想, 当满足了以下条件：
 $$
-\Forall{a, b \in R} ab \in P \implies (a \in P) \or (b \in P)
+(P \neq R) \and \underbrace{\b{\Forall{a, b \in R} ab \in P \implies (a \in P) \or (b \in P)}}_{\text{条件 $1$}}
 $$
-反之若 $P$ 为素理想且 $R$ 可交换, 则 $P$ 满足上述条件.
+反之若 $P$ 为素理想且 $R$ 可交换, 则 $P$ 满足上述条件 $1$.
 
 ##### 证明
 
